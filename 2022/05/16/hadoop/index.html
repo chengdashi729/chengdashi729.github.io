@@ -4,12 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="成大事">
-    <meta name="description" content="1.Hadoop集群搭建及使用(1).集群规划；
-(2).虚拟机准备；1、创建虚拟机（具体步骤不再展示）； 
-2 、配置网络；ping外网：ping baidu.com 
-如果ping不通#修改如下文件：
-vi /etc/sysconfig">
+    <meta name="keywords" content="hadoop 大数据集群的搭建以及使用, 成大事">
+    <meta name="description" content="hadoop 大数据集群的搭建以及使用">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +17,7 @@ vi /etc/sysconfig">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>成大事</title>
+    <title>hadoop 大数据集群的搭建以及使用 | 成大事</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -327,12 +323,12 @@ vi /etc/sysconfig">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/java/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">hadoop 大数据集群的搭建以及使用</h1>
                 </div>
             </div>
         </div>
@@ -446,12 +442,37 @@ vi /etc/sysconfig">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/hadoop/">
+                                <span class="chip bg-color">hadoop</span>
+                            </a>
+                        
+                            <a href="/tags/zookeeper/">
+                                <span class="chip bg-color">zookeeper</span>
+                            </a>
+                        
+                            <a href="/tags/kafka/">
+                                <span class="chip bg-color">kafka</span>
+                            </a>
+                        
+                            <a href="/tags/hbase/">
+                                <span class="chip bg-color">hbase</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/hadoop/" class="post-category">
+                                hadoop
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -494,7 +515,7 @@ vi /etc/sysconfig">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-Hadoop集群搭建及使用"><a href="#1-Hadoop集群搭建及使用" class="headerlink" title="1.Hadoop集群搭建及使用"></a>1.Hadoop集群搭建及使用</h1><h2 id="1-集群规划；"><a href="#1-集群规划；" class="headerlink" title="(1).集群规划；"></a>(1).集群规划；</h2><p><img src="/2022/05/16/hadoop/image-20220516121650308.png" alt="image-20220516121650308"></p>
+                <h1 id="1-hadoop集群搭建及使用"><a href="#1-hadoop集群搭建及使用" class="headerlink" title="1.hadoop集群搭建及使用"></a>1.hadoop集群搭建及使用</h1><h2 id="1-集群规划；"><a href="#1-集群规划；" class="headerlink" title="(1).集群规划；"></a>(1).集群规划；</h2><p><img src="/2022/05/16/hadoop/image-20220516121650308.png" alt="image-20220516121650308"></p>
 <h2 id="2-虚拟机准备；"><a href="#2-虚拟机准备；" class="headerlink" title="(2).虚拟机准备；"></a>(2).虚拟机准备；</h2><h3 id="1、创建虚拟机（具体步骤不再展示）；"><a href="#1、创建虚拟机（具体步骤不再展示）；" class="headerlink" title="1、创建虚拟机（具体步骤不再展示）；"></a>1、创建虚拟机（具体步骤不再展示）；</h3><p><img src="/2022/05/16/hadoop/image-20220516121741768.png" alt="image-20220516121741768"> </p>
 <h3 id="2-、配置网络；"><a href="#2-、配置网络；" class="headerlink" title="2 、配置网络；"></a>2 、配置网络；</h3><h4 id="ping外网：ping-baidu-com"><a href="#ping外网：ping-baidu-com" class="headerlink" title="ping外网：ping baidu.com"></a>ping外网：ping baidu.com</h4><p><img src="/2022/05/16/hadoop/image-20220516121747924.png" alt="image-20220516121747924"> </p>
 <h4 id="如果ping不通"><a href="#如果ping不通" class="headerlink" title="如果ping不通"></a>如果ping不通</h4><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#修改如下文件：</span>
@@ -508,7 +529,7 @@ vi /etc/sysconfig">
 <p><img src="/2022/05/16/hadoop/image-20220516121816889.png" alt="image-20220516121816889"> </p>
 <p><img src="/2022/05/16/hadoop/image-20220516121824390.png" alt="image-20220516121824390"> </p>
 <p>查看IP：ip addr</p>
-<p><img src="file:///C:\Users\SEREND~1\AppData\Local\Temp\ksohtml\wps5B78.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/05/16/hadoop/image-20220516140004855.png" alt="image-20220516140004855"> </p>
 <h4 id="修改网卡的配置文件"><a href="#修改网卡的配置文件" class="headerlink" title="修改网卡的配置文件"></a>修改网卡的配置文件</h4><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vi</span> /etc/sysconfig/network-scripts/ifcfg-ens-33
 <span class="token comment">#修改并添加：（IP为静态）</span>
 <span class="token assign-left variable">BOOTPROTO</span><span class="token operator">=</span>static
@@ -928,7 +949,7 @@ hadoop namenode -format</code></pre>
 <p><img src="/2022/05/16/hadoop/image-20220516122123607.png" alt="image-20220516122123607"> </p>
 <p>关闭防火墙：systemctl stop firewalld</p>
 <p>在浏览器输入：192.168.246.132:9870</p>
-<p><img src="file:///C:\Users\SEREND~1\AppData\Local\Temp\ksohtml\wps5BDF.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/05/16/hadoop/image-20220516140133885.png" alt="image-20220516140133885"> </p>
 <p><img src="/2022/05/16/hadoop/image-20220516122128674.png" alt="image-20220516122128674"> </p>
 <p>在浏览器输入：192.168.246.134:8088</p>
 <p><img src="/2022/05/16/hadoop/image-20220516122132496.png" alt="image-20220516122132496"> </p>
@@ -1326,7 +1347,7 @@ drop <span class="token string">'stu'</span></code></pre>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#退出hbase命令行：</span>
 <span class="token builtin class-name">exit</span> 或 quit</code></pre>
 
-<h1 id="4-Kafka集群搭建及使用"><a href="#4-Kafka集群搭建及使用" class="headerlink" title="4.Kafka集群搭建及使用"></a>4.Kafka集群搭建及使用</h1><h2 id="1-集群规划"><a href="#1-集群规划" class="headerlink" title="(1).集群规划"></a>(1).集群规划</h2><p><img src="file:///C:\Users\SEREND~1\AppData\Local\Temp\ksohtml\wps5C5F.tmp.jpg" alt="img"> </p>
+<h1 id="4-Kafka集群搭建及使用"><a href="#4-Kafka集群搭建及使用" class="headerlink" title="4.Kafka集群搭建及使用"></a>4.Kafka集群搭建及使用</h1><h2 id="1-集群规划"><a href="#1-集群规划" class="headerlink" title="(1).集群规划"></a>(1).集群规划</h2><p><img src="/2022/05/16/hadoop/image-20220516140250117.png" alt="image-20220516140250117"> </p>
 <h2 id="2-下载并解压安装包"><a href="#2-下载并解压安装包" class="headerlink" title="(2).下载并解压安装包"></a>(2).下载并解压安装包</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#切换到installfile目录：</span>
 <span class="token builtin class-name">cd</span> /root/installfile
 
@@ -1536,7 +1557,23 @@ bin/kafka-topics.sh --zookeeper hadoop1:2181/kafka --alter --topic demo --partit
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/hadoop/">
+                                    <span class="chip bg-color">hadoop</span>
+                                </a>
+                            
+                                <a href="/tags/zookeeper/">
+                                    <span class="chip bg-color">zookeeper</span>
+                                </a>
+                            
+                                <a href="/tags/kafka/">
+                                    <span class="chip bg-color">kafka</span>
+                                </a>
+                            
+                                <a href="/tags/hbase/">
+                                    <span class="chip bg-color">hbase</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -1980,16 +2017,15 @@ bin/kafka-topics.sh --zookeeper hadoop1:2181/kafka --alter --topic demo --partit
                 <a href="/2022/05/16/hadoop/">
                     <div class="card-image">
                         
+                        <img src="/medias/java/1.jpg" class="responsive-img" alt="hadoop 大数据集群的搭建以及使用">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
+                        <span class="card-title">hadoop 大数据集群的搭建以及使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            hadoop 大数据集群的搭建以及使用
                         
                     </div>
                     <div class="publish-info">
@@ -1998,13 +2034,37 @@ bin/kafka-topics.sh --zookeeper hadoop1:2181/kafka --alter --topic demo --partit
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            成大事
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/hadoop/" class="post-category">
+                                    hadoop
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/hadoop/">
+                        <span class="chip bg-color">hadoop</span>
+                    </a>
+                    
+                    <a href="/tags/zookeeper/">
+                        <span class="chip bg-color">zookeeper</span>
+                    </a>
+                    
+                    <a href="/tags/kafka/">
+                        <span class="chip bg-color">kafka</span>
+                    </a>
+                    
+                    <a href="/tags/hbase/">
+                        <span class="chip bg-color">hbase</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -2142,8 +2202,8 @@ bin/kafka-topics.sh --zookeeper hadoop1:2181/kafka --alter --topic demo --partit
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
         });
 
         // modify the toc link href to support Chinese.
@@ -2155,7 +2215,7 @@ bin/kafka-topics.sh --zookeeper hadoop1:2181/kafka --alter --topic demo --partit
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
