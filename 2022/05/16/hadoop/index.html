@@ -1100,9 +1100,9 @@ xsync zookeeper-3.4.9</code></pre>
 <span class="token function">vi</span> zoo.cfg
 
 <span class="token comment">#修改：</span>
-<span class="token assign-left variable">dataDir</span><span class="token operator">=</span>/root/soft/zookeeper/tmp</code></pre>
+<span class="token assign-left variable">dataDir</span><span class="token operator">=</span>/root/soft/zookeeper/zkData</code></pre>
 
-<p><img src="/2022/05/16/hadoop/image-20220516122255307.png" alt="image-20220516122255307"> </p>
+<p><img src="/2022/05/16/hadoop/image-20225171803.png" alt="img"></p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#末尾添加：</span>
 server.1<span class="token operator">=</span>hadoop1:2888:3888
 
@@ -1169,7 +1169,7 @@ xsync zoo.cfg</code></pre>
 <p><img src="/2022/05/16/hadoop/image-20220516122311485.png" alt="image-20220516122311485"> </p>
 <p>添加脚本执行权限：chmod u+x zk.sh</p>
 <p><img src="/2022/05/16/hadoop/image-20220516122316821.png" alt="image-20220516122316821"> </p>
-<h2 id="5-启动zookeeper集群"><a href="#5-启动zookeeper集群" class="headerlink" title="(5).启动zookeeper集群"></a>(5).启动zookeeper集群</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#启动zookeeper集群：</span>
+<h2 id="5-启动zookeeper集群"><a href="#5-启动zookeeper集群" class="headerlink" title="(5).启动zookeeper集群"></a>(5).启动zookeeper集群</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#启动zookeeper集群（启动前先检查防火墙。没关的关一下）：</span>
 zk.sh start</code></pre>
 
 <p><img src="/2022/05/16/hadoop/image-20220516122320281.png" alt="image-20220516122320281"> </p>
