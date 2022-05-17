@@ -956,7 +956,7 @@ hadoop version</code></pre>
 <p>配置workers，将三个主机名添加进去：vi workers</p>
 <p><img src="/2022/05/16/hadoop/image-20220516122042633.png" alt="image-20220516122042633"> </p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#进入/sbin目录下：</span>
-<span class="token builtin class-name">cd</span> /root/soft/sbin/
+<span class="token builtin class-name">cd</span> /root/soft/hadoop/sbin/
 
 <span class="token comment">#修改start-dfs.sh和stop-dfs.sh在这两个文件开头加如下内容：</span>
 <span class="token assign-left variable">HDFS_DATANODE_USER</span><span class="token operator">=</span>root
@@ -1319,10 +1319,10 @@ hadoop2</code></pre>
 <p><img src="/2022/05/16/hadoop/image-20220516122443768.png" alt="image-20220516122443768"> </p>
 <p><img src="/2022/05/16/hadoop/image-20220516122447722.png" alt="image-20220516122447722"> </p>
 <h2 id="8-软连接hadoop配置文件到hbase配置目录并分发hbase；"><a href="#8-软连接hadoop配置文件到hbase配置目录并分发hbase；" class="headerlink" title="(8).软连接hadoop配置文件到hbase配置目录并分发hbase；"></a>(8).软连接hadoop配置文件到hbase配置目录并分发hbase；</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#软连接hadoop的core-site.xml到hbase：</span>
-<span class="token function">ln</span> -s /root/soft/etc/core-site.xml core-site.xml
+<span class="token function">ln</span> -s /root/soft/hadoop/etc/hadoop/core-site.xml core-site.xml
 
 <span class="token comment">#软连接hadoop的hdfs-site.xml到hbase：</span>
-<span class="token function">ln</span> -s /root/soft/etc/hdfs-site.xml hdfs-site.xml</code></pre>
+<span class="token function">ln</span> -s /root/soft/hadoop/etc/hadoop/hdfs-site.xml hdfs-site.xml</code></pre>
 
 <p><img src="/2022/05/16/hadoop/image-20220516122452063.png" alt="image-20220516122452063"> </p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#返回上一级目录：</span>
