@@ -553,7 +553,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4k
+                    4.1k
                 </div>
                 
 
@@ -1268,7 +1268,7 @@ hbase version</code></pre>
 <span class="token function">vi</span> hbase-site.xml</code></pre>
 
 <p><img src="/2022/05/16/hadoop/image-20220516122430589.png" alt="image-20220516122430589"> </p>
-<p>在<configuration>和</configuration>之间添加如下内容：</p>
+<p>(先将原有配置全部删除)在<configuration>和</configuration>之间添加如下内容：</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
 ​    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hbase.rootdir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
 ​    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>hdfs://hadoop1:8020/hbase<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
