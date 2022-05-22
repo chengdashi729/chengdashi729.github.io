@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="思想汇报, 成大事">
-    <meta name="description" content="四篇的思想汇报">
+    <meta name="keywords" content="Docker安装ELK, 成大事">
+    <meta name="description" content="docker安装elk 目前仅仅安装了ElastisSearch和kibana">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>思想汇报 | 成大事</title>
+    <title>Docker安装ELK | 成大事</title>
     <link rel="stylesheet" type="text/css" href="/css/loading.css">
     <link rel="icon" type="image/png" href="/favicon.png">
 
@@ -408,12 +408,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/index/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/index/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">思想汇报</h1>
+                    <h1 class="description center-align post-title">Docker安装ELK</h1>
                 </div>
             </div>
         </div>
@@ -529,8 +529,20 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%80%9D%E6%83%B3%E6%B1%87%E6%8A%A5/">
-                                <span class="chip bg-color">思想汇报</span>
+                            <a href="/tags/ElasticSearch/">
+                                <span class="chip bg-color">ElasticSearch</span>
+                            </a>
+                        
+                            <a href="/tags/Kibana/">
+                                <span class="chip bg-color">Kibana</span>
+                            </a>
+                        
+                            <a href="/tags/Docker/">
+                                <span class="chip bg-color">Docker</span>
+                            </a>
+                        
+                            <a href="/tags/Logstash/">
+                                <span class="chip bg-color">Logstash</span>
                             </a>
                         
                     </div>
@@ -541,8 +553,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%80%9D%E6%83%B3%E6%B1%87%E6%8A%A5/" class="post-category">
-                                思想汇报
+                            <a href="/categories/Docker/" class="post-category">
+                                Docker
                             </a>
                         
                     </div>
@@ -554,7 +566,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-05-20
+                    2022-05-22
                 </div>
                 
 
@@ -563,14 +575,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.5k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    15 分
+                    7 分
                 </div>
                 
 
@@ -588,34 +600,152 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一"><a href="#一" class="headerlink" title="一"></a>一</h1><p>​        公元2021年，对于中国共产党和中国人民来说，是极度不平凡的一年。因为今年是中国共产党成立的一百周年。一百年前，浙江嘉兴南湖的一条小船上，先进的中国共产党应运而生，将中国这头沉睡已久的东方巨龙唤醒，犹如黑夜中的一道闪电在东方闪烁，照亮了当时黑暗的中国社会，同时也照亮了中国通向未来的繁荣大道的方向。自此，中国迎来了新的征程。</p>
-<p>​        近代的中国可谓是受尽屈辱，从第一次鸦片战争开始，外国侵略者使用坚船利炮轰开中国的大门，迫使我们签署屈辱的不平等合约。我们这个国家，我们这个民族就一直在压迫和屈辱中度过。当然，我们不会坐以待毙，民族的很多有志之士进行了许许多多的自救行动，“洋务运动”、“戊戌变法”、“辛亥革命”、“新文化运动”等等。在经历了一个又一个的军阀想要复辟的情况下，中国正处于历史上最混乱，最黑暗的一段时期，人民的生活苦不堪言。随着俄国十月革命的一声炮响，        李大钊同志在研究了俄国历史后深受马克思主义的影响，在南下的逃亡中看到了无数苦难深重的人民，这些底层人民的暗无天日的生活，让李大钊痛心疾首。立志想要建立一个全国性质的能够拯救中国，能够让中国人民摆脱压迫，走出这种水深火热生活的政党。他将自己的所看到的，所思考的同自己的亲密“战友”陈独秀同志交流，两人一拍即合。而陈独秀在这么多年苦苦寻求能够拯救中国的药方的过程中，也逐渐确立了，只有马克思主义能够救中国，只有效仿俄国十月革命，才能使破旧不堪的救中国重获新生，在这样的情况下，南陈北李相约建党。</p>
-<p>​        回顾党的百年历史。我们不仅要了解中国共产党的历史，更要从这百年历史中学习到很多宝贵的东西。要明白中国共产党这一路走来并不都是一帆风顺的，更多的是艰难险阻。而当遇到这些困难的时候，靠的就是那些不屈不挠的坚定的信念。</p>
-<p>​        前段时间热播的电视剧《觉醒年代》，让我看的热泪盈眶，那些历史书上原本厚重的名字，现在一个个活灵活现的出现在我的面前。跟随着先辈们，一同在那些混乱黑暗的社会中经历。有一幕我记得特别清楚，李大钊和陈独秀去散发《北京市民宣言》，陈独秀自己则爬上顶楼，将传单奋力抛散并大声演说。呼吁同胞们团结起来，坚决抵制无耻的《巴黎和约》。不怕被警察逮捕，宁愿牺牲自己。也想让当时的人们觉醒。他们的信念是多么的坚定。</p>
-<p>​        我们新时代的年轻人，要推崇这样的坚定的信念。我们应该在以后生活中不断的完善自己的信念，将自己和国家，和人民紧密的联系在一起。可以先从简单的做起，比如坚持，就拿我自己来说，好多时候都是三分钟热度。有些虽然也能坚持下去，但是到了后期就是会很乏力，虽然对自己这个方面有了解，但还是会放纵自己。所以一定要坚持。再比如担当，不能过分计较自己的那些小小的得失，大的方面应该是，将民族，国家时刻放在心中的第一位，要相信我们能成为中国社会主义的接班人。简单来说，就是在班级和宿舍生活中，为同学服务啊。当然最重要的还是要做好自己的本职工作，现在的身份是学生，当然是要学习，并且不能满足于课堂上的知识。要拓展自己的知识面，不能好高骛远，也不能妄自菲薄。</p>
-<h1 id="二"><a href="#二" class="headerlink" title="二"></a>二</h1><p>尊敬的党组织：</p>
-<p>​        当时光的脚步又一次来到九月，新的学年就又开始了，不知不觉之间大学又过去了一年的时间，但是当我上个学年成为一名入党积极分子，参加了入党积极分子的各种的培训后，我对于党员的认识又更近了一步，我明白了共产党的宗旨是“全心全意为人民服务”、我明白党的各种思想离我不再是那么的遥远，那么的晦涩和难懂。这些东西时时刻刻的体现在我们生活中的方方面面、明白了党员是很平凡的，他们从人民中产生，徘徊在群众之间。但是他们带领人民脱贫攻坚，在各个方面起着模范带头的作用。我想要成为一名光荣的共产党员的心情越来越热切。</p>
-<p>​        回首刚刚过去的那个学年，有得有失，但是总体上还是积极向上的，在假期的时候，对于刚放假时制定的那些计划，只是完成的七七八八。对于没有完美的完成，对此我很懊恼，由此可以看出自己的自控力还没有很好，处于家里面那样安逸的环境中，总是会让人忘乎所以，变得颓废，我有愧于入党积极分子这个身份，以上是我对刚过去的假期的反思。</p>
-<p>​        而在其他方面，尤其是政治理论基础很薄弱，理论联系实际的能力并不是很好。这应该是在上个学年中对这个方面的学习程度不够。</p>
-<p>​        尤其是当上一次提交思想汇报的时候，书记向我们提问党章的有关内容，我们却一点都不清楚。身为入党积极分子的我们倍感羞愧。因此，我认真阅读了党章。对党的性质、理想目标、指导思想、基本要求以及党员义务权利有的更深的理解。更加坚定了自己的理想信念。</p>
-<p>​         身为一名入党积极分子，我们应该时时刻刻以一名优秀党员的标准来要求自己，认真学习党的历史，性质，奋斗目标，建党宗旨，组织制度和组织原则等基本知识。遵守党章、贯彻党章，用党章指导实践，还应该经常阅读有关党建、党史及党员先进事迹的书籍和报刊等，不断加强对党路线、方针政策的认识和理解。提升自己的党性修养，认真学习全面提高能力，使我们能够在错综复杂的新时代有清楚的认知。</p>
-<p>​        新的学期开始了，每个人都有自己的目标与计划，当然我也不例外。</p>
-<p>​        虽然本学期的课程并不是很繁重，但是我知道并不能满足于完成课业就好，我还有很多的事情要去做。并且不能只停留在纸面计划或是脑海想象中，要在实际生活中严格做到。</p>
-<p>​        因此，我对自己提出以下要求：在学习上，肯定是一点都不能马虎，认认真真的对待每一节课，在完成课程安排上的任务后，要把精力放在那些自己一直没有做好的事情上，比如自己的四级，还没有通过，所以一定要好好的准备，争取下次通过。然后就是考研，现在大三了。要开始准备了。在生活中，更加的乐于助人，乐观积极，为身边的同学做好表率。工作上，要主动的配合班级上的安排，要改变过去的那种“事不关己高高挂起”的态度，对每件事情都要态度认真，积极参与，为不断建设一个积极向上的班集体而努力。在思想上，要认真学习上级组织的各项精神，不断提升自己的思想面貌，并且多多关注国内外的大事，并多多思考，比如在学习强国上认真提升思想觉悟。争取早日达到党组织的要求成为一名光荣的共产党员。</p>
-<p>​        以上是我这个季度的思想汇报，作为一名新时代的青年大学生，有志于用自己知识，技能去报效祖国，建设社会。身为入党积极分子要时刻不忘党章的要求，坚持做到自重、自警、自律。希望党组织在各个方面能够给予我批评和指正，我一定会虚心接受并积极改正，不断在各个方面严格要求自己，并为成为一名光荣的共产党员而努力，请党组织在实践中考验我！</p>
-<h1 id="三"><a href="#三" class="headerlink" title="三"></a>三</h1><p>敬爱的党组织：</p>
-<p>​       通过这段时间的学习，我对党组织的了解也越来越多，无论是在党的理论方面的学习，还是思想方面的理解，我认为我都有了一定的进步。随着对中国共产党有了更多的了解，对党组织更加崇敬和热爱，也更加坚定了我努力学习的决心。</p>
-<p>​       在对党组织的认识上， 作为一名积极分子，我积极学习党组织的新思想，努力向党组织靠拢。前段时间召开的中国共产党第19届中央委员会第六次全体会议，为了更加深刻地了解党组织，我搜索了许多关于此次会议的资料，我了解到，该会议的重点是关于研究总结党的百年奋斗的重大成就和历史经验问题。一年多来，国内疫情防控和经济社会发展各项任务非常的繁重和艰巨。但是在中国共产党的正确领导下，中华民族打赢了这场艰难的战役。纵观我们党的百年历史，我们能够经历磨难，不断地创造辉煌的重要的原因就是无数的共产党人不忘初心，牢记使命，坚定不移地为之奉献。所以我更要积极学习党的19届六中全会的精神，坚持以马克思列宁主义，毛泽东思想，中国特色社会主义理论体系为指导，将理论用于实践，在实践中学习这些思想。</p>
-<p>​      在思想感悟上，我要加强思想道德修养，树立远大理想。在学习之余，我也经常通过网络，例如学习强国等软件，了解关于党的新消息，关心着国家大事。我要牢记历史，坚定理想信念，牢记党和人民的初心使命。随着《长津湖》《觉醒年代》等主旋律影视作品的大火，中国共产党的百年奋斗历史也深深地震撼着我。作为21世纪的新青年，我再次感觉到了中国共产党的伟大，每一个片段、每一次伟人的演讲，都让我热血沸腾、热泪盈眶。同时我也更加珍惜现在的幸福生活，现在的我们吃得饱穿得暖，能够享受良好的教育，无一不是伟大的中国共产党奋斗的结果。生活在这样美好的时代，我觉得自己很幸福，要让自己的生活更有意义，更应该树立远大的理想和追求，然后为了理想努力地奋斗。</p>
-<p>​        在学习上，我要增强自己的创新精神，加强对实际应用知识的学习，提高自己的学习效率。还要提升专业知识能力，拓宽自己的知识面，并且要善于将理论与实际相结合，坚持实践才是检验真理的唯一标准，要相信实践出真知的道理，千万不能机械式地背书学习。我也认识到自己的学习与理解水平还有待提高，因此更加不能松懈，要做到严格要求自己，无论是日常的学习，期末考试，还是将来的研究生考试，都要付出百分之百的努力，不断奋斗，做到无愧于心。</p>
-<p>​        通过以上总结，我也深刻认识到了自己的不足。虽然我对政治有一定的了解，但理解的很大一部分还是表面，没有认真领会其中的深刻含义，对理论的理解也没有及时地结合社会实践。除此之外，我还没有做到完全的自我约束和监督，在一些工作上的积极性不强，这些都是我需要改正的问题。我相信，跟随着党的脚步，我会努力改掉学习和生活中不良习惯，成为更好的自己。</p>
-<p>​        以上便是我这段时间以来的思想情况，在学习了十九届六中会议后，我进一步加深了对于中国共产党的认识。所以我更要继续以一名优秀党员的身份严格要求自己，在各个方面争取发挥带头作用，不断的提升自己。恳请党组织给予批评和指正。我会认真吸取并改正。</p>
-<h1 id="四"><a href="#四" class="headerlink" title="四"></a>四</h1><p>敬爱的党组织：</p>
-<p>​        通过这段时间的学习。我对于党的思想和宗旨的学习和领悟又有了更深一层的理解。与此同时，在党的思想的指导下，我的思想道德行为素质也有了较大程度的提升。尤其是寒假在家与之后的志愿者服务之后，看到了许许多多优秀的共产党员为了老百姓的平安幸福，舍小家为大家。我更加明白中国共产党是一心为人民服务的，时刻保卫着人民的幸福安定生活，为人民谋幸福。</p>
-<p>​        思想上，在学习了更多的党的知识与亲眼见证到了疫情隔离期间很多村委的优秀的共产党员努力的组织疫情防控工作后，我认识到中国共产党人一直是吃苦在前，享受在后的。当苦难来临的时候，当疫情又一次的气势汹汹的袭来的时候。冲锋在第一线的永远都是中国共产党员。为人民服务，中国共产党任何时候都是把把人民的利益放在第一位的，为此，无数共产党员前仆后继，不懈努力，为了人民的幸福，国家的富强而奋斗。我们身为新时代的青年，要有责任和担当，肩负起属于我们这一代人的责任。</p>
-<p>​        学习上，仍旧保持着自律，因为开学就要大三下了。然后考研的时间也所剩不多。所以在家积极学习专业的知识，提升自己，在家的效率虽然不高，但是我仍然坚持学习了很多，比如：RabbitMq、Docker和ElasticSearch等。而且，在学校还有一些项目没有做完，在家也一直在坚持写。我的专业的技能有了很多的提高。同时，我也在进行文化课的学习，每天坚持背单词，然后四级终于过了。这让我明白，只有坚持。会有好的结果的。前提是自律。所以我们要保持的自律。始终督促自己向好的方向发展。所以在开学后，在决定考研之后，每天坚持早起，然后学习。虽然很累，但是一定要坚持。而且现在的程度比我的其他的同学根本不值一提。所以才更要更加努力。</p>
-<p>​        在日常生活和工作中，我们要有不畏艰辛的拼搏精神和奉献精神。寒假期间我报名参加了社区的社区的志愿活动，虽然只是个在村口检查过往车辆的行程码和健康码这种微不足道的工作，但是，这种志愿活动让我感到很开心。因为我认为我正在向一个优秀共产党员的方向去靠拢。我体会到了党员的责任。我看到了我们中华民族在面对困难时的荣辱与共，看到了中国共产党能够齐心协力办大事的特质，看到了中国中产党为了人民的幸福平安的生活做出的不懈努力。身为新时代的青年，在党的思想和精神的指引下，我们原意，也有这个责任去为我们的国家、社会做出一些自己的贡献。</p>
-<p>​        以上便是我近期在思想、学习、生活和工作等方面的汇报。在以后的学习和生活中，我会努力学习专业的文化知识、关心时事、努力提升自己，让自己能够可以为国家发展贡献出自己的力量。不断地向党组织靠拢，提升自己的觉悟，在日常生活中做一些自己力所能及的事情去帮助别人。当然，我现在还有许许多多的问题，距离成为一名优秀的共产党员还有很大的差距，希望党组织加强对我的培养和教育。</p>
+                <h1 id="Docker-安装ElasticSearch"><a href="#Docker-安装ElasticSearch" class="headerlink" title="Docker 安装ElasticSearch"></a>Docker 安装ElasticSearch</h1><h2 id="我是参考这几篇博客。"><a href="#我是参考这几篇博客。" class="headerlink" title="我是参考这几篇博客。"></a>我是参考这几篇博客。</h2><p>参考这几篇博客，然后自己成功后，做一个记录。大家都可以去看看</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40942490/article/details/111594267">https://blog.csdn.net/qq_40942490/article/details/111594267</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/257867352">https://zhuanlan.zhihu.com/p/257867352</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fkaka/p/15205675.html">https://www.cnblogs.com/fkaka/p/15205675.html</a></p>
+</blockquote>
+<h2 id="第一步：确保你的虚拟机或者是服务器已经安装了Docker"><a href="#第一步：确保你的虚拟机或者是服务器已经安装了Docker" class="headerlink" title="第一步：确保你的虚拟机或者是服务器已经安装了Docker"></a>第一步：确保你的虚拟机或者是服务器已经安装了Docker</h2><p>没有安装的可以参考这个<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_49683806/article/details/123687886">docker安装</a></p>
+<h2 id="第二步：安装ElasticSearch"><a href="#第二步：安装ElasticSearch" class="headerlink" title="第二步：安装ElasticSearch"></a>第二步：安装ElasticSearch</h2><blockquote>
+<p>这次安转的7.7.0的版本</p>
+</blockquote>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>使用docker 直接获取es的镜像</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> pull elasticsearch:7.7.0</code></pre>
+<p>命令执行完后，使用docker images查看镜像是否拉取成功<br><img src="/2022/05/22/Docker%E5%AE%89%E8%A3%85ELK/31f368eec7704b16b146300b2e8c982c.png" alt="在这里插入图片描述"><br>ok，下载成功了！</p>
+<h3 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h3><p>镜像下载成功，使用镜像创建容器。</p>
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> -p /mydata/elasticsearch/config
+<span class="token function">mkdir</span> -p /mydata/elasticsearch/data/
+<span class="token function">mkdir</span> -p /mydata/elasticsearch/plugins
+<span class="token builtin class-name">echo</span> <span class="token string">"http.host: 0.0.0.0"</span> <span class="token operator">>></span> /mydata/elasticsearch/config/elasticsearch.yml
+<span class="token function">chmod</span> -R <span class="token number">777</span> <span class="token function">file</span></code></pre>
+
+<h4 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h4><p>注意：启动前需要在服务器新建下列文件夹，并且文件夹的权限要改成使用chmod -R 777 file修改文件读写权限</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run --name elasticsearch -p <span class="token number">9200</span>:9200 -p <span class="token number">9300</span>:9300 <span class="token punctuation">\</span>
+-e <span class="token string">"discovery.type=single-node"</span> -e <span class="token assign-left variable">ES_JAVA_OPTS</span><span class="token operator">=</span><span class="token string">"-Xms512m -Xmx512m"</span>  <span class="token punctuation">\</span>
+-v /mydata/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml <span class="token punctuation">\</span>
+-v /mydata/elasticsearch/data/:/usr/share/elasticsearch/data <span class="token punctuation">\</span>
+-v /mydata/elasticsearch/plugins:/usr/share/elasticsearch/plugins <span class="token punctuation">\</span>
+-d elasticsearch:7.7.0</code></pre>
+<p>参数说明：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">--name表示镜像启动后的容器名称  
+
+-d: 后台运行容器，并返回容器ID；
+
+-e: 指定容器内的环境变量
+
+-p: 指定端口映射，格式为：主机<span class="token punctuation">(</span>宿主<span class="token punctuation">)</span>端口:容器端口
+
+discovery.type<span class="token operator">=</span>single-node：单机运行
+
+如果启动不了，可以加大内存设置：-e <span class="token assign-left variable">ES_JAVA_OPTS</span><span class="token operator">=</span><span class="token string">"-Xms512m -Xmx512m"</span>
+</code></pre>
+<p>使用<strong>docker ps</strong>查看一下：<br><img src="/2022/05/22/Docker%E5%AE%89%E8%A3%85ELK/bb814aac15b34062874942e5c796c697.png" alt="在这里插入图片描述"></p>
+<h3 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h3><p>es默认端口为9200，只用ip地址+端口号直接访问，所以在浏览器中输入<strong>ip:9200</strong>，如果出现以下界面就是安装成功了！<br><img src="/2022/05/22/Docker%E5%AE%89%E8%A3%85ELK/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ0gtU2VyZW5kaXBpdHk=,size_20,color_FFFFFF,t_70,g_se,x_16.png" alt="在这里插入图片描述"><br>ok！到此。ElasticSearch：7.7.0安装成功了！</p>
+<h2 id="安装ElasticSeach的一些工具"><a href="#安装ElasticSeach的一些工具" class="headerlink" title="安装ElasticSeach的一些工具"></a>安装ElasticSeach的一些工具</h2><h3 id="安装ElasticSeach-head"><a href="#安装ElasticSeach-head" class="headerlink" title="安装ElasticSeach-head"></a>安装ElasticSeach-head</h3><h4 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h4><p>同样使用docker进行安装。先拉取镜像，使用下面的命令：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#拉取镜像</span>
+<span class="token function">docker</span> pull mobz/elasticsearch-head:5</code></pre>
+<p>使用docker images，查看镜像是否拉取成功<br><img src="/2022/05/22/Docker%E5%AE%89%E8%A3%85ELK/a91b2bdb91354507b28856d4294daa0b.png" alt="在这里插入图片描述"></p>
+<h4 id="启动容器-1"><a href="#启动容器-1" class="headerlink" title="启动容器"></a>启动容器</h4><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#创建容器</span>
+<span class="token function">docker</span> create --name elasticsearch-head -p <span class="token number">9100</span>:9100 mobz/elasticsearch-head:5
+
+<span class="token comment">#启动容器</span>
+<span class="token function">docker</span> start elasticsearch-head</code></pre>
+<ul>
+<li>安装ElasticSearch时是容器创建成功后直接在后台就运行了，但在安装ElasticSearch-Head时并没有保持一致。</li>
+<li>而是指定容器名，端口号就直接执行了，这样执行完成后是创建了一个容器，并没有运行。</li>
+<li>所以还需要一个操作，那就是启动容器docker start 容器id。</li>
+<li>安装完成直接使用域名加端口9100即可访问。<br><img src="/2022/05/22/Docker%E5%AE%89%E8%A3%85ELK/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ0gtU2VyZW5kaXBpdHk=,size_20,color_FFFFFF,t_70,g_se,x_16-16532235677981.png" alt="在这里插入图片描述"><h4 id="处理跨域"><a href="#处理跨域" class="headerlink" title="处理跨域"></a>处理跨域</h4>在连接ElasticSearch会发现无法连接，由于时前后端分离开发，所以会存在跨域问题，需要在服务端做跨域处理。<br>执行命令<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> <span class="token builtin class-name">exec</span> -it elasticsearch<span class="token punctuation">(</span>或者容器id<span class="token punctuation">)</span> /bin/bash</code></pre>
+<img src="/2022/05/22/Docker%E5%AE%89%E8%A3%85ELK/dd291e0bc4404904a4de8a5be65fa5d2.png" alt="在这里插入图片描述"></li>
+</ul>
+<p>进入到第一步创建的ElasticSearch容器中，修改配置文件</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">vi/vim config/elasticsearch.yml</code></pre>
+<p><img src="/2022/05/22/Docker%E5%AE%89%E8%A3%85ELK/f78978fb19f648c2b22c12f86a1d78e7.png" alt="在这里插入图片描述"><br>把这两行写进配置文件中(注意是yml配置文件)：</p>
+<pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">http.cors.enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span> 
+<span class="token key atrule">http.cors.allow-origin</span><span class="token punctuation">:</span> <span class="token string">"*"</span></code></pre>
+<p><img src="/2022/05/22/Docker%E5%AE%89%E8%A3%85ELK/2670d425cb5d4d3588300c71a10ffeb3.png" alt="在这里插入图片描述"><br>配置修改完后需执行命令exit退出容器，接着执行docker restart 容器ID重启容器即可。</p>
+<h4 id="处理406和es-head不显示数据的问题"><a href="#处理406和es-head不显示数据的问题" class="headerlink" title="处理406和es-head不显示数据的问题"></a>处理406和es-head不显示数据的问题</h4><p>此时通过&#x3D;&#x3D; ElasticSearch-Head &#x3D;&#x3D;可以成功连接ElasticSearch了，但进行数据操作时会报406错误。</p>
+<p>只需要修改&#x3D;&#x3D; ElasticSearch-Head &#x3D;&#x3D;容器中的配置即可，将配置文件复制到宿主机进行修改。</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#复制vendor.js到外部</span>
+<span class="token function">docker</span> <span class="token function">cp</span> 容器id:/usr/src/app/_site/vendor.js /usr/local/
+
+<span class="token comment">#修改vendor.js</span>
+<span class="token function">vim</span> vendor.js</code></pre>
+
+<p>进入到&#x2F;usr&#x2F;local即可看到从容器中复制出来的文件vendor.js。</p>
+<p>修改文件第6886、7574行，将”application&#x2F;x-www-from-urlencodes”修改为”application&#x2F;json;charset&#x3D;UTF-8”即可<br><img src="/2022/05/22/Docker%E5%AE%89%E8%A3%85ELK/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ0gtU2VyZW5kaXBpdHk=,size_20,color_FFFFFF,t_70,g_se,x_16-16532235677992.png" alt="在这里插入图片描述"></p>
+<p>修改后再将文件复制到容器中，从容器复制文件到宿主机命令已经使用过了，那么现在只不过是把俩个目录反过来即可执行docker cp &#x2F;usr&#x2F;local&#x2F;vendor.js 容器ID:&#x2F;usr&#x2F;src&#x2F;app&#x2F;_site</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> <span class="token function">cp</span> /usr/local/vendor.js  容器id:/usr/src/app/_site</code></pre>
+
+<p>最后一步重启ElasticSearch-Head容器就结束了。</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> restart 容器id</code></pre>
+<h3 id="安装IK分词器"><a href="#安装IK分词器" class="headerlink" title="安装IK分词器"></a>安装IK分词器</h3><blockquote>
+<p>首先问一个问题，ElasticSearch中自带的有分词器为什么还要使用IK分词器？<br>在ElasticSearch中的分词器会把中文分为一个一个的字，例如”今天是周五”，会被分成“今”、“天”、“是”，“周”、“五”，这里很明显是不合适的，在大多数场景下需要的是词而不是字。<br>所以就需要安装中文分词器IK来解决这个问题。<br>IK提供了两个分词算法：ik_smart和ik_max_word，其中ik_smart为最少切分，ik_max_word为最细力度。<br>这里需要注意安装的版本需要跟ElasticSearch版本一致。</p>
+</blockquote>
+<h4 id="第一种离线安装"><a href="#第一种离线安装" class="headerlink" title="第一种离线安装"></a>第一种离线安装</h4><p>下载ik分词器压缩包：<a target="_blank" rel="noopener" href="https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.7.0/elasticsearch-analysis-ik-7.7.0.zip">ik分词器:7.7.0</a><br>使用xftp将分词器上传到服务器或者虚拟机中的&#x2F;tmp中</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#将压缩包移动到容器中</span>
+<span class="token function">docker</span> <span class="token function">cp</span> /tmp/elasticsearch-analysis-ik-7.7.0.zip elasticsearch:/usr/share/elasticsearch/plugins
+
+<span class="token comment">#进入容器</span>
+<span class="token function">docker</span> <span class="token builtin class-name">exec</span> -it elasticsearch /bin/bash  
+
+<span class="token comment">#创建目录</span>
+<span class="token function">mkdir</span> /usr/share/elasticsearch/plugins/ik
+
+<span class="token comment">#将文件压缩包移动到ik中</span>
+<span class="token function">mv</span> /usr/share/elasticsearch/plugins/elasticsearch-analysis-ik-7.7.0.zip /usr/share/elasticsearch/plugins/ik
+
+<span class="token comment">#进入目录</span>
+<span class="token builtin class-name">cd</span> /usr/share/elasticsearch/plugins/ik
+
+<span class="token comment">#解压</span>
+<span class="token function">unzip</span> elasticsearch-analysis-ik-7.7.0.zip
+
+<span class="token comment">#删除压缩包</span>
+<span class="token function">rm</span> -rf elasticsearch-analysis-ik-7.7.0.zip
+</code></pre>
+<p>退出并重启镜像</p>
+<h4 id="第二种使用wget进行安装"><a href="#第二种使用wget进行安装" class="headerlink" title="第二种使用wget进行安装"></a>第二种使用wget进行安装</h4><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.7.0/elasticsearch-analysis-ik-7.7.0.zip</code></pre>
+<p>当你使用wget安装出现Unable to establish SSL connection时执行以下俩个命令即可。</p>
+<p>yum install opensslls</p>
+<p>yum install openssl-devel</p>
+<p>执行cd &#x2F;usr&#x2F;share&#x2F;elasticsearch&#x2F;plugins来到插件目录创建一个IK目录。</p>
+<p>将压缩包移动到IK目录中，执行解压指令elasticsearch-analysis-ik-7.7.0.zip</p>
+<p>接着删除压缩包即可，此时你可以看到一个config包和几个jar包</p>
+<p>最后退出容器，重启重启容器即可。</p>
+<h3 id="安装拼音分词器"><a href="#安装拼音分词器" class="headerlink" title="安装拼音分词器"></a>安装拼音分词器</h3><h1 id="Docker安装Kibana"><a href="#Docker安装Kibana" class="headerlink" title="Docker安装Kibana"></a>Docker安装Kibana</h1><h2 id="一、拉取镜像"><a href="#一、拉取镜像" class="headerlink" title="一、拉取镜像"></a>一、拉取镜像</h2><p>一定要确保kibana的版本和你安装的ES的版本是一致的。</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> pull kibana:7.7.0</code></pre>
+
+<h2 id="二、配置文件"><a href="#二、配置文件" class="headerlink" title="二、配置文件"></a>二、配置文件</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> -p /mydata/kibana/config/
+<span class="token function">vi</span> /mydata/kibana/config/kibana.yml</code></pre>
+
+<p>将以下内容写进去</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#</span>
+<span class="token comment"># ** THIS IS AN AUTO-GENERATED FILE **</span>
+<span class="token comment">#</span>
+
+<span class="token comment"># Default Kibana configuration for docker target</span>
+server.name: kibana
+server.host: <span class="token string">"0"</span>
+<span class="token comment"># ip 改成自己的</span>
+elasticsearch.hosts: <span class="token punctuation">[</span> <span class="token string">"http://10.111.43.55:9200"</span> <span class="token punctuation">]</span>
+xpack.monitoring.ui.container.elasticsearch.enabled: <span class="token boolean">true</span></code></pre>
+
+<p><strong>注意：请根据实际情况，修改elasticsearch地址。</strong></p>
+<h2 id="三、启动"><a href="#三、启动" class="headerlink" title="三、启动"></a>三、启动</h2><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run -d <span class="token punctuation">\</span>
+  --name<span class="token operator">=</span>kibana <span class="token punctuation">\</span>
+  --restart<span class="token operator">=</span>always <span class="token punctuation">\</span>
+  -p <span class="token number">5601</span>:5601 <span class="token punctuation">\</span>
+  -v /mydata/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml <span class="token punctuation">\</span>
+  kibana:7.7.0</code></pre>
+
+<h3 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> logs -f kibana</code></pre>
+
+<p>如果出现以下信息、说明启动成功了。</p>
+<p><img src="/2022/05/22/Docker%E5%AE%89%E8%A3%85ELK/image-20220522210327307.png" alt="image-20220522210327307"></p>
+<h2 id="访问页面"><a href="#访问页面" class="headerlink" title="访问页面"></a>访问页面</h2><pre class="language-none"><code class="language-none">http:&#x2F;&#x2F;10.111.43.55:5601</code></pre>
+
+<p><img src="/2022/05/22/Docker%E5%AE%89%E8%A3%85ELK/image-20220522210416546.png" alt="image-20220522210416546"></p>
+<p><img src="/2022/05/22/Docker%E5%AE%89%E8%A3%85ELK/image-20220522210443222.png" alt="image-20220522210443222"></p>
+<p>ok 安装成功了。</p>
 
                 
             </div>
@@ -642,7 +772,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chengdashi729.github.io/2022/05/20/%E6%80%9D%E6%83%B3%E6%B1%87%E6%8A%A5/">https://chengdashi729.github.io/2022/05/20/%E6%80%9D%E6%83%B3%E6%B1%87%E6%8A%A5/</a>
+                    <a href="https://chengdashi729.github.io/2022/05/22/Docker%E5%AE%89%E8%A3%85ELK/">https://chengdashi729.github.io/2022/05/22/Docker%E5%AE%89%E8%A3%85ELK/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -680,8 +810,20 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%80%9D%E6%83%B3%E6%B1%87%E6%8A%A5/">
-                                    <span class="chip bg-color">思想汇报</span>
+                                <a href="/tags/ElasticSearch/">
+                                    <span class="chip bg-color">ElasticSearch</span>
+                                </a>
+                            
+                                <a href="/tags/Kibana/">
+                                    <span class="chip bg-color">Kibana</span>
+                                </a>
+                            
+                                <a href="/tags/Docker/">
+                                    <span class="chip bg-color">Docker</span>
+                                </a>
+                            
+                                <a href="/tags/Logstash/">
+                                    <span class="chip bg-color">Logstash</span>
                                 </a>
                             
                         </div>
@@ -1119,9 +1261,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/05/22/Docker%E5%AE%89%E8%A3%85ELK/">
                     <div class="card-image">
@@ -1138,9 +1281,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1153,6 +1296,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1183,30 +1327,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/05/19/java-8-%E6%96%B0%E7%89%B9%E6%80%A7/">
+                <a href="/2022/05/20/%E6%80%9D%E6%83%B3%E6%B1%87%E6%8A%A5/">
                     <div class="card-image">
                         
-                        <img src="/medias/index/10.jpg" class="responsive-img" alt="java 8 新特性">
+                        <img src="/medias/index/3.jpg" class="responsive-img" alt="思想汇报">
                         
-                        <span class="card-title">java 8 新特性</span>
+                        <span class="card-title">思想汇报</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            java8的新特性的学习笔记
+                            四篇的思想汇报
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-20
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/java/" class="post-category">
-                                    java
+                            <a href="/categories/%E6%80%9D%E6%83%B3%E6%B1%87%E6%8A%A5/" class="post-category">
+                                    思想汇报
                                 </a>
                             
                             
@@ -1216,8 +1360,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
+                    <a href="/tags/%E6%80%9D%E6%83%B3%E6%B1%87%E6%8A%A5/">
+                        <span class="chip bg-color">思想汇报</span>
                     </a>
                     
                 </div>
