@@ -13,11 +13,11 @@
       
       <categories>
           
-          <category> hive </category>
-          
           <category> Docker </category>
           
           <category> mysql </category>
+          
+          <category> hive </category>
           
       </categories>
       
