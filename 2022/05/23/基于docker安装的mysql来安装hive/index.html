@@ -529,8 +529,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/docker/">
-                                <span class="chip bg-color">docker</span>
+                            <a href="/tags/Docker/">
+                                <span class="chip bg-color">Docker</span>
                             </a>
                         
                             <a href="/tags/mysql/">
@@ -553,11 +553,11 @@
                                 hive
                             </a>
                         
-                            <a href="/categories/hive/docker/" class="post-category">
-                                docker
+                            <a href="/categories/hive/Docker/" class="post-category">
+                                Docker
                             </a>
                         
-                            <a href="/categories/hive/docker/mysql/" class="post-category">
+                            <a href="/categories/hive/Docker/mysql/" class="post-category">
                                 mysql
                             </a>
                         
@@ -579,14 +579,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    737
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -677,7 +677,34 @@ $ <span class="token function">tar</span> -zxvf apache-hive-2.3.9-bin.tar.gz</co
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">find</span> / -name schematool
 /root/soft/apache-hive-2.3.9-bin/bin/schematool -dbType mysql -initSchema</code></pre>
 
-<p>可以看到已经正确完成初始化了。<br><img src="/2022/05/23/%E5%9F%BA%E4%BA%8Edocker%E5%AE%89%E8%A3%85%E7%9A%84mysql%E6%9D%A5%E5%AE%89%E8%A3%85hive/image-20220523142046853.png" alt="image-20220523142046853"><br>可以测试hive是否安装成功，开启hive之前要先开启hadoop</p>
+<p>可以看到已经正确完成初始化了。<br><img src="/2022/05/23/%E5%9F%BA%E4%BA%8Edocker%E5%AE%89%E8%A3%85%E7%9A%84mysql%E6%9D%A5%E5%AE%89%E8%A3%85hive/image-20220523142046853.png" alt="image-20220523142046853"></p>
+<p>如果初始化不成功，可能是hadoop的版本问题。hadoop3.  * 和hive 3 .*会出现</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">Exception <span class="token keyword">in</span> thread <span class="token string">"main"</span> java.lang.NoSuchMethodError: com.google.common.base.Preconditions.checkArgument<span class="token punctuation">(</span>ZLjava/lang/String<span class="token punctuation">;</span>Ljava/lang/Object<span class="token punctuation">;</span><span class="token punctuation">)</span>V
+    at org.apache.hadoop.conf.Configuration.set<span class="token punctuation">(</span>Configuration.java:1357<span class="token punctuation">)</span>
+    at org.apache.hadoop.conf.Configuration.set<span class="token punctuation">(</span>Configuration.java:1338<span class="token punctuation">)</span>
+    at org.apache.hadoop.mapred.JobConf.setJar<span class="token punctuation">(</span>JobConf.java:536<span class="token punctuation">)</span>
+    at org.apache.hadoop.mapred.JobConf.setJarByClass<span class="token punctuation">(</span>JobConf.java:554<span class="token punctuation">)</span>
+    at org.apache.hadoop.mapred.JobConf.<span class="token operator">&lt;</span>init<span class="token operator">></span><span class="token punctuation">(</span>JobConf.java:448<span class="token punctuation">)</span>
+    at org.apache.hadoop.hive.conf.HiveConf.initialize<span class="token punctuation">(</span>HiveConf.java:5141<span class="token punctuation">)</span>
+    at org.apache.hadoop.hive.conf.HiveConf.<span class="token operator">&lt;</span>init<span class="token operator">></span><span class="token punctuation">(</span>HiveConf.java:5099<span class="token punctuation">)</span>
+    at org.apache.hadoop.hive.common.LogUtils.initHiveLog4jCommon<span class="token punctuation">(</span>LogUtils.java:97<span class="token punctuation">)</span>
+    at org.apache.hadoop.hive.common.LogUtils.initHiveLog4j<span class="token punctuation">(</span>LogUtils.java:81<span class="token punctuation">)</span>
+    at org.apache.hadoop.hive.cli.CliDriver.run<span class="token punctuation">(</span>CliDriver.java:699<span class="token punctuation">)</span>
+    at org.apache.hadoop.hive.cli.CliDriver.main<span class="token punctuation">(</span>CliDriver.java:683<span class="token punctuation">)</span>
+    at sun.reflect.NativeMethodAccessorImpl.invoke0<span class="token punctuation">(</span>Native Method<span class="token punctuation">)</span>
+    at sun.reflect.NativeMethodAccessorImpl.invoke<span class="token punctuation">(</span>NativeMethodAccessorImpl.java:62<span class="token punctuation">)</span>
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke<span class="token punctuation">(</span>DelegatingMethodAccessorImpl.java:43<span class="token punctuation">)</span>
+    at java.lang.reflect.Method.invoke<span class="token punctuation">(</span>Method.java:483<span class="token punctuation">)</span>
+    at org.apache.hadoop.util.RunJar.run<span class="token punctuation">(</span>RunJar.java:323<span class="token punctuation">)</span>
+    at org.apache.hadoop.util.RunJar.main<span class="token punctuation">(</span>RunJar.java:236<span class="token punctuation">)</span></code></pre>
+
+<p>错误原因：系统找不到这个类所在的jar包或者jar包的版本不一样系统不知道使用哪个。hive启动报错的原因是后者</p>
+<p>解决办法：</p>
+<p>1、com.google.common.base.Preconditions.checkArgument这个类所在的jar包为：guava.jar</p>
+<p>2、hadoop-3.2.1（路径：hadoop\share\hadoop\common\lib）中该jar包为 guava-27.0-jre.jar；而hive-3.1.2(路径：hive&#x2F;lib)中该jar包为guava-19.0.1.jar</p>
+<p>3、将jar包变成一致的版本：删除hive中低版本jar包，将hadoop中高版本的复制到hive的lib中。</p>
+<p>再次启动问题得到解决！</p>
+<p>可以测试hive是否安装成功，开启hive之前要先开启hadoop</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">start-all.sh
 hive</code></pre>
 <p>可以看到安装成功了。<br><img src="/2022/05/23/%E5%9F%BA%E4%BA%8Edocker%E5%AE%89%E8%A3%85%E7%9A%84mysql%E6%9D%A5%E5%AE%89%E8%A3%85hive/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ0gtU2VyZW5kaXBpdHk=,size_20,color_FFFFFF,t_70,g_se,x_16-16532867240432.png" alt="在这里插入图片描述"></p>
@@ -745,8 +772,8 @@ hive</code></pre>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/docker/">
-                                    <span class="chip bg-color">docker</span>
+                                <a href="/tags/Docker/">
+                                    <span class="chip bg-color">Docker</span>
                                 </a>
                             
                                 <a href="/tags/mysql/">
@@ -1223,11 +1250,11 @@ hive</code></pre>
                                     hive
                                 </a>
                             
-                            <a href="/categories/hive/docker/" class="post-category">
-                                    docker
+                            <a href="/categories/hive/Docker/" class="post-category">
+                                    Docker
                                 </a>
                             
-                            <a href="/categories/hive/docker/mysql/" class="post-category">
+                            <a href="/categories/hive/Docker/mysql/" class="post-category">
                                     mysql
                                 </a>
                             
@@ -1239,8 +1266,8 @@ hive</code></pre>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/docker/">
-                        <span class="chip bg-color">docker</span>
+                    <a href="/tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
                     </a>
                     
                     <a href="/tags/mysql/">
