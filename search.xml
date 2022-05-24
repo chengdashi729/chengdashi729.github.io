@@ -82,11 +82,11 @@
       
         <tags>
             
+            <tag> Docker </tag>
+            
             <tag> ElasticSearch </tag>
             
             <tag> Kibana </tag>
-            
-            <tag> Docker </tag>
             
             <tag> Logstash </tag>
             
