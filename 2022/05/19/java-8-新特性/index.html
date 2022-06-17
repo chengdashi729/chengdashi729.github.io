@@ -563,7 +563,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.1k
+                    4.3k
                 </div>
                 
 
@@ -1372,6 +1372,20 @@ min——返回流中最小值
 <h2 id="并行流和顺序流"><a href="#并行流和顺序流" class="headerlink" title="并行流和顺序流"></a>并行流和顺序流</h2><blockquote>
 <p>并行流就是把一个内容分成多个数据快，并用不同的线程分别处理每个数据块的流。</p>
 </blockquote>
+<h2 id="Optional-类"><a href="#Optional-类" class="headerlink" title="Optional 类"></a>Optional 类</h2><blockquote>
+<p>Option<T> 类（java.util.Optional)是一个容器类，代表一个值存在或不存在，原来用null表示一个值不存在，现在Optional 可以更好的表达这个概念。并且可以避免空指针异常。</p>
+</blockquote>
+<p>常用方法：</p>
+<ul>
+<li>Optional.of(T t)： 创建一个Optional 实例</li>
+<li>Optional.empty( )： 创建一个空的Optional 实例</li>
+<li>Optional.ofNullable(T t)： 若t不为null，创建Optional 实例，否则创建空实例</li>
+<li>isPresent()：判断是否包含值</li>
+<li>orElse(T t)：如果调用对象包含值，返回该值，否则返回t</li>
+<li>orElseGet(Supplier s)：如果调用对象包含值，返回该值，否则返回s获取的值</li>
+<li>map(Function f)：如果有值对其处理，并返回处理后的Optional，否则返回Optional.empty()</li>
+<li>flatMap(Fuction mapper)：与map类似，要求返回值必须是Optional</li>
+</ul>
 
                 
             </div>
@@ -1982,7 +1996,7 @@ min——返回流中最小值
 
         var selection = window.getSelection();
         // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('200')) {
+        if (('' + selection).length < Number.parseInt('2000')) {
             return;
         }
 

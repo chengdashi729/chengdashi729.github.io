@@ -603,8 +603,8 @@
                 <h1 id="1-hadoop集群搭建及使用"><a href="#1-hadoop集群搭建及使用" class="headerlink" title="1.hadoop集群搭建及使用"></a>1.hadoop集群搭建及使用</h1><h2 id="1-集群规划；"><a href="#1-集群规划；" class="headerlink" title="(1).集群规划；"></a>(1).集群规划；</h2><p><img src="/2022/05/16/hadoop/image-20220516121650308.png" alt="image-20220516121650308"></p>
 <h2 id="2-虚拟机准备；"><a href="#2-虚拟机准备；" class="headerlink" title="(2).虚拟机准备；"></a>(2).虚拟机准备；</h2><h3 id="1、创建虚拟机（具体步骤不再展示）；"><a href="#1、创建虚拟机（具体步骤不再展示）；" class="headerlink" title="1、创建虚拟机（具体步骤不再展示）；"></a>1、创建虚拟机（具体步骤不再展示）；</h3><p><img src="/2022/05/16/hadoop/image-20220516121741768.png" alt="image-20220516121741768"> </p>
 <h3 id="2-、配置网络；"><a href="#2-、配置网络；" class="headerlink" title="2 、配置网络；"></a>2 、配置网络；</h3><h4 id="ping外网：ping-baidu-com"><a href="#ping外网：ping-baidu-com" class="headerlink" title="ping外网：ping baidu.com"></a>ping外网：ping baidu.com</h4><p><img src="/2022/05/16/hadoop/image-20220516121747924.png" alt="image-20220516121747924"> </p>
-<h4 id="如果ping不通"><a href="#如果ping不通" class="headerlink" title="如果ping不通"></a>如果ping不通</h4><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#修改如下文件：</span>
-<span class="token function">vi</span> /etc/sysconfig/network-scripts/ifcfg-ens-33</code></pre>
+<h4 id="如果ping不通"><a href="#如果ping不通" class="headerlink" title="如果ping不通"></a>如果ping不通</h4><p>修改如下文件：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vi</span> /etc/sysconfig/network-scripts/ifcfg-ens33</code></pre>
 
 <p><img src="/2022/05/16/hadoop/image-20220516121754932.png" alt="image-20220516121754932"> </p>
 <h4 id="重启网络服务："><a href="#重启网络服务：" class="headerlink" title="重启网络服务："></a>重启网络服务：</h4><p>service network restart</p>
@@ -615,7 +615,7 @@
 <p><img src="/2022/05/16/hadoop/image-20220516121824390.png" alt="image-20220516121824390"> </p>
 <p>查看IP：ip addr</p>
 <p><img src="/2022/05/16/hadoop/image-20220516140004855.png" alt="image-20220516140004855"> </p>
-<h4 id="修改网卡的配置文件"><a href="#修改网卡的配置文件" class="headerlink" title="修改网卡的配置文件"></a>修改网卡的配置文件</h4><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vi</span> /etc/sysconfig/network-scripts/ifcfg-ens-33
+<h4 id="修改网卡的配置文件"><a href="#修改网卡的配置文件" class="headerlink" title="修改网卡的配置文件"></a>修改网卡的配置文件</h4><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vi</span> /etc/sysconfig/network-scripts/ifcfg-ens33
 <span class="token comment">#修改并添加：（IP为静态）</span>
 <span class="token assign-left variable">BOOTPROTO</span><span class="token operator">=</span>static
 <span class="token assign-left variable">IPADDR</span><span class="token operator">=</span><span class="token number">192.168</span>.246.132
@@ -805,7 +805,7 @@ hadoop version</code></pre>
 <p>在<configuration>和</configuration>之间添加如下内容：</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
 ​    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hadoop.tmp.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-​    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>/opt/hadoop_data/tmp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+​    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>/opt/hadoop/hadoop_data/tmp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
 ​    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>Abase for other temporary directories.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
 
@@ -2214,7 +2214,7 @@ bin/kafka-topics.sh --zookeeper hadoop1:2181/kafka --alter --topic demo --partit
 
         var selection = window.getSelection();
         // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('200')) {
+        if (('' + selection).length < Number.parseInt('2000')) {
             return;
         }
 

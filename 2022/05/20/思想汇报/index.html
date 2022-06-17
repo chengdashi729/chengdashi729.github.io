@@ -1172,16 +1172,16 @@
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
+                    </a>
+                    
                     <a href="/tags/ElasticSearch/">
                         <span class="chip bg-color">ElasticSearch</span>
                     </a>
                     
                     <a href="/tags/Kibana/">
                         <span class="chip bg-color">Kibana</span>
-                    </a>
-                    
-                    <a href="/tags/Docker/">
-                        <span class="chip bg-color">Docker</span>
                     </a>
                     
                     <a href="/tags/Logstash/">
@@ -1254,7 +1254,7 @@
 
         var selection = window.getSelection();
         // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('200')) {
+        if (('' + selection).length < Number.parseInt('2000')) {
             return;
         }
 
