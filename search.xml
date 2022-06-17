@@ -33,6 +33,8 @@
       
         <tags>
             
+            <tag> mysql </tag>
+            
             <tag> Springboot </tag>
             
             <tag> mybatis-plus </tag>
@@ -46,8 +48,6 @@
             <tag> druid </tag>
             
             <tag> tika </tag>
-            
-            <tag> mysql </tag>
             
             <tag> mybatis-plus-join </tag>
             
