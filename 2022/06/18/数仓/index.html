@@ -578,14 +578,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    10.9k
+                    11.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    61 分
+                    63 分
                 </div>
                 
 
@@ -1271,11 +1271,81 @@ insert into table student values<span class="token punctuation">(</span><span cl
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span></code></pre>
 
 <p>创建ExplodeJSONArray类：</p>
+<p><img src="/%E6%95%B0%E4%BB%93/image-20220618174653107.png" alt="image-20220618174653107"></p>
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>hive<span class="token punctuation">.</span>udtf</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>hive<span class="token punctuation">.</span>ql<span class="token punctuation">.</span>exec<span class="token punctuation">.</span></span><span class="token class-name">UDFArgumentException</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>hive<span class="token punctuation">.</span>ql<span class="token punctuation">.</span>metadata<span class="token punctuation">.</span></span><span class="token class-name">HiveException</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>hive<span class="token punctuation">.</span>ql<span class="token punctuation">.</span>udf<span class="token punctuation">.</span>generic<span class="token punctuation">.</span></span><span class="token class-name">GenericUDTF</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>hive<span class="token punctuation">.</span>serde2<span class="token punctuation">.</span>objectinspector<span class="token punctuation">.</span></span><span class="token class-name">ObjectInspector</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>hive<span class="token punctuation">.</span>serde2<span class="token punctuation">.</span>objectinspector<span class="token punctuation">.</span></span><span class="token class-name">ObjectInspectorFactory</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>hive<span class="token punctuation">.</span>serde2<span class="token punctuation">.</span>objectinspector<span class="token punctuation">.</span></span><span class="token class-name">StructObjectInspector</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>hive<span class="token punctuation">.</span>serde2<span class="token punctuation">.</span>objectinspector<span class="token punctuation">.</span>primitive<span class="token punctuation">.</span></span><span class="token class-name">PrimitiveObjectInspectorFactory</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>json<span class="token punctuation">.</span></span><span class="token class-name">JSONArray</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">ArrayList</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span></span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * @author 成大事
+ * @since 2022/6/18 17:23
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ExplodeJSONArray</span> <span class="token keyword">extends</span> <span class="token class-name">GenericUDTF</span> <span class="token punctuation">&#123;</span>
+    
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">StructObjectInspector</span> <span class="token function">initialize</span><span class="token punctuation">(</span><span class="token class-name">StructObjectInspector</span> argOIs<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">UDFArgumentException</span> <span class="token punctuation">&#123;</span>
+
+        <span class="token comment">// 1 参数合法性检查</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>argOIs<span class="token punctuation">.</span><span class="token function">getAllStructFieldRefs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">UDFArgumentException</span><span class="token punctuation">(</span><span class="token string">"ExplodeJSONArray 只需要一个参数"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token comment">// 2 第一个参数必须为string</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token string">"string"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>argOIs<span class="token punctuation">.</span><span class="token function">getAllStructFieldRefs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getFieldObjectInspector</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTypeName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">UDFArgumentException</span><span class="token punctuation">(</span><span class="token string">"json_array_to_struct_array的第1个参数应为string类型"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token comment">// 3 定义返回值名称和类型</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> fieldNames <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">ObjectInspector</span><span class="token punctuation">></span></span> fieldOIs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">ObjectInspector</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        fieldNames<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"items"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        fieldOIs<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">PrimitiveObjectInspectorFactory</span><span class="token punctuation">.</span>javaStringObjectInspector<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> <span class="token class-name">ObjectInspectorFactory</span><span class="token punctuation">.</span><span class="token function">getStandardStructObjectInspector</span><span class="token punctuation">(</span>fieldNames<span class="token punctuation">,</span> fieldOIs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">process</span><span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> objects<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">HiveException</span> <span class="token punctuation">&#123;</span>
+
+        <span class="token comment">// 1 获取传入的数据</span>
+        <span class="token class-name">String</span> jsonArray <span class="token operator">=</span> objects<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 2 将string转换为json数组</span>
+        <span class="token class-name">JSONArray</span> actions <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JSONArray</span><span class="token punctuation">(</span>jsonArray<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 3 循环一次，取出数组中的一个json，并写出</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> actions<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+            <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            result<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> actions<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">forward</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">HiveException</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
+
+<p>在HDFS 创建&#x2F;user&#x2F;hive&#x2F;jars 文件夹</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">hdfs dfs -mkdir -p /user/hive/jars</code></pre>
+
 <p>打包上传到HDFS的&#x2F;user&#x2F;hive&#x2F;jars路径下：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">hdfs dfs -put hivefunction-1.0-SNAPSHOT.jar /user/hive/jars</code></pre>
 
-<p>在hive里面创建永久函数：</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">create <span class="token keyword">function</span> explode_json_array as <span class="token string">'com.atguigu.hive.udtf.ExplodeJSONArray'</span> using jar <span class="token string">'hdfs://hadoop1:8020/user/hive/jars/hivefunction-1.0-SNAPSHOT.jar'</span><span class="token punctuation">;</span></code></pre>
+<p>刚才idea已经连接了hive：</p>
+<p>先使用use gmall ：</p>
+<p>然后在hive里面创建永久函数：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">create <span class="token keyword">function</span> explode_json_array as <span class="token string">'com.example.hive.udtf.ExplodeJSONArray'</span> using jar <span class="token string">'hdfs://hadoop1:8020/user/hive/jars/hivefunction-1.0-SNAPSHOT.jar'</span><span class="token punctuation">;</span></code></pre>
 
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEA9.tmp.jpg" alt="img"> </p>
 <h3 id="4-建ODS层-用户行为数据-表；"><a href="#4-建ODS层-用户行为数据-表；" class="headerlink" title="(4).建ODS层(用户行为数据)表；"></a>(4).建ODS层(用户行为数据)表；</h3><p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEAA.tmp.jpg" alt="img"> </p>
