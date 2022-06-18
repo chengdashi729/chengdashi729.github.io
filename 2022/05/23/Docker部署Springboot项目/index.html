@@ -638,7 +638,7 @@ sudo yum install docker-ce docker-ce-<span class="token function">cli</span> con
 <h3 id="3-运行mysql"><a href="#3-运行mysql" class="headerlink" title="3,运行mysql"></a>3,运行mysql</h3><blockquote>
 <p>#运行容器，需要做数据挂载！ #安装启动MySQL，需要配置密码，这是要注意点！<br>#官方测试：docker run –name some-mysql -e MYSQL_ROOT_PASSWORD&#x3D;my-secret-pw -d mysql:tag<br>#启动：<br>-d        后台运行<br>-p        端口映射<br>-v        卷挂载<br>-e        环境配置<br>–name    容器名字</p>
 </blockquote>
-<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run -d -p <span class="token number">3306</span>:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v/home/mysql/data:/var/lib/mysql -e <span class="token assign-left variable">MYSQL_ROOT_PASSWORD</span><span class="token operator">=</span><span class="token number">123456</span> --name mysql0 mysql:5.7</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run -d -p <span class="token number">3306</span>:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e <span class="token assign-left variable">MYSQL_ROOT_PASSWORD</span><span class="token operator">=</span><span class="token number">123456</span> --name mysql0 mysql:5.7</code></pre>
 <h3 id="4-查看容器是否创建成功"><a href="#4-查看容器是否创建成功" class="headerlink" title="4,查看容器是否创建成功"></a>4,查看容器是否创建成功</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># docker  ps 命令</span>
       <span class="token comment">#列出当前正在运行的容器</span>
 -a    <span class="token comment">#列出当前正在运行的容器+带出历史运行过的容器</span>
