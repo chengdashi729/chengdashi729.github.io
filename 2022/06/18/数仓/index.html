@@ -578,14 +578,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    10.8k
+                    10.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    60 分
+                    61 分
                 </div>
                 
 
@@ -725,9 +725,38 @@ xsync hadoop-lzo-0.4.20.jar
 xsync core-site.xml
 
 <span class="token comment">#编写hadoop群起脚本：</span>
-<span class="token builtin class-name">cd</span> /root/bin
+<span class="token builtin class-name">cd</span> /root/bin</code></pre>
 
-<span class="token function">vim</span> hdp.sh</code></pre>
+<p>vim hdp.sh</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$#</span> -lt <span class="token number">1</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"No Args Input..."</span>
+    <span class="token builtin class-name">exit</span> <span class="token punctuation">;</span>
+<span class="token keyword">fi</span>
+<span class="token keyword">case</span> <span class="token variable">$1</span> <span class="token keyword">in</span>
+<span class="token string">"start"</span><span class="token punctuation">)</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">" =================== 启动 hadoop集群 ==================="</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">" --------------- 启动 hdfs ---------------"</span>
+        <span class="token function">ssh</span> hadoop1 <span class="token string">"/root/soft/hadoop/sbin/start-dfs.sh"</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">" --------------- 启动 yarn ---------------"</span>
+        <span class="token function">ssh</span> hadoop2 <span class="token string">"/root/soft/hadoop/sbin/start-yarn.sh"</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">" --------------- 启动 historyserver ---------------"</span>
+        <span class="token function">ssh</span> hadoop1 <span class="token string">"/root/soft/hadoop/bin/mapred --daemon start historyserver"</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span>
+<span class="token string">"stop"</span><span class="token punctuation">)</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">" =================== 关闭 hadoop集群 ==================="</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">" --------------- 关闭 historyserver ---------------"</span>
+        <span class="token function">ssh</span> hadoop1 <span class="token string">"/root/soft/hadoop/bin/mapred --daemon stop historyserver"</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">" --------------- 关闭 yarn ---------------"</span>
+        <span class="token function">ssh</span> hadoop2 <span class="token string">"/root/soft/hadoop/sbin/stop-yarn.sh"</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">" --------------- 关闭 hdfs ---------------"</span>
+        <span class="token function">ssh</span> hadoop1 <span class="token string">"/root/soft/hadoop/sbin/stop-dfs.sh"</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span>
+*<span class="token punctuation">)</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"Input Args Error..."</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span>
+<span class="token keyword">esac</span></code></pre>
 
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE27.tmp.jpg" alt="img"> </p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
@@ -841,7 +870,8 @@ bin/flume-ng agent --name a1 --conf-file conf/file-flume-kafka.conf <span class=
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
 <span class="token function">chmod</span> <span class="token number">777</span> f1.sh
 
-<span class="token comment">#在hadoop3上flume的conf目录创建kafka-flume-hdfs.conf</span>
+<span class="token comment">#在hadoop3上flume的conf目录创建</span>
+<span class="token function">vim</span> kafka-flume-hdfs.conf
 
 <span class="token comment"># 进入conf文件夹</span>
 <span class="token builtin class-name">cd</span> /root/soft/flume/conf
@@ -1229,10 +1259,18 @@ insert into table student values<span class="token punctuation">(</span><span cl
 
 <p>重新测试连接</p>
 <h3 id="3-创建UDTF函数；"><a href="#3-创建UDTF函数；" class="headerlink" title="(3).创建UDTF函数；"></a>(3).创建UDTF函数；</h3><p>创建一个maven工程：hivefunction</p>
-<p>创建包名：com.atguigu.hive.udtf</p>
-<p>引入依赖，创建ExplodeJSONArray类（仅展示部分代码）：</p>
-<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE98.tmp.jpg" alt="img"> </p>
-<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE99.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/image-20220618172825987.png" alt="image-20220618172825987"></p>
+<p>在pom.xml 添加hive依赖</p>
+<pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+        <span class="token comment">&lt;!--添加hive依赖--></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.hive<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>hive-exec<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.1.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span></code></pre>
+
+<p>创建ExplodeJSONArray类：</p>
 <p>打包上传到HDFS的&#x2F;user&#x2F;hive&#x2F;jars路径下：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">hdfs dfs -put hivefunction-1.0-SNAPSHOT.jar /user/hive/jars</code></pre>
 
