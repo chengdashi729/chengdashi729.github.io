@@ -529,16 +529,16 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
                             <a href="/tags/hadoop/">
                                 <span class="chip bg-color">hadoop</span>
                             </a>
                         
                             <a href="/tags/kafka/">
                                 <span class="chip bg-color">kafka</span>
-                            </a>
-                        
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
                             </a>
                         
                             <a href="/tags/hive/">
@@ -578,14 +578,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7k
+                    10.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    39 分
+                    60 分
                 </div>
                 
 
@@ -1958,8 +1958,7 @@ ods_to_dwd_db.sh all <span class="token number">2020</span>-06-15</code></pre>
 <pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> id<span class="token punctuation">,</span> start_date<span class="token punctuation">,</span> end_date <span class="token keyword">from</span> dwd_dim_user_info_his <span class="token keyword">limit</span> <span class="token number">2</span><span class="token punctuation">;</span></code></pre>
 
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEC5.tmp.jpg" alt="img"> </p>
-<p>(6).建DWS层所有主题对象当天的汇总行为表；</p>
-<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEC6.tmp.jpg" alt="img"> </p>
+<h3 id="6-建DWS层所有主题对象当天的汇总行为表；"><a href="#6-建DWS层所有主题对象当天的汇总行为表；" class="headerlink" title="(6).建DWS层所有主题对象当天的汇总行为表；"></a>(6).建DWS层所有主题对象当天的汇总行为表；</h3><p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEC6.tmp.jpg" alt="img"> </p>
 <p>仅展示部分sql代码，创建DWS加载数据脚本：vim dwd_to_dws.sh </p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
 
@@ -2244,16 +2243,1061 @@ on old.id=new.id;
 <span class="token function">chmod</span> <span class="token number">777</span> dwd_to_dws.sh
 
 <span class="token comment">#运行脚本加载数据： </span>
-dwd_to_dws.sh <span class="token number">2020</span>-06-15
+dwd_to_dws.sh <span class="token number">2020</span>-06-15</code></pre>
 
-<span class="token comment">#查看导入数据：</span>
-<span class="token keyword">select</span> * from dws_area_stats_daycount where <span class="token assign-left variable">dt</span><span class="token operator">=</span><span class="token string">'2020-06-15'</span> limit <span class="token number">2</span><span class="token punctuation">;</span></code></pre>
+<p>查看导入数据：</p>
+<pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> dws_area_stats_daycount <span class="token keyword">where</span> dt<span class="token operator">=</span><span class="token string">'2020-06-15'</span> <span class="token keyword">limit</span> <span class="token number">2</span><span class="token punctuation">;</span></code></pre>
 
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEC8.tmp.jpg" alt="img"> </p>
-<p>(6).建DWT层所有主题对象的累积行为表；</p>
-<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEC9.tmp.jpg" alt="img"> </p>
-<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEECA.tmp.jpg" alt="img"> </p>
+<h3 id="7-建DWT层所有主题对象的累积行为表；"><a href="#7-建DWT层所有主题对象的累积行为表；" class="headerlink" title="(7).建DWT层所有主题对象的累积行为表；"></a>(7).建DWT层所有主题对象的累积行为表；</h3><p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8920.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8921.tmp.jpg" alt="img"> </p>
 <p>仅展示部分sql代码，创建DWT数据加载脚本：vim dws_to_dwt.sh</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token assign-left variable">APP</span><span class="token operator">=</span>gmall
+<span class="token assign-left variable">hive</span><span class="token operator">=</span>/root/soft/hive/bin/hive
+
+<span class="token comment"># 如果是输入的日期按照取输入日期；如果没输入日期取当前时间的前一天</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -n <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token punctuation">]</span> <span class="token punctuation">;</span><span class="token keyword">then</span>
+    <span class="token assign-left variable">do_date</span><span class="token operator">=</span><span class="token variable">$1</span>
+<span class="token keyword">else</span> 
+    <span class="token assign-left variable">do_date</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">date</span> -d <span class="token string">"-1 day"</span> +%F<span class="token variable">`</span></span>
+<span class="token keyword">fi</span>
+
+<span class="token assign-left variable">sql</span><span class="token operator">=</span><span class="token string">"
+set mapreduce.job.queuename=hive;
+insert overwrite table <span class="token variable">$&#123;APP&#125;</span>.dwt_uv_topic
+select
+    nvl(new.mid_id,old.mid_id),
+    nvl(new.model,old.model),
+    nvl(new.brand,old.brand),
+    if(old.mid_id is null,'<span class="token variable">$do_date</span>',old.login_date_first),
+    if(new.mid_id is not null,'<span class="token variable">$do_date</span>',old.login_date_last),
+    if(new.mid_id is not null, new.login_count,0),
+    nvl(old.login_count,0)+if(new.login_count>0,1,0)
+from
+(
+    select
+        *
+    from <span class="token variable">$&#123;APP&#125;</span>.dwt_uv_topic
+)old
+full outer join
+(
+    select
+        *
+    from <span class="token variable">$&#123;APP&#125;</span>.dws_uv_detail_daycount
+    where dt='<span class="token variable">$do_date</span>'
+)new
+on old.mid_id=new.mid_id;
+
+insert overwrite table <span class="token variable">$&#123;APP&#125;</span>.dwt_user_topic
+select
+    nvl(new.user_id,old.user_id),
+    if(old.login_date_first is null and new.login_count>0,'<span class="token variable">$do_date</span>',old.login_date_first),
+    if(new.login_count>0,'<span class="token variable">$do_date</span>',old.login_date_last),
+    nvl(old.login_count,0)+if(new.login_count>0,1,0),
+    nvl(new.login_last_30d_count,0),
+    if(old.order_date_first is null and new.order_count>0,'<span class="token variable">$do_date</span>',old.order_date_first),
+    if(new.order_count>0,'<span class="token variable">$do_date</span>',old.order_date_last),
+    nvl(old.order_count,0)+nvl(new.order_count,0),
+    nvl(old.order_amount,0)+nvl(new.order_amount,0),
+    nvl(new.order_last_30d_count,0),
+    nvl(new.order_last_30d_amount,0),
+    if(old.payment_date_first is null and new.payment_count>0,'<span class="token variable">$do_date</span>',old.payment_date_first),
+    if(new.payment_count>0,'<span class="token variable">$do_date</span>',old.payment_date_last),
+    nvl(old.payment_count,0)+nvl(new.payment_count,0),
+    nvl(old.payment_amount,0)+nvl(new.payment_amount,0),
+    nvl(new.payment_last_30d_count,0),
+    nvl(new.payment_last_30d_amount,0)
+from
+<span class="token variable">$&#123;APP&#125;</span>.dwt_user_topic old
+full outer join
+(
+    select
+        user_id,
+        sum(if(dt='<span class="token variable">$do_date</span>',login_count,0)) login_count,
+        sum(if(dt='<span class="token variable">$do_date</span>',order_count,0)) order_count,
+        sum(if(dt='<span class="token variable">$do_date</span>',order_amount,0)) order_amount,
+        sum(if(dt='<span class="token variable">$do_date</span>',payment_count,0)) payment_count,
+        sum(if(dt='<span class="token variable">$do_date</span>',payment_amount,0)) payment_amount,
+        sum(if(login_count>0,1,0)) login_last_30d_count,
+        sum(order_count) order_last_30d_count,
+        sum(order_amount) order_last_30d_amount,
+        sum(payment_count) payment_last_30d_count,
+        sum(payment_amount) payment_last_30d_amount
+    from <span class="token variable">$&#123;APP&#125;</span>.dws_user_action_daycount
+    where dt>=date_add( '<span class="token variable">$do_date</span>',-30)
+    group by user_id
+)new
+on old.user_id=new.user_id;
+
+insert overwrite table <span class="token variable">$&#123;APP&#125;</span>.dwt_sku_topic
+select 
+    nvl(new.sku_id,old.sku_id),
+    sku_info.spu_id,
+    nvl(new.order_count30,0),
+    nvl(new.order_num30,0),
+    nvl(new.order_amount30,0),
+    nvl(old.order_count,0) + nvl(new.order_count,0),
+    nvl(old.order_num,0) + nvl(new.order_num,0),
+    nvl(old.order_amount,0) + nvl(new.order_amount,0),
+    nvl(new.payment_count30,0),
+    nvl(new.payment_num30,0),
+    nvl(new.payment_amount30,0),
+    nvl(old.payment_count,0) + nvl(new.payment_count,0),
+    nvl(old.payment_num,0) + nvl(new.payment_num,0),
+    nvl(old.payment_amount,0) + nvl(new.payment_amount,0),
+    nvl(new.refund_count30,0),
+    nvl(new.refund_num30,0),
+    nvl(new.refund_amount30,0),
+    nvl(old.refund_count,0) + nvl(new.refund_count,0),
+    nvl(old.refund_num,0) + nvl(new.refund_num,0),
+    nvl(old.refund_amount,0) + nvl(new.refund_amount,0),
+    nvl(new.cart_count30,0),
+    nvl(old.cart_count,0) + nvl(new.cart_count,0),
+    nvl(new.favor_count30,0),
+    nvl(old.favor_count,0) + nvl(new.favor_count,0),
+    nvl(new.appraise_good_count30,0),
+    nvl(new.appraise_mid_count30,0),
+    nvl(new.appraise_bad_count30,0),
+    nvl(new.appraise_default_count30,0)  ,
+    nvl(old.appraise_good_count,0) + nvl(new.appraise_good_count,0),
+    nvl(old.appraise_mid_count,0) + nvl(new.appraise_mid_count,0),
+    nvl(old.appraise_bad_count,0) + nvl(new.appraise_bad_count,0),
+    nvl(old.appraise_default_count,0) + nvl(new.appraise_default_count,0) 
+from 
+(
+    select
+        sku_id,
+        spu_id,
+        order_last_30d_count,
+        order_last_30d_num,
+        order_last_30d_amount,
+        order_count,
+        order_num,
+        order_amount  ,
+        payment_last_30d_count,
+        payment_last_30d_num,
+        payment_last_30d_amount,
+        payment_count,
+        payment_num,
+        payment_amount,
+        refund_last_30d_count,
+        refund_last_30d_num,
+        refund_last_30d_amount,
+        refund_count,
+        refund_num,
+        refund_amount,
+        cart_last_30d_count,
+        cart_count,
+        favor_last_30d_count,
+        favor_count,
+        appraise_last_30d_good_count,
+        appraise_last_30d_mid_count,
+        appraise_last_30d_bad_count,
+        appraise_last_30d_default_count,
+        appraise_good_count,
+        appraise_mid_count,
+        appraise_bad_count,
+        appraise_default_count 
+    from <span class="token variable">$&#123;APP&#125;</span>.dwt_sku_topic
+)old
+full outer join 
+(
+    select 
+        sku_id,
+        sum(if(dt='<span class="token variable">$do_date</span>', order_count,0 )) order_count,
+        sum(if(dt='<span class="token variable">$do_date</span>',order_num ,0 ))  order_num, 
+        sum(if(dt='<span class="token variable">$do_date</span>',order_amount,0 )) order_amount ,
+        sum(if(dt='<span class="token variable">$do_date</span>',payment_count,0 )) payment_count,
+        sum(if(dt='<span class="token variable">$do_date</span>',payment_num,0 )) payment_num,
+        sum(if(dt='<span class="token variable">$do_date</span>',payment_amount,0 )) payment_amount,
+        sum(if(dt='<span class="token variable">$do_date</span>',refund_count,0 )) refund_count,
+        sum(if(dt='<span class="token variable">$do_date</span>',refund_num,0 )) refund_num,
+        sum(if(dt='<span class="token variable">$do_date</span>',refund_amount,0 )) refund_amount,  
+        sum(if(dt='<span class="token variable">$do_date</span>',cart_count,0 )) cart_count,
+        sum(if(dt='<span class="token variable">$do_date</span>',favor_count,0 )) favor_count,
+        sum(if(dt='<span class="token variable">$do_date</span>',appraise_good_count,0 )) appraise_good_count,  
+        sum(if(dt='<span class="token variable">$do_date</span>',appraise_mid_count,0 ) ) appraise_mid_count ,
+        sum(if(dt='<span class="token variable">$do_date</span>',appraise_bad_count,0 )) appraise_bad_count,  
+        sum(if(dt='<span class="token variable">$do_date</span>',appraise_default_count,0 )) appraise_default_count,
+        sum(order_count) order_count30 ,
+        sum(order_num) order_num30,
+        sum(order_amount) order_amount30,
+        sum(payment_count) payment_count30,
+        sum(payment_num) payment_num30,
+        sum(payment_amount) payment_amount30,
+        sum(refund_count) refund_count30,
+        sum(refund_num) refund_num30,
+        sum(refund_amount) refund_amount30,
+        sum(cart_count) cart_count30,
+        sum(favor_count) favor_count30,
+        sum(appraise_good_count) appraise_good_count30,
+        sum(appraise_mid_count) appraise_mid_count30,
+        sum(appraise_bad_count) appraise_bad_count30,
+        sum(appraise_default_count) appraise_default_count30 
+    from <span class="token variable">$&#123;APP&#125;</span>.dws_sku_action_daycount
+    where dt >= date_add ('<span class="token variable">$do_date</span>', -30)
+    group by sku_id    
+)new 
+on new.sku_id = old.sku_id
+left join 
+(select * from <span class="token variable">$&#123;APP&#125;</span>.dwd_dim_sku_info where dt='<span class="token variable">$do_date</span>') sku_info
+on nvl(new.sku_id,old.sku_id)= sku_info.id;
+
+insert overwrite table <span class="token variable">$&#123;APP&#125;</span>.dwt_activity_topic
+select
+    nvl(new.id,old.id),
+    nvl(new.activity_name,old.activity_name),
+    nvl(new.activity_type,old.activity_type),
+    nvl(new.start_time,old.start_time),
+    nvl(new.end_time,old.end_time),
+    nvl(new.create_time,old.create_time),
+    nvl(new.display_count,0),
+    nvl(new.order_count,0),
+    nvl(new.order_amount,0.0),
+    nvl(new.payment_count,0),
+    nvl(new.payment_amount,0.0),
+    nvl(new.display_count,0)+nvl(old.display_count,0),
+    nvl(new.order_count,0)+nvl(old.order_count,0),
+    nvl(new.order_amount,0.0)+nvl(old.order_amount,0.0),
+    nvl(new.payment_count,0)+nvl(old.payment_count,0),
+    nvl(new.payment_amount,0.0)+nvl(old.payment_amount,0.0)
+from
+(
+    select
+        *
+    from <span class="token variable">$&#123;APP&#125;</span>.dwt_activity_topic
+)old
+full outer join
+(
+    select
+        *
+    from <span class="token variable">$&#123;APP&#125;</span>.dws_activity_info_daycount
+    where dt='<span class="token variable">$do_date</span>'
+)new
+on old.id=new.id;
+
+insert overwrite table <span class="token variable">$&#123;APP&#125;</span>.dwt_area_topic
+select
+    nvl(old.id,new.id),
+    nvl(old.province_name,new.province_name),
+    nvl(old.area_code,new.area_code),
+    nvl(old.iso_code,new.iso_code),
+    nvl(old.region_id,new.region_id),
+    nvl(old.region_name,new.region_name),
+    nvl(new.login_day_count,0),
+    nvl(new.login_last_30d_count,0),
+    nvl(new.order_day_count,0),
+    nvl(new.order_day_amount,0.0),
+    nvl(new.order_last_30d_count,0),
+    nvl(new.order_last_30d_amount,0.0),
+    nvl(new.payment_day_count,0),
+    nvl(new.payment_day_amount,0.0),
+    nvl(new.payment_last_30d_count,0),
+    nvl(new.payment_last_30d_amount,0.0)
+from 
+(
+    select
+        *
+    from <span class="token variable">$&#123;APP&#125;</span>.dwt_area_topic
+)old
+full outer join
+(
+    select
+        id,
+        province_name,
+        area_code,
+        iso_code,
+        region_id,
+        region_name,
+        sum(if(dt='<span class="token variable">$do_date</span>',login_count,0)) login_day_count,
+        sum(if(dt='<span class="token variable">$do_date</span>',order_count,0)) order_day_count,
+        sum(if(dt='<span class="token variable">$do_date</span>',order_amount,0.0)) order_day_amount,
+        sum(if(dt='<span class="token variable">$do_date</span>',payment_count,0)) payment_day_count,
+        sum(if(dt='<span class="token variable">$do_date</span>',payment_amount,0.0)) payment_day_amount,
+        sum(login_count) login_last_30d_count,
+        sum(order_count) order_last_30d_count,
+        sum(order_amount) order_last_30d_amount,
+        sum(payment_count) payment_last_30d_count,
+        sum(payment_amount) payment_last_30d_amount
+    from <span class="token variable">$&#123;APP&#125;</span>.dws_area_stats_daycount
+    where dt>=date_add('<span class="token variable">$do_date</span>',-30)
+    group by id,province_name,area_code,iso_code,region_id,region_name
+)new
+on old.id=new.id;
+"</span>
+
+<span class="token variable">$hive</span> -e <span class="token string">"<span class="token variable">$sql</span>"</span></code></pre>
+
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8922.tmp.jpg" alt="img"> </p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
+<span class="token function">chmod</span> <span class="token number">777</span> dws_to_dwt.sh
+
+<span class="token comment">#运行脚本加载数据：</span>
+dws_to_dwt.sh <span class="token number">2020</span>-06-15</code></pre>
+
+<p>查看导入数据：</p>
+<pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> dwt_uv_topic <span class="token keyword">limit</span> <span class="token number">5</span><span class="token punctuation">;</span></code></pre>
+
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8923.tmp.jpg" alt="img"> </p>
+<h3 id="8-建ADS层所有主题指标分析表；"><a href="#8-建ADS层所有主题指标分析表；" class="headerlink" title="(8).建ADS层所有主题指标分析表；"></a>(8).建ADS层所有主题指标分析表；</h3><p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8924.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8925.tmp.jpg" alt="img"> </p>
+<p>仅展示部分sql代码，创建ADS层数据加载脚本：vim dwt_to_ads.sh</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token assign-left variable">hive</span><span class="token operator">=</span>/root/soft/hive/bin/hive
+<span class="token assign-left variable">APP</span><span class="token operator">=</span>gmall
+<span class="token comment"># 如果是输入的日期按照取输入日期；如果没输入日期取当前时间的前一天</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span> -n <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token punctuation">]</span> <span class="token punctuation">;</span><span class="token keyword">then</span>
+    <span class="token assign-left variable">do_date</span><span class="token operator">=</span><span class="token variable">$1</span>
+<span class="token keyword">else</span> 
+    <span class="token assign-left variable">do_date</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">date</span> -d <span class="token string">"-1 day"</span> +%F<span class="token variable">`</span></span>
+<span class="token keyword">fi</span>
+
+<span class="token assign-left variable">sql</span><span class="token operator">=</span><span class="token string">"
+set mapreduce.job.queuename=hive;
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_uv_count 
+select  
+    '<span class="token variable">$do_date</span>' dt,
+    daycount.ct,
+    wkcount.ct,
+    mncount.ct,
+    if(date_add(next_day('<span class="token variable">$do_date</span>','MO'),-1)='<span class="token variable">$do_date</span>','Y','N') ,
+    if(last_day('<span class="token variable">$do_date</span>')='<span class="token variable">$do_date</span>','Y','N') 
+from 
+(
+    select  
+        '<span class="token variable">$do_date</span>' dt,
+        count(*) ct
+    from <span class="token variable">$&#123;APP&#125;</span>.dwt_uv_topic
+    where login_date_last='<span class="token variable">$do_date</span>'  
+)daycount join 
+( 
+    select  
+        '<span class="token variable">$do_date</span>' dt,
+        count (*) ct
+    from <span class="token variable">$&#123;APP&#125;</span>.dwt_uv_topic
+    where login_date_last>=date_add(next_day('<span class="token variable">$do_date</span>','MO'),-7) 
+    and login_date_last&lt;= date_add(next_day('<span class="token variable">$do_date</span>','MO'),-1) 
+) wkcount on daycount.dt=wkcount.dt
+join 
+( 
+    select  
+        '<span class="token variable">$do_date</span>' dt,
+        count (*) ct
+    from <span class="token variable">$&#123;APP&#125;</span>.dwt_uv_topic
+    where date_format(login_date_last,'yyyy-MM')=date_format('<span class="token variable">$do_date</span>','yyyy-MM')  
+)mncount on daycount.dt=mncount.dt;
+
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_new_mid_count 
+select
+    login_date_first,
+    count(*)
+from <span class="token variable">$&#123;APP&#125;</span>.dwt_uv_topic
+where login_date_first='<span class="token variable">$do_date</span>'
+group by login_date_first;
+
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_silent_count
+select
+    '<span class="token variable">$do_date</span>',
+    count(*) 
+from <span class="token variable">$&#123;APP&#125;</span>.dwt_uv_topic
+where login_date_first=login_date_last
+and login_date_last&lt;=date_add('<span class="token variable">$do_date</span>',-7);
+
+
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_back_count
+select
+'<span class="token variable">$do_date</span>',
+concat(date_add(next_day('<span class="token variable">$do_date</span>','MO'),-7),'_', date_add(next_day('<span class="token variable">$do_date</span>','MO'),-1)),
+    count(*)
+from
+(
+    select
+        mid_id
+    from <span class="token variable">$&#123;APP&#125;</span>.dwt_uv_topic
+    where login_date_last>=date_add(next_day('<span class="token variable">$do_date</span>','MO'),-7) 
+    and login_date_last&lt;= date_add(next_day('<span class="token variable">$do_date</span>','MO'),-1)
+    and login_date_first&lt;date_add(next_day('<span class="token variable">$do_date</span>','MO'),-7)
+)current_wk
+left join
+(
+    select
+        mid_id
+    from <span class="token variable">$&#123;APP&#125;</span>.dws_uv_detail_daycount
+    where dt>=date_add(next_day('<span class="token variable">$do_date</span>','MO'),-7*2) 
+    and dt&lt;= date_add(next_day('<span class="token variable">$do_date</span>','MO'),-7-1) 
+    group by mid_id
+)last_wk
+on current_wk.mid_id=last_wk.mid_id
+where last_wk.mid_id is null;
+
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_wastage_count
+select
+     '<span class="token variable">$do_date</span>',
+     count(*)
+from 
+(
+    select 
+        mid_id
+    from <span class="token variable">$&#123;APP&#125;</span>.dwt_uv_topic
+    where login_date_last&lt;=date_add('<span class="token variable">$do_date</span>',-7)
+    group by mid_id
+)t1;
+
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_user_retention_day_rate
+select
+    '<span class="token variable">$do_date</span>',--统计日期
+    date_add('<span class="token variable">$do_date</span>',-1),--新增日期
+    1,--留存天数
+    sum(if(login_date_first=date_add('<span class="token variable">$do_date</span>',-1) and login_date_last='<span class="token variable">$do_date</span>',1,0)),--<span class="token variable">$do_date</span>的1日留存数
+    sum(if(login_date_first=date_add('<span class="token variable">$do_date</span>',-1),1,0)),--<span class="token variable">$do_date</span>新增
+    sum(if(login_date_first=date_add('<span class="token variable">$do_date</span>',-1) and login_date_last='<span class="token variable">$do_date</span>',1,0))/sum(if(login_date_first=date_add('<span class="token variable">$do_date</span>',-1),1,0))*100
+from <span class="token variable">$&#123;APP&#125;</span>.dwt_uv_topic
+
+union all
+
+select
+    '<span class="token variable">$do_date</span>',--统计日期
+    date_add('<span class="token variable">$do_date</span>',-2),--新增日期
+    2,--留存天数
+    sum(if(login_date_first=date_add('<span class="token variable">$do_date</span>',-2) and login_date_last='<span class="token variable">$do_date</span>',1,0)),--<span class="token variable">$do_date</span>的2日留存数
+    sum(if(login_date_first=date_add('<span class="token variable">$do_date</span>',-2),1,0)),--<span class="token variable">$do_date</span>新增
+    sum(if(login_date_first=date_add('<span class="token variable">$do_date</span>',-2) and login_date_last='<span class="token variable">$do_date</span>',1,0))/sum(if(login_date_first=date_add('<span class="token variable">$do_date</span>',-2),1,0))*100
+from <span class="token variable">$&#123;APP&#125;</span>.dwt_uv_topic
+
+union all
+
+select
+    '<span class="token variable">$do_date</span>',--统计日期
+    date_add('<span class="token variable">$do_date</span>',-3),--新增日期
+    3,--留存天数
+    sum(if(login_date_first=date_add('<span class="token variable">$do_date</span>',-3) and login_date_last='<span class="token variable">$do_date</span>',1,0)),--<span class="token variable">$do_date</span>的3日留存数
+    sum(if(login_date_first=date_add('<span class="token variable">$do_date</span>',-3),1,0)),--<span class="token variable">$do_date</span>新增
+    sum(if(login_date_first=date_add('<span class="token variable">$do_date</span>',-3) and login_date_last='<span class="token variable">$do_date</span>',1,0))/sum(if(login_date_first=date_add('<span class="token variable">$do_date</span>',-3),1,0))*100
+from <span class="token variable">$&#123;APP&#125;</span>.dwt_uv_topic;
+
+
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_continuity_wk_count
+select
+    '<span class="token variable">$do_date</span>',
+    concat(date_add(next_day('<span class="token variable">$do_date</span>','MO'),-7*3),'_',date_add(next_day('<span class="token variable">$do_date</span>','MO'),-1)),
+    count(*)
+from
+(
+    select
+        mid_id
+    from
+    (
+        select
+            mid_id
+        from <span class="token variable">$&#123;APP&#125;</span>.dws_uv_detail_daycount
+        where dt>=date_add(next_day('<span class="token variable">$do_date</span>','monday'),-7)
+        and dt&lt;=date_add(next_day('<span class="token variable">$do_date</span>','monday'),-1)
+        group by mid_id
+
+        union all
+
+        select
+            mid_id
+        from <span class="token variable">$&#123;APP&#125;</span>.dws_uv_detail_daycount
+        where dt>=date_add(next_day('<span class="token variable">$do_date</span>','monday'),-7*2)
+        and dt&lt;=date_add(next_day('<span class="token variable">$do_date</span>','monday'),-7-1)
+        group by mid_id
+
+        union all
+
+        select
+            mid_id
+        from <span class="token variable">$&#123;APP&#125;</span>.dws_uv_detail_daycount
+        where dt>=date_add(next_day('<span class="token variable">$do_date</span>','monday'),-7*3)
+        and dt&lt;=date_add(next_day('<span class="token variable">$do_date</span>','monday'),-7*2-1)
+        group by mid_id
+    )t1
+    group by mid_id
+    having count(*)=3
+)t2;
+
+
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_continuity_uv_count
+select
+    '<span class="token variable">$do_date</span>',
+    concat(date_add('<span class="token variable">$do_date</span>',-6),'_','<span class="token variable">$do_date</span>'),
+    count(*)
+from
+(
+    select mid_id
+    from
+    (
+        select mid_id      
+        from
+        (
+            select 
+                mid_id,
+                date_sub(dt,rank) date_dif
+            from
+            (
+                select 
+                    mid_id,
+                    dt,
+                    rank() over(partition by mid_id order by dt) rank
+                from <span class="token variable">$&#123;APP&#125;</span>.dws_uv_detail_daycount
+                where dt>=date_add('<span class="token variable">$do_date</span>',-6) and dt&lt;='<span class="token variable">$do_date</span>'
+            )t1
+        )t2 
+        group by mid_id,date_dif
+        having count(*)>=3
+    )t3 
+    group by mid_id
+)t4;
+
+
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_user_topic
+select
+    '<span class="token variable">$do_date</span>',
+    sum(if(login_date_last='<span class="token variable">$do_date</span>',1,0)),
+    sum(if(login_date_first='<span class="token variable">$do_date</span>',1,0)),
+    sum(if(payment_date_first='<span class="token variable">$do_date</span>',1,0)),
+    sum(if(payment_count>0,1,0)),
+    count(*),
+    sum(if(login_date_last='<span class="token variable">$do_date</span>',1,0))/count(*),
+    sum(if(payment_count>0,1,0))/count(*),
+    sum(if(login_date_first='<span class="token variable">$do_date</span>',1,0))/sum(if(login_date_last='<span class="token variable">$do_date</span>',1,0))
+from <span class="token variable">$&#123;APP&#125;</span>.dwt_user_topic;
+
+with
+tmp_uv as
+(
+    select
+        '<span class="token variable">$do_date</span>' dt,
+        sum(if(array_contains(pages,'home'),1,0)) home_count,
+        sum(if(array_contains(pages,'good_detail'),1,0)) good_detail_count
+    from
+    (
+        select
+            mid_id,
+            collect_set(page_id) pages
+        from <span class="token variable">$&#123;APP&#125;</span>.dwd_page_log
+        where dt='<span class="token variable">$do_date</span>'
+        and page_id in ('home','good_detail')
+        group by mid_id
+    )tmp
+),
+tmp_cop as
+(
+    select 
+        '<span class="token variable">$do_date</span>' dt,
+        sum(if(cart_count>0,1,0)) cart_count,
+        sum(if(order_count>0,1,0)) order_count,
+        sum(if(payment_count>0,1,0)) payment_count
+    from <span class="token variable">$&#123;APP&#125;</span>.dws_user_action_daycount
+    where dt='<span class="token variable">$do_date</span>'
+)
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_user_action_convert_day
+select
+    tmp_uv.dt,
+    tmp_uv.home_count,
+    tmp_uv.good_detail_count,
+    tmp_uv.good_detail_count/tmp_uv.home_count*100,
+    tmp_cop.cart_count,
+    tmp_cop.cart_count/tmp_uv.good_detail_count*100,
+    tmp_cop.order_count,
+    tmp_cop.order_count/tmp_cop.cart_count*100,
+    tmp_cop.payment_count,
+    tmp_cop.payment_count/tmp_cop.order_count*100
+from tmp_uv
+join tmp_cop
+on tmp_uv.dt=tmp_cop.dt;
+
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_product_info
+select
+    '<span class="token variable">$do_date</span>' dt,
+    sku_num,
+    spu_num
+from
+(
+    select
+        '<span class="token variable">$do_date</span>' dt,
+        count(*) sku_num
+    from
+        <span class="token variable">$&#123;APP&#125;</span>.dwt_sku_topic
+) tmp_sku_num
+join
+(
+    select
+        '<span class="token variable">$do_date</span>' dt,
+        count(*) spu_num
+    from
+    (
+        select
+            spu_id
+        from
+            <span class="token variable">$&#123;APP&#125;</span>.dwt_sku_topic
+        group by
+            spu_id
+    ) tmp_spu_id
+) tmp_spu_num
+on
+    tmp_sku_num.dt=tmp_spu_num.dt;
+
+
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_product_sale_topN
+select
+    '<span class="token variable">$do_date</span>' dt,
+    sku_id,
+    payment_amount
+from
+    <span class="token variable">$&#123;APP&#125;</span>.dws_sku_action_daycount
+where
+    dt='<span class="token variable">$do_date</span>'
+order by payment_amount desc
+limit 10;
+
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_product_favor_topN
+select
+    '<span class="token variable">$do_date</span>' dt,
+    sku_id,
+    favor_count
+from
+    <span class="token variable">$&#123;APP&#125;</span>.dws_sku_action_daycount
+where
+    dt='<span class="token variable">$do_date</span>'
+order by favor_count desc
+limit 10;
+
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_product_cart_topN
+select
+    '<span class="token variable">$do_date</span>' dt,
+    sku_id,
+    cart_count
+from
+    <span class="token variable">$&#123;APP&#125;</span>.dws_sku_action_daycount
+where
+    dt='<span class="token variable">$do_date</span>'
+order by cart_count desc
+limit 10;
+
+
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_product_refund_topN
+select
+    '<span class="token variable">$do_date</span>',
+    sku_id,
+    refund_last_30d_count/payment_last_30d_count*100 refund_ratio
+from <span class="token variable">$&#123;APP&#125;</span>.dwt_sku_topic
+order by refund_ratio desc
+limit 10;
+
+
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_appraise_bad_topN
+select
+    '<span class="token variable">$do_date</span>' dt,
+    sku_id,
+appraise_bad_count/(appraise_good_count+appraise_mid_count+appraise_bad_count+appraise_default_count) appraise_bad_ratio
+from
+    <span class="token variable">$&#123;APP&#125;</span>.dws_sku_action_daycount
+where
+    dt='<span class="token variable">$do_date</span>'
+order by appraise_bad_ratio desc
+limit 10;
+
+
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_order_daycount
+select
+    '<span class="token variable">$do_date</span>',
+    sum(order_count),
+    sum(order_amount),
+    sum(if(order_count>0,1,0))
+from <span class="token variable">$&#123;APP&#125;</span>.dws_user_action_daycount
+where dt='<span class="token variable">$do_date</span>';
+
+
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_payment_daycount
+select
+    tmp_payment.dt,
+    tmp_payment.payment_count,
+    tmp_payment.payment_amount,
+    tmp_payment.payment_user_count,
+    tmp_skucount.payment_sku_count,
+    tmp_time.payment_avg_time
+from
+(
+    select
+        '<span class="token variable">$do_date</span>' dt,
+        sum(payment_count) payment_count,
+        sum(payment_amount) payment_amount,
+        sum(if(payment_count>0,1,0)) payment_user_count
+    from <span class="token variable">$&#123;APP&#125;</span>.dws_user_action_daycount
+    where dt='<span class="token variable">$do_date</span>'
+)tmp_payment
+join
+(
+    select
+        '<span class="token variable">$do_date</span>' dt,
+        sum(if(payment_count>0,1,0)) payment_sku_count 
+    from <span class="token variable">$&#123;APP&#125;</span>.dws_sku_action_daycount
+    where dt='<span class="token variable">$do_date</span>'
+)tmp_skucount on tmp_payment.dt=tmp_skucount.dt
+join
+(
+    select
+        '<span class="token variable">$do_date</span>' dt,
+        sum(unix_timestamp(payment_time)-unix_timestamp(create_time))/count(*)/60 payment_avg_time
+    from <span class="token variable">$&#123;APP&#125;</span>.dwd_fact_order_info
+    where dt='<span class="token variable">$do_date</span>'
+    and payment_time is not null
+)tmp_time on tmp_payment.dt=tmp_time.dt;
+
+
+with 
+tmp_order as
+(
+    select
+        user_id,
+        order_stats_struct.sku_id sku_id,
+        order_stats_struct.order_count order_count
+    from <span class="token variable">$&#123;APP&#125;</span>.dws_user_action_daycount lateral view explode(order_detail_stats) tmp as order_stats_struct
+    where date_format(dt,'yyyy-MM')=date_format('<span class="token variable">$do_date</span>','yyyy-MM')
+),
+tmp_sku as
+(
+    select
+        id,
+        tm_id,
+        category1_id,
+        category1_name
+    from <span class="token variable">$&#123;APP&#125;</span>.dwd_dim_sku_info
+    where dt='<span class="token variable">$do_date</span>'
+)
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_sale_tm_category1_stat_mn
+select
+    tm_id,
+    category1_id,
+    category1_name,
+    sum(if(order_count>=1,1,0)) buycount,
+    sum(if(order_count>=2,1,0)) buyTwiceLast,
+    sum(if(order_count>=2,1,0))/sum( if(order_count>=1,1,0)) buyTwiceLastRatio,
+    sum(if(order_count>=3,1,0))  buy3timeLast  ,
+    sum(if(order_count>=3,1,0))/sum( if(order_count>=1,1,0)) buy3timeLastRatio ,
+    date_format('<span class="token variable">$do_date</span>' ,'yyyy-MM') stat_mn,
+    '<span class="token variable">$do_date</span>' stat_date
+from
+(
+    select 
+        tmp_order.user_id,
+        tmp_sku.category1_id,
+        tmp_sku.category1_name,
+        tmp_sku.tm_id,
+        sum(order_count) order_count
+    from tmp_order
+    join tmp_sku
+    on tmp_order.sku_id=tmp_sku.id
+    group by tmp_order.user_id,tmp_sku.category1_id,tmp_sku.category1_name,tmp_sku.tm_id
+)tmp
+group by tm_id, category1_id, category1_name;
+
+
+insert into table <span class="token variable">$&#123;APP&#125;</span>.ads_area_topic
+select
+    '<span class="token variable">$do_date</span>',
+    id,
+    province_name,
+    area_code,
+    iso_code,
+    region_id,
+    region_name,
+    login_day_count,
+    order_day_count,
+    order_day_amount,
+    payment_day_count,
+    payment_day_amount
+from <span class="token variable">$&#123;APP&#125;</span>.dwt_area_topic;
+
+"</span>
+
+<span class="token variable">$hive</span> -e <span class="token string">"<span class="token variable">$sql</span>"</span></code></pre>
+
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8926.tmp.jpg" alt="img"> </p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 赋权限：</span>
+<span class="token function">chmod</span> <span class="token number">777</span> dwt_to_ads.sh
+
+<span class="token comment">#运行脚本导入数据：</span>
+dwt_to_ads.sh <span class="token number">2020</span>-06-15</code></pre>
+
+<p>查看是否成功导入数据：</p>
+<pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> ads_area_topic <span class="token keyword">where</span> dt<span class="token operator">=</span><span class="token string">'2020-06-15'</span><span class="token punctuation">;</span> </code></pre>
+
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8927.tmp.jpg" alt="img"> </p>
+<h3 id="9-Azkaban调度；"><a href="#9-Azkaban调度；" class="headerlink" title="(9).Azkaban调度；"></a>(9).Azkaban调度；</h3><p>安装Azkaban，上传安装包：</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8928.tmp.jpg" alt="img"> </p>
+<p>创建azkaban文件夹：mkdir &#x2F;root&#x2F;soft&#x2F;azkaban</p>
+<p>解压：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> -zxvf azkaban-exec-server-3.84.4.tar.gz -C /root/soft/azkaban
+
+<span class="token function">tar</span> -zxvf azkaban-web-server-3.84.4.tar.gz -C /root/soft/azkaban
+
+<span class="token function">tar</span> -zxvf azkaban-db-3.84.4.tar.gz -C /root/soft/azkaban</code></pre>
+
+<p>打开Navicat连接hadoop1的MySQL，创建azkaban数据库：</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8929.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps892A.tmp.jpg" alt="img"> </p>
+<p>输入：</p>
+<pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">USER</span> <span class="token string">'azkaban'</span><span class="token variable">@'%'</span> IDENTIFIED <span class="token keyword">BY</span> <span class="token string">'000000'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">GRANT</span> <span class="token keyword">SELECT</span><span class="token punctuation">,</span><span class="token keyword">INSERT</span><span class="token punctuation">,</span><span class="token keyword">UPDATE</span><span class="token punctuation">,</span><span class="token keyword">DELETE</span> <span class="token keyword">ON</span> azkaban<span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">to</span> <span class="token string">'azkaban'</span><span class="token variable">@'%'</span> <span class="token keyword">WITH</span> <span class="token keyword">GRANT</span> <span class="token keyword">OPTION</span><span class="token punctuation">;</span></code></pre>
+
+<p>本地解压azkaban-db-3.84.4.tar.gz，导入sql代码：</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps892B.tmp.jpg" alt="img"> </p>
+<p>更改MySQL包的大小，防止Azkaban连接MySQL阻塞：sudo vim &#x2F;etc&#x2F;my.cnf</p>
+<p>在[mysqld]下面加一行：max_allowed_packet&#x3D;1024M</p>
+<p>重启MySQL：sudo systemctl restart mysqld</p>
+<p>如果是基于docker安装的MySQL，先启动docker服务：service docker start</p>
+<p>查看历史容器：docker ps -a</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps893B.tmp.jpg" alt="img"> </p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#重启MySQL容器：</span>
+<span class="token function">docker</span> restart 容器id
+
+<span class="token comment">#进入容器使用MySQL：</span>
+<span class="token function">docker</span> <span class="token builtin class-name">exec</span> -it 容器idbash
+
+<span class="token comment">#输入MySQL启动命令：</span>
+mysql -uroot -p123456</code></pre>
+
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps893C.tmp.jpg" alt="img"> </p>
+<p>切换到MySQL目录下，编辑mysql.conf.d：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/mysql/mysql.conf.d</code></pre>
+
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps893D.tmp.jpg" alt="img"> </p>
+<p>在[mysqld]下面加一行：max_allowed_packet&#x3D;1024M</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps893E.tmp.jpg" alt="img"> </p>
+<p>退出容器：exit</p>
+<p>重启容器：docker restart 容器id</p>
+<p>切换目录：cd &#x2F;root&#x2F;soft&#x2F;azkaban&#x2F;</p>
+<p>创建软连接：ln -s azkaban-exec-server-3.84.4 azkaban-exec</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">ln</span> -s azkaban-web-server-3.84.4 azkaban-web
+
+<span class="token function">ln</span> -s azkaban-db-3.84.4 azkaban-db</code></pre>
+
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps893F.tmp.jpg" alt="img"> </p>
+<p>修改azkaban-exec&#x2F;conf目录下的azkaban.properties：</p>
+<p>vim azkaban-exec&#x2F;conf&#x2F;azkaban.properties</p>
+<p>添加如下内容：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">default.timezone.id<span class="token operator">=</span>Asia/Shanghai
+
+azkaban.webserver.url<span class="token operator">=</span>http://hadoop1:8081
+
+mysql.host<span class="token operator">=</span>hadoop1
+
+mysql.password<span class="token operator">=</span>000000
+
+executor.port<span class="token operator">=</span><span class="token number">12321</span></code></pre>
+
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8940.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8941.tmp.jpg" alt="img"> </p>
+<p>进入azkaban目录分发azkaban-exec：xsync azkaban-exec</p>
+<p>hadoop1,hadoop2,hadoop3进入azkaban-exec目录，启动executor：bin&#x2F;start-exec.sh</p>
+<p>激活executor:</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> -G <span class="token string">"hadoop1:12321/executor?action=activate"</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span>
+
+<span class="token function">curl</span> -G <span class="token string">"hadoop2:12321/executor?action=activate"</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span>
+
+<span class="token function">curl</span> -G <span class="token string">"hadoop3:12321/executor?action=activate"</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span></code></pre>
+
+<p>配置azkaban-web，进入azkaban-web&#x2F;conf目录,编辑azkaban.properties：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /root/soft/azkaban/azkaban-web/conf/azkaban.properties</code></pre>
+
+<p>添加如下内容：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">default.timezone.id<span class="token operator">=</span>Asia/Shanghai
+
+mysql.host<span class="token operator">=</span>hadoop1
+
+mysql.password<span class="token operator">=</span>000000
+
+azkaban.executorselector.filters<span class="token operator">=</span>StaticRemainingFlowSize,CpuStatus</code></pre>
+
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8942.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8943.tmp.jpg" alt="img"> </p>
+<p>编辑azkaban-user.xml:</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /root/soft/azkaban/azkaban-web/conf/azkaban-user.xml</code></pre>
+
+<p>添加hadoop用户及密码，用于web登录：</p>
+<pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>user</span> <span class="token attr-name">password</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>root<span class="token punctuation">"</span></span> <span class="token attr-name">roles</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>admin<span class="token punctuation">"</span></span> <span class="token attr-name">username</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>root<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span></code></pre>
+
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8944.tmp.jpg" alt="img"> </p>
+<p>进入azkaban-web目录，启动web server：bin&#x2F;start-web.sh</p>
+<p>在网页输入hadoop1:8081 (如果本地没有映射，就输入hadoop1的ip地址)</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8945.tmp.jpg" alt="img"> </p>
+<p>创建MySQL数据库和表：</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8946.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8957.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8958.tmp.jpg" alt="img"> </p>
+<p>编写Sqoop导出脚本：vim hdfs_to_mysql.sh</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token assign-left variable">hive_db_name</span><span class="token operator">=</span>gmall
+<span class="token assign-left variable">mysql_db_name</span><span class="token operator">=</span>gmall_report
+
+<span class="token function-name function">export_data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+/root/soft/sqoop/bin/sqoop <span class="token builtin class-name">export</span> <span class="token punctuation">\</span>
+-Dmapreduce.job.queuename<span class="token operator">=</span>hive <span class="token punctuation">\</span>
+--connect <span class="token string">"jdbc:mysql://hadoop1:3306/<span class="token variable">$&#123;mysql_db_name&#125;</span>?useUnicode=true&amp;characterEncoding=utf-8"</span>  <span class="token punctuation">\</span>
+--username root <span class="token punctuation">\</span>
+--password <span class="token number">123456</span> <span class="token punctuation">\</span>
+--table <span class="token variable">$1</span> <span class="token punctuation">\</span>
+--num-mappers <span class="token number">1</span> <span class="token punctuation">\</span>
+--export-dir /warehouse/<span class="token variable">$hive_db_name</span>/ads/<span class="token variable">$1</span> <span class="token punctuation">\</span>
+--input-fields-terminated-by <span class="token string">"<span class="token entity" title="\t">\t</span>"</span> <span class="token punctuation">\</span>
+--update-mode allowinsert <span class="token punctuation">\</span>
+--update-key <span class="token variable">$2</span> <span class="token punctuation">\</span>
+--input-null-string <span class="token string">'\\N'</span>    <span class="token punctuation">\</span>
+--input-null-non-string <span class="token string">'\\N'</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">case</span> <span class="token variable">$1</span> <span class="token keyword">in</span>
+  <span class="token string">"ads_uv_count"</span><span class="token punctuation">)</span>
+     export_data <span class="token string">"ads_uv_count"</span> <span class="token string">"dt"</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span>
+  <span class="token string">"ads_user_action_convert_day"</span><span class="token punctuation">)</span> 
+     export_data <span class="token string">"ads_user_action_convert_day"</span> <span class="token string">"dt"</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span>
+  <span class="token string">"ads_user_topic"</span><span class="token punctuation">)</span>
+     export_data <span class="token string">"ads_user_topic"</span> <span class="token string">"dt"</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span>
+  <span class="token string">"ads_area_topic"</span><span class="token punctuation">)</span>
+     export_data <span class="token string">"ads_area_topic"</span> <span class="token string">"dt,iso_code"</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span>
+   <span class="token string">"all"</span><span class="token punctuation">)</span>
+     export_data <span class="token string">"ads_uv_count"</span> <span class="token string">"dt"</span>
+     export_data <span class="token string">"ads_user_topic"</span> <span class="token string">"dt"</span>
+     export_data <span class="token string">"ads_area_topic"</span> <span class="token string">"dt,iso_code"</span>
+     <span class="token comment">#其余表省略未写</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span>
+<span class="token keyword">esac</span></code></pre>
+
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8959.tmp.jpg" alt="img"> </p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
+<span class="token function">chmod</span> <span class="token number">777</span> hdfs_to_mysql.sh</code></pre>
+
+<p>Sqoop导出数据：hdfs_to_mysql.sh all</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps895A.tmp.jpg" alt="img"> </p>
+<p>编写Azkaban工作流程配置文件；</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps895B.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps895C.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps895D.tmp.jpg" alt="img"> </p>
+<p>打包zip上传azkaban，创建gmall项目导入zip包：</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps895E.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps895F.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8960.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8961.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8962.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8963.tmp.jpg" alt="img"> </p>
+<h2 id="4-可视化报表。"><a href="#4-可视化报表。" class="headerlink" title="4.可视化报表。"></a>4.可视化报表。</h2><h3 id="1-Superset入门；"><a href="#1-Superset入门；" class="headerlink" title="(1).Superset入门；"></a>(1).Superset入门；</h3><p>安装Miniconda，上传安装包:</p>
+<p>安装命令：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">bash</span> Miniconda3-latest-Linux-x86_64.sh</code></pre>
+
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8964.tmp.jpg" alt="img"> </p>
+<p>一直按回车，直到出现下面输入yes：</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8965.tmp.jpg" alt="img"> </p>
+<p>输入安装路径：</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8966.tmp.jpg" alt="img"> </p>
+<p>安装完成后，加载环境变量，使之生效： source ~&#x2F;.bashrc</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8967.tmp.jpg" alt="img"> </p>
+<p>取消自动激活base环境：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">conda config --set auto_activate_base <span class="token boolean">false</span></code></pre>
+
+<p>激活base环境：conda activate base</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8977.tmp.jpg" alt="img"> </p>
+<p>配置conda国内镜像：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"> conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+
+conda config --set show_channel_urls <span class="token function">yes</span></code></pre>
+
+<p>查看conda的镜像配置：vim ~&#x2F;.condarc</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8978.tmp.jpg" alt="img"> </p>
+<p>创建Python3.6环境：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">conda create --name superset <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">3.6</span></code></pre>
+
+<p>查看所有环境：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">conda info --envs</code></pre>
+
+<p>删除一个环境：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">conda remove -n env_name --all</code></pre>
+
+<p>激活superset环境：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">conda activate superset</code></pre>
+
+<p>执行python命令，查看Python版本：python</p>
+<p>退出当前环境：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">conda deactivate</code></pre>
+
+<p>部署Superset，安装依赖；</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> yum <span class="token function">install</span> -y gcc gcc-c++ libffi-devel python-devel python-pip python-wheel python-setuptools openssl-devel cyrus-sasl-devel openldap-devel</code></pre>
+
+<p>安装（更新）setuptools和pip：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> --upgrade setuptools pip -i https://repo.huaweicloud.com/repository/pypi/simple</code></pre>
+
+<p>安装Superset：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> apache-superset --trusted-host https://repo.huaweicloud.com -i https://repo.huaweicloud.com/repository/pypi/simple</code></pre>
+
+<p>执行以下两条指令，否则无法初始化：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> <span class="token assign-left variable">sqlalchemy</span><span class="token operator">==</span><span class="token number">1.3</span>.24
+
+pip <span class="token function">install</span> dataclasses</code></pre>
+
+<p>初始化Superset数据库：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">superset db upgrade</code></pre>
+
+<p>创建管理员用户，自己设置：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">FLASK_APP</span><span class="token operator">=</span>superset
+
+superset fab create-admin</code></pre>
+
+<p>Superset初始化：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">superset init</code></pre>
+
+<p>安装gunicorn：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> gunicorn -i https://repo.huaweicloud.com/repository/pypi/simple</code></pre>
+
+<p>在superset环境下启动Superset：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash">gunicorn --workers <span class="token number">5</span> --timeout <span class="token number">120</span> --bind hadoop1:8787  <span class="token string">"superset.app:create_app()"</span> --daemon</code></pre>
+
+<p>网页端访问hadoop1:8787：</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8979.tmp.jpg" alt="img"> </p>
+<p>停止superset：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/superset/ &amp;&amp; !/awk/&#123;print $2&#125;'</span> <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">kill</span> -9</code></pre>
+
+<h3 id="2-superset启停脚本；"><a href="#2-superset启停脚本；" class="headerlink" title="(2).superset启停脚本；"></a>(2).superset启停脚本；</h3><p>在&#x2F;root&#x2F;bin目录下：vim superset.sh</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps897A.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps897B.tmp.jpg" alt="img"> </p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
+<span class="token function">chmod</span> <span class="token number">777</span> superset.sh
+
+<span class="token comment">#启动superset：</span>
+superset.sh start</code></pre>
+
+<h3 id="3-Superset的使用；"><a href="#3-Superset的使用；" class="headerlink" title="(3).Superset的使用；"></a>(3).Superset的使用；</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#对接MySQL数据源，安装依赖：</span>
+conda <span class="token function">install</span> mysqlclient
+
+<span class="token comment">#重启Superset：</span>
+superset.sh restart</code></pre>
+
+<p>配置数据库：</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps897C.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps897D.tmp.jpg" alt="img"> </p>
+<p>mysql:&#x2F;&#x2F;root:123456@hadoop1&#x2F;gmall_report?charset&#x3D;utf8</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps897E.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps897F.tmp.jpg" alt="img"> </p>
+<p>表示连接成功，保存配置；</p>
+<p>配置表：</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8980.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8981.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8982.tmp.jpg" alt="img"> </p>
+<h3 id="4-制作可视化数据；"><a href="#4-制作可视化数据；" class="headerlink" title="(4).制作可视化数据；"></a>(4).制作可视化数据；</h3><p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8983.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8984.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8985.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8986.tmp.jpg" alt="img"> </p>
 
                 
             </div>
@@ -2318,16 +3362,16 @@ dwd_to_dws.sh <span class="token number">2020</span>-06-15
                     
                         <div class="article-tag">
                             
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
                                 <a href="/tags/hadoop/">
                                     <span class="chip bg-color">hadoop</span>
                                 </a>
                             
                                 <a href="/tags/kafka/">
                                     <span class="chip bg-color">kafka</span>
-                                </a>
-                            
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
                                 </a>
                             
                                 <a href="/tags/hive/">
@@ -2816,16 +3860,16 @@ dwd_to_dws.sh <span class="token number">2020</span>-06-15
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
                     <a href="/tags/hadoop/">
                         <span class="chip bg-color">hadoop</span>
                     </a>
                     
                     <a href="/tags/kafka/">
                         <span class="chip bg-color">kafka</span>
-                    </a>
-                    
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
                     </a>
                     
                     <a href="/tags/hive/">
