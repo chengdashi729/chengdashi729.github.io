@@ -14,11 +14,11 @@
       
         <tags>
             
-            <tag> java </tag>
-            
             <tag> hadoop </tag>
             
             <tag> kafka </tag>
+            
+            <tag> java </tag>
             
             <tag> hive </tag>
             
@@ -248,11 +248,11 @@
       
         <tags>
             
+            <tag> Docker </tag>
+            
             <tag> ElasticSearch </tag>
             
             <tag> Kibana </tag>
-            
-            <tag> Docker </tag>
             
             <tag> Logstash </tag>
             
