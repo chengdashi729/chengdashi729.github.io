@@ -529,16 +529,16 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
                             <a href="/tags/hadoop/">
                                 <span class="chip bg-color">hadoop</span>
                             </a>
                         
                             <a href="/tags/kafka/">
                                 <span class="chip bg-color">kafka</span>
-                            </a>
-                        
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
                             </a>
                         
                             <a href="/tags/hive/">
@@ -578,7 +578,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    11.3k
+                    11.4k
                 </div>
                 
 
@@ -1271,7 +1271,7 @@ insert into table student values<span class="token punctuation">(</span><span cl
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span></code></pre>
 
 <p>创建ExplodeJSONArray类：</p>
-<p><img src="/%E6%95%B0%E4%BB%93/image-20220618174653107.png" alt="image-20220618174653107"></p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/image-20220618174653107.png" alt="image-20220618174653107"></p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>hive<span class="token punctuation">.</span>udtf</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>hive<span class="token punctuation">.</span>ql<span class="token punctuation">.</span>exec<span class="token punctuation">.</span></span><span class="token class-name">UDFArgumentException</span></span><span class="token punctuation">;</span>
@@ -1347,8 +1347,20 @@ insert into table student values<span class="token punctuation">(</span><span cl
 <p>然后在hive里面创建永久函数：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">create <span class="token keyword">function</span> explode_json_array as <span class="token string">'com.example.hive.udtf.ExplodeJSONArray'</span> using jar <span class="token string">'hdfs://hadoop1:8020/user/hive/jars/hivefunction-1.0-SNAPSHOT.jar'</span><span class="token punctuation">;</span></code></pre>
 
-<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEA9.tmp.jpg" alt="img"> </p>
-<h3 id="4-建ODS层-用户行为数据-表；"><a href="#4-建ODS层-用户行为数据-表；" class="headerlink" title="(4).建ODS层(用户行为数据)表；"></a>(4).建ODS层(用户行为数据)表；</h3><p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEAA.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/image-20220618180614182.png" alt="image-20220618180614182"></p>
+<h3 id="4-建ODS层-用户行为数据-表；"><a href="#4-建ODS层-用户行为数据-表；" class="headerlink" title="(4).建ODS层(用户行为数据)表；"></a>(4).建ODS层(用户行为数据)表；</h3><pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">drop</span> <span class="token keyword">table</span> <span class="token keyword">if</span> <span class="token keyword">exists</span> ods_log<span class="token punctuation">;</span>
+<span class="token keyword">CREATE</span> EXTERNAL <span class="token keyword">TABLE</span> ods_log <span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>line<span class="token punctuation">`</span></span> string<span class="token punctuation">)</span>
+    PARTITIONED <span class="token keyword">BY</span> <span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>dt<span class="token punctuation">`</span></span> string<span class="token punctuation">)</span> <span class="token comment">-- 按照时间创建分区</span>
+    STORED <span class="token keyword">AS</span> <span class="token comment">-- 指定存储方式，读数据采用LzoTextInputFormat；</span>
+        INPUTFORMAT <span class="token string">'com.hadoop.mapred.DeprecatedLzoTextInputFormat'</span>
+        OUTPUTFORMAT <span class="token string">'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'</span>
+    LOCATION <span class="token string">'/warehouse/gmall/ods/ods_log'</span>  <span class="token comment">-- 指定数据在hdfs上的存储位置</span>
+<span class="token punctuation">;</span>
+<span class="token comment">-- 加载数据</span>
+<span class="token keyword">load</span> <span class="token keyword">data</span> inpath <span class="token string">'/origin_data/gmall/log/topic_log/2020-06-14'</span> <span class="token keyword">into</span> <span class="token keyword">table</span> ods_log <span class="token keyword">partition</span><span class="token punctuation">(</span>dt<span class="token operator">=</span><span class="token string">'2020-06-14'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">-- 查看是否加载成功</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> ods_log <span class="token keyword">limit</span> <span class="token number">2</span><span class="token punctuation">;</span></code></pre>
+
 <p>在&#x2F;root&#x2F;bin下创建脚本：vim hdfs_to_ods_log.sh</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
 
@@ -3470,16 +3482,16 @@ superset.sh restart</code></pre>
                     
                         <div class="article-tag">
                             
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
                                 <a href="/tags/hadoop/">
                                     <span class="chip bg-color">hadoop</span>
                                 </a>
                             
                                 <a href="/tags/kafka/">
                                     <span class="chip bg-color">kafka</span>
-                                </a>
-                            
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
                                 </a>
                             
                                 <a href="/tags/hive/">
@@ -3933,29 +3945,29 @@ superset.sh restart</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/06/18/%E6%95%B0%E4%BB%93/">
+                <a href="/2022/06/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
                     <div class="card-image">
                         
-                        <img src="/medias/index/3.jpg" class="responsive-img" alt="数仓">
                         
-                        <span class="card-title">数仓</span>
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="计算机网络学习笔记">
+                        
+                        <span class="card-title">计算机网络学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            数仓
+                            
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-18
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-06-19
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -3963,39 +3975,6 @@ superset.sh restart</code></pre>
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/hadoop/">
-                        <span class="chip bg-color">hadoop</span>
-                    </a>
-                    
-                    <a href="/tags/kafka/">
-                        <span class="chip bg-color">kafka</span>
-                    </a>
-                    
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
-                    </a>
-                    
-                    <a href="/tags/hive/">
-                        <span class="chip bg-color">hive</span>
-                    </a>
-                    
-                    <a href="/tags/sqoop/">
-                        <span class="chip bg-color">sqoop</span>
-                    </a>
-                    
-                    <a href="/tags/azkaban/">
-                        <span class="chip bg-color">azkaban</span>
-                    </a>
-                    
-                    <a href="/tags/superset/">
-                        <span class="chip bg-color">superset</span>
-                    </a>
-                    
                 </div>
                 
             </div>
