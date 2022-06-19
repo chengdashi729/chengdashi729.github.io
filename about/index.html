@@ -499,14 +499,14 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">14</a></span>
+    <span class="count"><a href="/categories">16</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">30</a></span>
+    <span class="count"><a href="/tags">31</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -529,14 +529,14 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">14</a></span>
+    <span class="count"><a href="/categories">16</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">30</a></span>
+    <span class="count"><a href="/tags">31</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -726,7 +726,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"Docker","value":3},{"name":"学习笔记","value":3},{"name":"ElasticSearch","value":1},{"name":"hadoop","value":1},{"name":"java","value":1},{"name":"springboot","value":1},{"name":"mysql","value":1},{"name":"思想汇报","value":1},{"name":"Kibana","value":1},{"name":"hive","value":1},{"name":"Docker","value":1},{"name":"Logstash","value":1},{"name":"Springboot","value":1},{"name":"计算机网络","value":1}],
+                data: [{"name":"学习笔记","value":3},{"name":"Docker","value":3},{"name":"springboot","value":1},{"name":"ElasticSearch","value":1},{"name":"Kibana","value":1},{"name":"Docker","value":1},{"name":"Logstash","value":1},{"name":"minio","value":1},{"name":"hadoop","value":1},{"name":"java","value":1},{"name":"Springboot","value":1},{"name":"mysql","value":1},{"name":"思想汇报","value":1},{"name":"计算机组成原理","value":1},{"name":"计算机网络","value":1},{"name":"hive","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -750,7 +750,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["Docker","java","springboot","hadoop","kafka","mysql","hive","ElasticSearch","Kibana","Logstash"]
+                data: ["Docker","java","springboot","minio","hadoop","kafka","mysql","hive","ElasticSearch","Kibana"]
             }
         ],
         yAxis: [
@@ -763,7 +763,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [4,3,2,2,2,2,2,1,1,1],
+                data: [4,3,2,2,2,2,2,2,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -933,6 +933,18 @@
         <div class="tag-chips center-align">
             
             
+            <a href="/tags/Docker/">
+                <span class="chip center-align waves-effect waves-light chip-default">Docker</span>
+            </a>
+            
+            
+            
+            <a href="/tags/springboot/">
+                <span class="chip center-align waves-effect waves-light chip-default">springboot</span>
+            </a>
+            
+            
+            
             <a href="/tags/ElasticSearch/">
                 <span class="chip center-align waves-effect waves-light chip-default">ElasticSearch</span>
             </a>
@@ -945,26 +957,14 @@
             
             
             
-            <a href="/tags/Docker/">
-                <span class="chip center-align waves-effect waves-light chip-default">Docker</span>
-            </a>
-            
-            
-            
             <a href="/tags/Logstash/">
                 <span class="chip center-align waves-effect waves-light chip-default">Logstash</span>
             </a>
             
             
             
-            <a href="/tags/springboot/">
-                <span class="chip center-align waves-effect waves-light chip-default">springboot</span>
-            </a>
-            
-            
-            
-            <a href="/tags/RabbitMQ/">
-                <span class="chip center-align waves-effect waves-light chip-default">RabbitMQ</span>
+            <a href="/tags/minio/">
+                <span class="chip center-align waves-effect waves-light chip-default">minio</span>
             </a>
             
             
@@ -993,32 +993,14 @@
             
             
             
-            <a href="/tags/Elasticsearch/">
-                <span class="chip center-align waves-effect waves-light chip-default">Elasticsearch</span>
-            </a>
-            
-            
-            
             <a href="/tags/java/">
                 <span class="chip center-align waves-effect waves-light chip-default">java</span>
             </a>
             
             
             
-            <a href="/tags/mysql/">
-                <span class="chip center-align waves-effect waves-light chip-default">mysql</span>
-            </a>
-            
-            
-            
-            <a href="/tags/hive/">
-                <span class="chip center-align waves-effect waves-light chip-default">hive</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E6%80%9D%E6%83%B3%E6%B1%87%E6%8A%A5/">
-                <span class="chip center-align waves-effect waves-light chip-default">思想汇报</span>
+            <a href="/tags/RabbitMQ/">
+                <span class="chip center-align waves-effect waves-light chip-default">RabbitMQ</span>
             </a>
             
             
@@ -1065,6 +1047,12 @@
             
             
             
+            <a href="/tags/mysql/">
+                <span class="chip center-align waves-effect waves-light chip-default">mysql</span>
+            </a>
+            
+            
+            
             <a href="/tags/mybatis-plus-join/">
                 <span class="chip center-align waves-effect waves-light chip-default">mybatis-plus-join</span>
             </a>
@@ -1077,14 +1065,20 @@
             
             
             
-            <a href="/tags/minio/">
-                <span class="chip center-align waves-effect waves-light chip-default">minio</span>
+            <a href="/tags/mica/">
+                <span class="chip center-align waves-effect waves-light chip-default">mica</span>
             </a>
             
             
             
-            <a href="/tags/mica/">
-                <span class="chip center-align waves-effect waves-light chip-default">mica</span>
+            <a href="/tags/hive/">
+                <span class="chip center-align waves-effect waves-light chip-default">hive</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E6%80%9D%E6%83%B3%E6%B1%87%E6%8A%A5/">
+                <span class="chip center-align waves-effect waves-light chip-default">思想汇报</span>
             </a>
             
             
@@ -1103,6 +1097,18 @@
             
             <a href="/tags/superset/">
                 <span class="chip center-align waves-effect waves-light chip-default">superset</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
+                <span class="chip center-align waves-effect waves-light chip-default">计算机组成原理</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Elasticsearch/">
+                <span class="chip center-align waves-effect waves-light chip-default">Elasticsearch</span>
             </a>
             
             
