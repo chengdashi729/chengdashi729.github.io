@@ -3484,8 +3484,8 @@ mysql.password<span class="token operator">=</span>000000</code></pre>
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8940.tmp.jpg" alt="img"> </p>
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8941.tmp.jpg" alt="img"> </p>
 <p>进入azkaban目录分发azkaban-exec：xsync azkaban-exec-server-3.84.4</p>
-<p>hadoop1,hadoop2,hadoop3进入azkaban-exec目录，启动executor：bin&#x2F;start-exec.sh</p>
-<p>激活executor:</p>
+<p>hadoop1,hadoop2,hadoop3进入azkaban-exec-server-3.84.4目录，启动executor：bin&#x2F;start-exec.sh</p>
+<p>在第一台依次激活executor:</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> -G <span class="token string">"hadoop1:12321/executor?action=activate"</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span>
 
 <span class="token function">curl</span> -G <span class="token string">"hadoop2:12321/executor?action=activate"</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span>
@@ -3496,7 +3496,7 @@ mysql.password<span class="token operator">=</span>000000</code></pre>
 <p>配置azkaban-web，进入azkaban-web&#x2F;conf目录,编辑azkaban.properties：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /root/soft/azkaban/azkaban-web/conf/azkaban.properties</code></pre>
 
-<p>添加如下内容：</p>
+<p>修改如下内容：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">default.timezone.id<span class="token operator">=</span>Asia/Shanghai
 
 mysql.host<span class="token operator">=</span>hadoop1
