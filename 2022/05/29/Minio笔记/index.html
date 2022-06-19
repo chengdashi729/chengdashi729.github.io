@@ -1627,6 +1627,10 @@ kms         <span class="token comment"># kms执行KMS管理操作</span>
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/mysql/">
+                        <span class="chip bg-color">mysql</span>
+                    </a>
+                    
                     <a href="/tags/Springboot/">
                         <span class="chip bg-color">Springboot</span>
                     </a>
@@ -1653,10 +1657,6 @@ kms         <span class="token comment"># kms执行KMS管理操作</span>
                     
                     <a href="/tags/tika/">
                         <span class="chip bg-color">tika</span>
-                    </a>
-                    
-                    <a href="/tags/mysql/">
-                        <span class="chip bg-color">mysql</span>
                     </a>
                     
                     <a href="/tags/mybatis-plus-join/">
@@ -1814,7 +1814,7 @@ kms         <span class="token comment"># kms执行KMS管理操作</span>
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
             collapseDepth: Number('1'),
-            headingSelector: 'h1, h2, h3, h4, h5, h6'
+            headingSelector: 'h1, h2, h3, h4, h5, h6, h7, h8'
         });
 
         // modify the toc link href to support Chinese.
@@ -1826,7 +1826,7 @@ kms         <span class="token comment"># kms执行KMS管理操作</span>
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6, h7, h8').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
