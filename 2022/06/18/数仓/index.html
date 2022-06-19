@@ -529,16 +529,16 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
                             <a href="/tags/hadoop/">
                                 <span class="chip bg-color">hadoop</span>
                             </a>
                         
                             <a href="/tags/kafka/">
                                 <span class="chip bg-color">kafka</span>
-                            </a>
-                        
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
                             </a>
                         
                             <a href="/tags/hive/">
@@ -578,14 +578,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    12k
+                    12.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    66 分
+                    68 分
                 </div>
                 
 
@@ -3436,13 +3436,20 @@ dwt_to_ads.sh <span class="token number">2020</span>-06-15</code></pre>
 <span class="token function">docker</span> restart 容器id
 
 <span class="token comment">#进入容器使用MySQL：</span>
-<span class="token function">docker</span> <span class="token builtin class-name">exec</span> -it 容器idbash
+<span class="token function">docker</span> <span class="token builtin class-name">exec</span> -it 容器id /bin/bash
 
 <span class="token comment">#输入MySQL启动命令：</span>
 mysql -uroot -p123456</code></pre>
 
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps893C.tmp.jpg" alt="img"> </p>
-<p>切换到MySQL目录下，编辑mysql.conf.d：</p>
+<p>一般情况下，容器内没有vim</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 先更新我们的包管理工具</span>
+<span class="token function">apt-get</span> update
+
+<span class="token comment"># 然后安装我们需要的vim</span>
+<span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">vim</span></code></pre>
+
+<p>切换到Mysql目录下，编辑mysql.conf.d：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/mysql/mysql.conf.d</code></pre>
 
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps893D.tmp.jpg" alt="img"> </p>
@@ -3451,8 +3458,10 @@ mysql -uroot -p123456</code></pre>
 <p>退出容器：exit</p>
 <p>重启容器：docker restart 容器id</p>
 <p>切换目录：cd &#x2F;root&#x2F;soft&#x2F;azkaban&#x2F;</p>
-<p>创建软连接：ln -s azkaban-exec-server-3.84.4 azkaban-exec</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">ln</span> -s azkaban-web-server-3.84.4 azkaban-web
+<p>创建软连接：</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">ln</span> -s azkaban-exec-server-3.84.4 azkaban-exec
+
+<span class="token function">ln</span> -s azkaban-web-server-3.84.4 azkaban-web
 
 <span class="token function">ln</span> -s azkaban-db-3.84.4 azkaban-db</code></pre>
 
@@ -3472,7 +3481,7 @@ executor.port<span class="token operator">=</span><span class="token number">123
 
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8940.tmp.jpg" alt="img"> </p>
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8941.tmp.jpg" alt="img"> </p>
-<p>进入azkaban目录分发azkaban-exec：xsync azkaban-exec</p>
+<p>进入azkaban目录分发azkaban-exec：xsync azkaban-exec-server-3.84.4</p>
 <p>hadoop1,hadoop2,hadoop3进入azkaban-exec目录，启动executor：bin&#x2F;start-exec.sh</p>
 <p>激活executor:</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> -G <span class="token string">"hadoop1:12321/executor?action=activate"</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span>
@@ -3481,6 +3490,7 @@ executor.port<span class="token operator">=</span><span class="token number">123
 
 <span class="token function">curl</span> -G <span class="token string">"hadoop3:12321/executor?action=activate"</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span></code></pre>
 
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/image-20220619180917831.png" alt="image-20220619180917831"></p>
 <p>配置azkaban-web，进入azkaban-web&#x2F;conf目录,编辑azkaban.properties：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /root/soft/azkaban/azkaban-web/conf/azkaban.properties</code></pre>
 
@@ -3496,7 +3506,7 @@ azkaban.executorselector.filters<span class="token operator">=</span>StaticRemai
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8942.tmp.jpg" alt="img"> </p>
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8943.tmp.jpg" alt="img"> </p>
 <p>编辑azkaban-user.xml:</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /root/soft/azkaban/azkaban-web/conf/azkaban-user.xml</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /root/soft/azkaban/azkaban-web/conf/azkaban-users.xml</code></pre>
 
 <p>添加hadoop用户及密码，用于web登录：</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>user</span> <span class="token attr-name">password</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>root<span class="token punctuation">"</span></span> <span class="token attr-name">roles</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>admin<span class="token punctuation">"</span></span> <span class="token attr-name">username</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>root<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span></code></pre>
@@ -3505,6 +3515,10 @@ azkaban.executorselector.filters<span class="token operator">=</span>StaticRemai
 <p>进入azkaban-web目录，启动web server：bin&#x2F;start-web.sh</p>
 <p>在网页输入hadoop1:8081 (如果本地没有映射，就输入hadoop1的ip地址)</p>
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8945.tmp.jpg" alt="img"> </p>
+<p>修改&#x2F;root&#x2F;soft&#x2F;applog&#x2F;application.properties</p>
+<p>将日期修改成2020-06-26</p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/image-20220619182924593.png" alt="image-20220619182924593"></p>
+<p>然后分发： xsync application.properties</p>
 <p>创建MySQL数据库和表：</p>
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8946.tmp.jpg" alt="img"> </p>
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8957.tmp.jpg" alt="img"> </p>
@@ -3566,8 +3580,15 @@ azkaban.executorselector.filters<span class="token operator">=</span>StaticRemai
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps895E.tmp.jpg" alt="img"> </p>
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps895F.tmp.jpg" alt="img"> </p>
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8960.tmp.jpg" alt="img"> </p>
+<p>执行以下命令</p>
+<pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">use</span> azkaban<span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> executors<span class="token punctuation">;</span></code></pre>
+
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8961.tmp.jpg" alt="img"> </p>
+<p>第一个 dt  2020-06-26</p>
+<p>第二个 useExecutor 1</p>
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8962.tmp.jpg" alt="img"> </p>
+<p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/image-20220619182358618.png" alt="image-20220619182358618"></p>
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8963.tmp.jpg" alt="img"> </p>
 <h2 id="4-可视化报表。"><a href="#4-可视化报表。" class="headerlink" title="4.可视化报表。"></a>4.可视化报表。</h2><h3 id="1-Superset入门；"><a href="#1-Superset入门；" class="headerlink" title="(1).Superset入门；"></a>(1).Superset入门；</h3><p>安装Miniconda，上传安装包:</p>
 <p>安装命令：</p>
@@ -3611,7 +3632,7 @@ conda config --set show_channel_urls <span class="token function">yes</span></co
 <pre class="language-bash" data-language="bash"><code class="language-bash">conda deactivate</code></pre>
 
 <p>部署Superset，安装依赖；</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> yum <span class="token function">install</span> -y gcc gcc-c++ libffi-devel python-devel python-pip python-wheel python-setuptools openssl-devel cyrus-sasl-devel openldap-devel</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> yum <span class="token function">install</span> -y gcc gcc-c++ libffi-devel python-devel python-pip python-wheel python-setuptools openssl-devel cyrus-sasl-devel openldap-devel -i https://repo.huaweicloud.com/repository/pypi/simple</code></pre>
 
 <p>安装（更新）setuptools和pip：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> --upgrade setuptools pip -i https://repo.huaweicloud.com/repository/pypi/simple</code></pre>
@@ -3620,9 +3641,9 @@ conda config --set show_channel_urls <span class="token function">yes</span></co
 <pre class="language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> apache-superset --trusted-host https://repo.huaweicloud.com -i https://repo.huaweicloud.com/repository/pypi/simple</code></pre>
 
 <p>执行以下两条指令，否则无法初始化：</p>
-<pre class="language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> <span class="token assign-left variable">sqlalchemy</span><span class="token operator">==</span><span class="token number">1.3</span>.24
+<pre class="language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> <span class="token assign-left variable">sqlalchemy</span><span class="token operator">==</span><span class="token number">1.3</span>.24 -i https://repo.huaweicloud.com/repository/pypi/simple
 
-pip <span class="token function">install</span> dataclasses</code></pre>
+pip <span class="token function">install</span> dataclasses -i https://repo.huaweicloud.com/repository/pypi/simple</code></pre>
 
 <p>初始化Superset数据库：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">superset db upgrade</code></pre>
@@ -3647,6 +3668,74 @@ superset fab create-admin</code></pre>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/superset/ &amp;&amp; !/awk/&#123;print $2&#125;'</span> <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">kill</span> -9</code></pre>
 
 <h3 id="2-superset启停脚本；"><a href="#2-superset启停脚本；" class="headerlink" title="(2).superset启停脚本；"></a>(2).superset启停脚本；</h3><p>在&#x2F;root&#x2F;bin目录下：vim superset.sh</p>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token function-name function">superset_status</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token assign-left variable">result</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/gunicorn/ &amp;&amp; !/awk/&#123;print $2&#125;'</span> <span class="token operator">|</span> <span class="token function">wc</span> -l<span class="token variable">`</span></span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$result</span> -eq <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token builtin class-name">return</span> <span class="token number">0</span>
+    <span class="token keyword">else</span>
+        <span class="token builtin class-name">return</span> <span class="token number">1</span>
+    <span class="token keyword">fi</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function-name function">superset_start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token comment"># 该段内容取自~/.bashrc，所用是进行conda初始化</span>
+        <span class="token comment"># >>> conda initialize >>></span>
+        <span class="token comment"># !! Contents within this block are managed by 'conda init' !!</span>
+        <span class="token assign-left variable">__conda_setup</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span>'/root/soft/miniconda3/anconda3/bin/conda<span class="token string">' '</span>shell.bash<span class="token string">' '</span>hook' <span class="token operator"><span class="token file-descriptor important">2</span>></span> /dev/null<span class="token variable">)</span></span>"</span>
+        <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> -eq <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+            <span class="token builtin class-name">eval</span> <span class="token string">"<span class="token variable">$__conda_setup</span>"</span>
+        <span class="token keyword">else</span>
+            <span class="token keyword">if</span> <span class="token punctuation">[</span> -f <span class="token string">"/root/soft/miniconda3/anconda3/profile.d/conda.sh"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+                <span class="token builtin class-name">.</span> <span class="token string">"/root/soft/miniconda3/anconda3/etc/profile.d/conda.sh"</span>
+            <span class="token keyword">else</span>
+                <span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token string">"/root/soft/miniconda3/anconda3/bin:<span class="token environment constant">$PATH</span>"</span>
+            <span class="token keyword">fi</span>
+        <span class="token keyword">fi</span>
+        <span class="token builtin class-name">unset</span> __conda_setup
+        <span class="token comment"># &lt;&lt;&lt; conda initialize &lt;&lt;&lt;</span>
+        superset_status <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span>
+        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$?</span> -eq <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+            conda activate superset <span class="token punctuation">;</span> gunicorn --workers <span class="token number">5</span> --timeout <span class="token number">120</span> --bind hadoop1:8787 --daemon <span class="token string">'superset.app:create_app()'</span>
+        <span class="token keyword">else</span>
+            <span class="token builtin class-name">echo</span> <span class="token string">"superset正在运行"</span>
+        <span class="token keyword">fi</span>
+
+<span class="token punctuation">&#125;</span>
+
+<span class="token function-name function">superset_stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    superset_status <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$?</span> -eq <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">"superset未在运行"</span>
+    <span class="token keyword">else</span>
+        <span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/gunicorn/ &amp;&amp; !/awk/&#123;print $2&#125;'</span> <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">kill</span> -9
+    <span class="token keyword">fi</span>
+<span class="token punctuation">&#125;</span>
+
+
+<span class="token keyword">case</span> <span class="token variable">$1</span> <span class="token keyword">in</span>
+    start <span class="token punctuation">)</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">"启动Superset"</span>
+        superset_start
+    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    stop <span class="token punctuation">)</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">"停止Superset"</span>
+        superset_stop
+    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    restart <span class="token punctuation">)</span>
+        <span class="token builtin class-name">echo</span> <span class="token string">"重启Superset"</span>
+        superset_stop
+        superset_start
+    <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    status <span class="token punctuation">)</span>
+        superset_status <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span>
+        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$?</span> -eq <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+            <span class="token builtin class-name">echo</span> <span class="token string">"superset未在运行"</span>
+        <span class="token keyword">else</span>
+            <span class="token builtin class-name">echo</span> <span class="token string">"superset正在运行"</span>
+        <span class="token keyword">fi</span>
+<span class="token keyword">esac</span></code></pre>
+
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps897A.tmp.jpg" alt="img"> </p>
 <p><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps897B.tmp.jpg" alt="img"> </p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
@@ -3656,7 +3745,7 @@ superset fab create-admin</code></pre>
 superset.sh start</code></pre>
 
 <h3 id="3-Superset的使用；"><a href="#3-Superset的使用；" class="headerlink" title="(3).Superset的使用；"></a>(3).Superset的使用；</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#对接MySQL数据源，安装依赖：</span>
-conda <span class="token function">install</span> mysqlclient
+conda <span class="token function">install</span> mysqlclient -y
 
 <span class="token comment">#重启Superset：</span>
 superset.sh restart</code></pre>
@@ -3740,16 +3829,16 @@ superset.sh restart</code></pre>
                     
                         <div class="article-tag">
                             
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
                                 <a href="/tags/hadoop/">
                                     <span class="chip bg-color">hadoop</span>
                                 </a>
                             
                                 <a href="/tags/kafka/">
                                     <span class="chip bg-color">kafka</span>
-                                </a>
-                            
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
                                 </a>
                             
                                 <a href="/tags/hive/">
