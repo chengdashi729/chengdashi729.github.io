@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="java 8 新特性, 成大事">
-    <meta name="description" content="java8的新特性的学习笔记">
+    <meta name="keywords" content="成大事">
+    <meta name="description" content="java 8Lambda函数
+Lambda是一个&amp;#x3D;&amp;#x3D;匿名函数&amp;#x3D;&amp;#x3D;，我们可以把Lambda表达式理解为是一段&amp;#x3D;&amp;#x3D;可以传递的代码（将代码像数据一样传递）&amp;#x3D;&amp;#x3D;。可以写">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>java 8 新特性 | 成大事</title>
+    <title>成大事</title>
     <link rel="stylesheet" type="text/css" href="/css/loading.css">
     <link rel="icon" type="image/png" href="/favicon.png">
 
@@ -408,12 +409,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/index/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">java 8 新特性</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -527,25 +528,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/java/" class="post-category">
-                                java
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -563,14 +551,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.3k
+                    4.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    20 分
+                    22 分
                 </div>
                 
 
@@ -1386,7 +1374,53 @@ min——返回流中最小值
 <li>map(Function f)：如果有值对其处理，并返回处理后的Optional，否则返回Optional.empty()</li>
 <li>flatMap(Fuction mapper)：与map类似，要求返回值必须是Optional</li>
 </ul>
+<h2 id="接口中的默认方法："><a href="#接口中的默认方法：" class="headerlink" title="接口中的默认方法："></a>接口中的默认方法：</h2><blockquote>
+<p>接口默认方法的“类优先”原则</p>
+</blockquote>
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">MyFun</span> <span class="token punctuation">&#123;</span>
+    
+    <span class="token keyword">default</span> <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token string">"成果"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 
+<p>若一个接口中定义了一个默认的方法，而另一个父类或接口中又定义了一个同名的方法时：</p>
+<ul>
+<li><p>选择父类中的方法。如果一个父类提供了具体的实现，那么接口中的具有相同名称和参数的默认方法会被忽略。</p>
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/*一个父类*/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token string">"成果成大事"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/*一个测试类 集成MyClass 同时实现MyFun的接口*/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SubClass</span> <span class="token keyword">extends</span> <span class="token class-name">MyClass</span> <span class="token keyword">implements</span> <span class="token class-name">MyFun</span><span class="token punctuation">&#123;</span>
+
+
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/*调用*/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestDefaultInterface</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+        <span class="token class-name">SubClass</span> subClass <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SubClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>subClass<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
+
+<p><img src="/java-8-%E6%96%B0%E7%89%B9%E6%80%A7/image-20220620081611386.png" alt="image-20220620081611386"></p>
+</li>
+<li><p>接口冲突。如果一个父接口提供了一个默认方法，而另一个接口也提供了一个具有相同名称和参数列表的方法（不管方法是否是默认方法），那么必须覆盖该方法来解决冲突。</p>
+<pre class="language-JAVA" data-language="JAVA"><code class="language-JAVA">public interface MyFun2 &#123;
+    String getName();
+&#125;</code></pre>
+
+<p><img src="/java-8-%E6%96%B0%E7%89%B9%E6%80%A7/image-20220620081958139.png" alt="image-20220620081958139"></p>
+</li>
+</ul>
+<h2 id="时间格式"><a href="#时间格式" class="headerlink" title="时间格式"></a>时间格式</h2>
                 
             </div>
             <hr/>
@@ -1449,11 +1483,7 @@ min——返回流中最小值
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
