@@ -607,14 +607,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    10.4k
+                    10.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    49 分
+                    48 分
                 </div>
                 
 
@@ -632,38 +632,36 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、Springboot-简介"><a href="#一、Springboot-简介" class="headerlink" title="一、Springboot 简介"></a>一、Springboot 简介</h1><h2 id="1-1-原有Spring优缺点分析"><a href="#1-1-原有Spring优缺点分析" class="headerlink" title="1.1 原有Spring优缺点分析"></a>1.1 原有Spring优缺点分析</h2><h3 id="1-1-1-Spring的-x3D-x3D-优点-x3D-x3D-分析"><a href="#1-1-1-Spring的-x3D-x3D-优点-x3D-x3D-分析" class="headerlink" title="1.1.1 Spring的&#x3D;&#x3D;优点&#x3D;&#x3D;分析"></a>1.1.1 Spring的&#x3D;&#x3D;优点&#x3D;&#x3D;分析</h3><p>Spring是Java企业版（Java Enterprise Edition，JEE，也称J2EE）的轻量级代替品。无需开发重量级的Enterprise JavaBean（EJB），Spring为企业级Java开发提供了一种相对简单的方法，通过&#x3D;&#x3D;依赖注入&#x3D;&#x3D;和&#x3D;&#x3D;面向切面编程&#x3D;&#x3D;，用简单的Java对象（Plain Old Java Object，POJO）实现了EJB的功能。</p>
-<h3 id="1-1-2-Spring的-x3D-x3D-缺点-x3D-x3D-分析"><a href="#1-1-2-Spring的-x3D-x3D-缺点-x3D-x3D-分析" class="headerlink" title="1.1.2 Spring的&#x3D;&#x3D;缺点&#x3D;&#x3D;分析"></a>1.1.2 Spring的&#x3D;&#x3D;缺点&#x3D;&#x3D;分析</h3><p>虽然Spring的组件代码是轻量级的，但它的&#x3D;&#x3D;配置却是重量级&#x3D;&#x3D;的。一开始，Spring用XML配置，而且是很多XML配置。Spring 2.5引入了基于注解的组件扫描，这消除了大量针对应用程序自身组件的显式XML配置。Spring 3.0引入了基于Java的配置，这是一种类型安全的可重构配置方式，可以代替XML。</p>
+                <h1 id="一、Springboot-简介"><a href="#一、Springboot-简介" class="headerlink" title="一、Springboot 简介"></a>一、Springboot 简介</h1><h2 id="1-1-原有Spring优缺点分析"><a href="#1-1-原有Spring优缺点分析" class="headerlink" title="1.1 原有Spring优缺点分析"></a>1.1 原有Spring优缺点分析</h2><h3 id="1-1-1-Spring的-优点-分析"><a href="#1-1-1-Spring的-优点-分析" class="headerlink" title="1.1.1 Spring的==优点==分析"></a>1.1.1 Spring的==优点==分析</h3><p>Spring是Java企业版（Java Enterprise Edition，JEE，也称J2EE）的轻量级代替品。无需开发重量级的Enterprise JavaBean（EJB），Spring为企业级Java开发提供了一种相对简单的方法，通过==依赖注入==和==面向切面编程==，用简单的Java对象（Plain Old Java Object，POJO）实现了EJB的功能。</p>
+<h3 id="1-1-2-Spring的-缺点-分析"><a href="#1-1-2-Spring的-缺点-分析" class="headerlink" title="1.1.2 Spring的==缺点==分析"></a>1.1.2 Spring的==缺点==分析</h3><p>虽然Spring的组件代码是轻量级的，但它的==配置却是重量级==的。一开始，Spring用XML配置，而且是很多XML配置。Spring 2.5引入了基于注解的组件扫描，这消除了大量针对应用程序自身组件的显式XML配置。Spring 3.0引入了基于Java的配置，这是一种类型安全的可重构配置方式，可以代替XML。</p>
 <p>所有这些配置都代表了开发时的损耗。因为在思考Spring特性配置和解决业务问题之间需要进行思维切换，所以编写配置挤占了编写应用程序逻辑的时间。和所有框架一样，Spring实用，但与此同时它要求的回报也不少。</p>
-<p>除此之外，&#x3D;&#x3D;项目的依赖管理&#x3D;&#x3D;也是一件耗时耗力的事情。在环境搭建时，需要分析要导入哪些库的坐标，而且还需要分析导入与之有依赖关系的其他库的坐标，一旦选错了依赖的版本，随之而来的不兼容问题就会严重阻碍项目的开发进度。</p>
-<h2 id="1-2-Springboot的概述"><a href="#1-2-Springboot的概述" class="headerlink" title="1.2 Springboot的概述"></a>1.2 Springboot的概述</h2><h3 id="1-2-1-Springboot解决上述Spring的缺点"><a href="#1-2-1-Springboot解决上述Spring的缺点" class="headerlink" title="1.2.1 Springboot解决上述Spring的缺点"></a>1.2.1 Springboot解决上述Spring的缺点</h3><p>Springboot对上述Spring的缺点进行的改善和优化，基于&#x3D;&#x3D;约定优于配置的思想&#x3D;&#x3D;，可以让开发人员&#x3D;&#x3D;不必在配置与逻辑业务之间进行思维的切换&#x3D;&#x3D;，全身心的投入到逻辑业务的代码编写中，从而大大提高了开发的效率，一定程度上&#x3D;&#x3D;缩短了项目周期&#x3D;&#x3D;。</p>
+<p>除此之外，==项目的依赖管理==也是一件耗时耗力的事情。在环境搭建时，需要分析要导入哪些库的坐标，而且还需要分析导入与之有依赖关系的其他库的坐标，一旦选错了依赖的版本，随之而来的不兼容问题就会严重阻碍项目的开发进度。</p>
+<h2 id="1-2-Springboot的概述"><a href="#1-2-Springboot的概述" class="headerlink" title="1.2 Springboot的概述"></a>1.2 Springboot的概述</h2><h3 id="1-2-1-Springboot解决上述Spring的缺点"><a href="#1-2-1-Springboot解决上述Spring的缺点" class="headerlink" title="1.2.1 Springboot解决上述Spring的缺点"></a>1.2.1 Springboot解决上述Spring的缺点</h3><p>Springboot对上述Spring的缺点进行的改善和优化，基于==约定优于配置的思想==，可以让开发人员==不必在配置与逻辑业务之间进行思维的切换==，全身心的投入到逻辑业务的代码编写中，从而大大提高了开发的效率，一定程度上==缩短了项目周期==。</p>
 <h3 id="1-2-2-Springboot的特点"><a href="#1-2-2-Springboot的特点" class="headerlink" title="1.2.2 Springboot的特点"></a>1.2.2 Springboot的特点</h3><ul>
 <li><p>为基于Spring的开发提供更快的入门体验</p>
 </li>
 <li><p>开箱即用，没有代码生成，也无需XML配置。同时也可以修改默认值来满足特定的需求</p>
 </li>
-<li><p>提供了一些大型项目中常见的非功能性特性，如嵌入式服务器、安全、指标，健康检测、外部配置等</p>
-</li>
-<li><p>Springboot不是对Spring功能上的增强，而是提供了一种&#x3D;&#x3D;快速使用Spring&#x3D;&#x3D;的方式</p>
-</li>
+<li>提供了一些大型项目中常见的非功能性特性，如嵌入式服务器、安全、指标，健康检测、外部配置等</li>
+<li>Springboot不是对Spring功能上的增强，而是提供了一种==快速使用Spring==的方式</li>
 </ul>
 <h3 id="1-2-3-Springboot的核心功能"><a href="#1-2-3-Springboot的核心功能" class="headerlink" title="1.2.3 Springboot的核心功能"></a>1.2.3 Springboot的核心功能</h3><ul>
 <li>起步依赖</li>
 </ul>
-<p>起步依赖本质上是一个&#x3D;&#x3D;Maven项目对象模型（Project Object Model，POM）&#x3D;&#x3D;，定义了对其他库的传递依赖，这些东西加在一起即支持某项功能。</p>
-<p>简单的说，&#x3D;&#x3D;起步依赖就是将具备某种功能的坐标打包到一起，并提供一些默认的功能。&#x3D;&#x3D;</p>
+<p>起步依赖本质上是一个==Maven项目对象模型（Project Object Model，POM）==，定义了对其他库的传递依赖，这些东西加在一起即支持某项功能。</p>
+<p>简单的说，==起步依赖就是将具备某种功能的坐标打包到一起，并提供一些默认的功能。==</p>
 <ul>
 <li>自动配置</li>
 </ul>
 <p>Spring Boot的自动配置是一个运行时（更准确地说，是应用程序启动时）的过程，考虑了众多因素，才决定Spring配置应该用哪个，不该用哪个。该过程是Spring自动完成的。</p>
 <h1 id="二、-Springboot-快速入门"><a href="#二、-Springboot-快速入门" class="headerlink" title="二、 Springboot 快速入门"></a>二、 Springboot 快速入门</h1><h2 id="2-1-代码实现"><a href="#2-1-代码实现" class="headerlink" title="2.1 代码实现"></a>2.1 代码实现</h2><h3 id="2-1-1-创建Maven工程"><a href="#2-1-1-创建Maven工程" class="headerlink" title="2.1.1 创建Maven工程"></a>2.1.1 创建Maven工程</h3><p>使用idea工具创建一个maven工程，该工程为普通的java工程即可</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601090250685.png" alt="image-20220601090250685"></p>
+<p><img src="image-20220601090250685.png" alt="image-20220601090250685"></p>
 <p>选择maven 项目</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601090321383.png" alt="image-20220601090321383"></p>
+<p><img src="image-20220601090321383.png" alt="image-20220601090321383"></p>
 <p>填写项目名、选择项目的路径，即可完成创建。</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601090610353.png" alt="image-20220601090610353"></p>
+<p><img src="image-20220601090610353.png" alt="image-20220601090610353"></p>
 <p>项目的初始文件夹结构：</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601092803636.png" alt="image-20220601092803636"></p>
+<p><img src="image-20220601092803636.png" alt="image-20220601092803636"></p>
 <h3 id="2-1-2-添加Springboot的起步依赖"><a href="#2-1-2-添加Springboot的起步依赖" class="headerlink" title="2.1.2 添加Springboot的起步依赖"></a>2.1.2 添加Springboot的起步依赖</h3><p>Springboot要求，项目要继承Springboot的起步依赖spring-boot-starter-parent  （此次的最新版的2.7 可能会有很多问题 。哈哈哈！)</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>parent</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
@@ -671,7 +669,6 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.7.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>     
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>relativePath</span><span class="token punctuation">/></span></span> <span class="token comment">&lt;!-- lookup parent from repository --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>parent</span><span class="token punctuation">></span></span></code></pre>
-
 <p>Springboot要集成SpringMVC进行Controller的开发，所以项目要导入web的启动依赖</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
@@ -679,7 +676,6 @@
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-web<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span></code></pre>
-
 <h3 id="2-1-3-编写Springboot引导类"><a href="#2-1-3-编写Springboot引导类" class="headerlink" title="2.1.3 编写Springboot引导类"></a>2.1.3 编写Springboot引导类</h3><p>要通过Springboot提供的引导类起步Springboot才可以进行访问</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">org<span class="token punctuation">.</span>example</span><span class="token punctuation">;</span>
 
@@ -696,10 +692,9 @@
         <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">DemoApplication</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>注意：Springboot的启动类名是项目名+Applicaiton（路径也要注意）</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601101445973.png" alt="image-20220601101445973"></p>
-<h3 id="2-1-4-编写Controller"><a href="#2-1-4-编写Controller" class="headerlink" title="2.1.4 编写Controller"></a>2.1.4 编写Controller</h3><p>在引导类DemoApplication&#x3D;&#x3D;同级包&#x3D;&#x3D;或者&#x3D;&#x3D;子级包&#x3D;&#x3D;中创建TestController（我个人建议在子级包）</p>
+<p><img src="image-20220601101445973.png" alt="image-20220601101445973"></p>
+<h3 id="2-1-4-编写Controller"><a href="#2-1-4-编写Controller" class="headerlink" title="2.1.4 编写Controller"></a>2.1.4 编写Controller</h3><p>在引导类DemoApplication==同级包==或者==子级包==中创建TestController（我个人建议在子级包）</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">org<span class="token punctuation">.</span>example<span class="token punctuation">.</span>controller</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Controller</span></span><span class="token punctuation">;</span>
@@ -720,14 +715,13 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
 </code></pre>
-
 <p>如图所示：</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601101952041.png" alt="image-20220601101952041"></p>
+<p><img src="image-20220601101952041.png" alt="image-20220601101952041"></p>
 <h3 id="2-1-5-测试"><a href="#2-1-5-测试" class="headerlink" title="2.1.5 测试"></a>2.1.5 测试</h3><p>执行Springboot起步类的主方法，通过测试</p>
 <p>通过日志发现，Tomcat started on port(s): 8080 (http) with context path ‘’</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601111708293.png" alt="image-20220601111708293"></p>
+<p><img src="image-20220601111708293.png" alt="image-20220601111708293"></p>
 <p>tomcat已经起步，端口监听8080，web应用的虚拟工程名称为空</p>
-<p>打开浏览器访问url地址为：<a target="_blank" rel="noopener" href="http://localhost:8080/hello">http://localhost:8080/hello</a><br><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601111844496.png" alt="image-20220601111844496"></p>
+<p>打开浏览器访问url地址为：<a target="_blank" rel="noopener" href="http://localhost:8080/hello">http://localhost:8080/hello</a><br><img src="image-20220601111844496.png" alt="image-20220601111844496"></p>
 <h2 id="2-2-快速入门解析"><a href="#2-2-快速入门解析" class="headerlink" title="2.2 快速入门解析"></a>2.2 快速入门解析</h2><h3 id="2-2-2-Springboot代码解析"><a href="#2-2-2-Springboot代码解析" class="headerlink" title="2.2.2 Springboot代码解析"></a>2.2.2 Springboot代码解析</h3><ul>
 <li>@SpringbootApplication：标注Springboot的启动类，该注解具备多种功</li>
 <li>SpringApplication.run(DemoApplication.class) 代表运行Springboot的启动类，参数为Springboot启动类的字节码对象</li>
@@ -739,17 +733,16 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-devtools<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
 注意：IDEA进行Springboot热部署失败原因</code></pre>
-
 <p>出现这种情况，并不是热部署配置问题，其根本原因是因为Intellij IEDA默认情况下不会自动编译，需要对IDEA进行自动编译的设置，如下：</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601112116055.png" alt="image-20220601112116055"></p>
-<p>然后 Shift+Ctrl+Alt+&#x2F;，选择Registry</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601112220915.png" alt="image-20220601112220915"></p>
+<p><img src="image-20220601112116055.png" alt="image-20220601112116055"></p>
+<p>然后 Shift+Ctrl+Alt+/，选择Registry</p>
+<p><img src="image-20220601112220915.png" alt="image-20220601112220915"></p>
 <h3 id="2-2-4-使用idea快速创建Springboot项目"><a href="#2-2-4-使用idea快速创建Springboot项目" class="headerlink" title="2.2.4 使用idea快速创建Springboot项目"></a>2.2.4 使用idea快速创建Springboot项目</h3><p>新建Springboot项目：</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601112942646.png" alt="image-20220601112942646"></p>
+<p><img src="image-20220601112942646.png" alt="image-20220601112942646"></p>
 <p>选择Springboot的版本和项目所需要的依赖：</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601113740484.png" alt="image-20220601113740484"></p>
+<p><img src="image-20220601113740484.png" alt="image-20220601113740484"></p>
 <p>目录层级：</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601113841261.png" alt="image-20220601113841261"></p>
+<p><img src="image-20220601113841261.png" alt="image-20220601113841261"></p>
 <p>通过idea快速创建的Springboot项目的pom.xml中已经导入了我们选择的web的起步依赖的坐标</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
@@ -792,7 +785,6 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">></span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">></span></span></code></pre>
-
 <p>可以使用快速入门的方式创建Controller进行访问，此处不再赘述</p>
 <h1 id="三、Springboot原理分析"><a href="#三、Springboot原理分析" class="headerlink" title="三、Springboot原理分析"></a>三、Springboot原理分析</h1><h2 id="3-1-起步依赖原理分析"><a href="#3-1-起步依赖原理分析" class="headerlink" title="3.1 起步依赖原理分析"></a>3.1 起步依赖原理分析</h2><h2 id="3-1-1-分析spring-boot-starter-parent"><a href="#3-1-1-分析spring-boot-starter-parent" class="headerlink" title="3.1.1 分析spring-boot-starter-parent"></a>3.1.1 分析spring-boot-starter-parent</h2><p>按住Ctrl点击pom.xml中的spring-boot-starter-parent，跳转到了spring-boot-starter-parent的pom.xml，xml配置如下（只摘抄了部分重点配置）：</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>parent</span><span class="token punctuation">></span></span>
@@ -812,7 +804,6 @@
    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project.build.sourceEncoding</span><span class="token punctuation">></span></span>UTF-8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project.build.sourceEncoding</span><span class="token punctuation">></span></span>
    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project.reporting.outputEncoding</span><span class="token punctuation">></span></span>UTF-8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project.reporting.outputEncoding</span><span class="token punctuation">></span></span>
  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">></span></span></code></pre>
-
 <p>按住Ctrl点击pom.xml中的spring-boot-starter-dependencies，跳转到了spring-boot-starter-dependencies的pom.xml，xml配置如下（只摘抄了部分重点配置）：</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activemq.version</span><span class="token punctuation">></span></span>5.36.5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activemq.version</span><span class="token punctuation">></span></span>
@@ -860,8 +851,7 @@
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
       ... ... ...
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span></code></pre>
-
-<p>从上面的spring-boot-starter-dependencies的pom.xml中我们可以发现，&#x3D;&#x3D;一部分坐标的版本&#x3D;&#x3D;、&#x3D;&#x3D;依赖管理&#x3D;&#x3D;、&#x3D;&#x3D;插件管理已经定义好&#x3D;&#x3D;，所以我们的Springboot工程继承spring-boot-starter-parent后&#x3D;&#x3D;已经具备版本锁定等配置了&#x3D;&#x3D;。所以&#x3D;&#x3D;起步依赖的作用就是进行依赖的传递&#x3D;&#x3D;。</p>
+<p>从上面的spring-boot-starter-dependencies的pom.xml中我们可以发现，==一部分坐标的版本==、==依赖管理==、==插件管理已经定义好==，所以我们的Springboot工程继承spring-boot-starter-parent后==已经具备版本锁定等配置了==。所以==起步依赖的作用就是进行依赖的传递==。</p>
 <h3 id="3-1-2-分析spring-boot-starter-web"><a href="#3-1-2-分析spring-boot-starter-web" class="headerlink" title="3.1.2 分析spring-boot-starter-web"></a>3.1.2 分析spring-boot-starter-web</h3><p>按住Ctrl点击pom.xml中的spring-boot-starter-web，跳转到了spring-boot-starter-web的pom.xml，xml配置如下（只摘抄了部分重点配置）：</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span> <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd<span class="token punctuation">"</span></span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0<span class="token punctuation">"</span></span>
@@ -938,7 +928,6 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">></span></span></code></pre>
-
 <p>从上面的spring-boot-starter-web的pom.xml中我们可以发现，spring-boot-starter-web就是<strong>将web开发要使用的spring-web、spring-webmvc等坐标进行了“打包”，</strong>这样我们的工程只要引入spring-boot-starter-web起步依赖的坐标就可以进行web开发了，同样体现了依赖传递的作用。</p>
 <h2 id="3-2-自动配置原理解析"><a href="#3-2-自动配置原理解析" class="headerlink" title="3.2 自动配置原理解析"></a>3.2 自动配置原理解析</h2><p>按住Ctrl点击查看启动类MySpringbootApplication上的注解@SpringbootApplication</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@SpringbootApplication</span>
@@ -947,7 +936,6 @@
         <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">DemoApplication</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>注解@SpringbootApplication的源码</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//</span>
 <span class="token comment">// Source code recreated from a .class file by IntelliJ IDEA</span>
@@ -981,7 +969,6 @@
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">&#125;</span>
 </code></pre>
-
 <p>其中，</p>
 <p>@SpringbootConfiguration：等同与@Configuration，既标注该类是Spring的一个配置类</p>
 <p>@EnableAutoConfiguration：Springboot自动配置功能开启</p>
@@ -999,7 +986,6 @@
 
     <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">excludeName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>其中，@Import(AutoConfigurationImportSelector.class) 导入了AutoConfigurationImportSelector类</p>
 <p>按住Ctrl点击查看AutoConfigurationImportSelector源码</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">selectImports</span><span class="token punctuation">(</span><span class="token class-name">AnnotationMetadata</span> annotationMetadata<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -1022,8 +1008,7 @@
 		
 		<span class="token keyword">return</span> configurations<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
-<p>其中，SpringFactoriesLoader.loadFactoryNames 方法的作用就是从META-INF&#x2F;spring.factories文件中读取指定类对应的类名称列表</p>
+<p>其中，SpringFactoriesLoader.loadFactoryNames 方法的作用就是从META-INF/spring.factories文件中读取指定类对应的类名称列表</p>
 <p>spring.factories 文件中有关自动配置的配置信息如下：</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
@@ -1035,7 +1020,6 @@
 <span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span></span>MultipartAutoConfiguration</span><span class="token punctuation">,</span>\
 
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
-
 <p>上面配置文件存在大量的以Configuration为结尾的类名称，这些类就是存有自动配置信息的类，而SpringApplication在获取这些类名后再加载</p>
 <p>我们以ServletWebServerFactoryAutoConfiguration为例来分析源码：</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
@@ -1050,7 +1034,6 @@
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ServletWebServerFactoryAutoConfiguration</span> <span class="token punctuation">&#123;</span>
 	<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>其中，</p>
 <p>@EnableConfigurationProperties(ServerProperties.class) 代表加载ServerProperties服务器配置属性类</p>
 <p>进入ServerProperties.class源码如下：</p>
@@ -1070,21 +1053,20 @@
   	<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
   
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>其中，</p>
-<p>prefix &#x3D; “server” 表示Springboot配置文件中的前缀，Springboot会将配置文件中以server开始的属性映射到该类的字段中。映射关系如下：</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601121044096.png" alt="image-20220601121044096"></p>
+<p>prefix = “server” 表示Springboot配置文件中的前缀，Springboot会将配置文件中以server开始的属性映射到该类的字段中。映射关系如下：</p>
+<p><img src="image-20220601121044096.png" alt="image-20220601121044096"></p>
 <h1 id="四、Springboot的配置文件"><a href="#四、Springboot的配置文件" class="headerlink" title="四、Springboot的配置文件"></a>四、Springboot的配置文件</h1><h2 id="4-1-Springboot配置文件类型"><a href="#4-1-Springboot配置文件类型" class="headerlink" title="4.1 Springboot配置文件类型"></a>4.1 Springboot配置文件类型</h2><h3 id="4-1-1-Springboot配置文件类型和作用"><a href="#4-1-1-Springboot配置文件类型和作用" class="headerlink" title="4.1.1 Springboot配置文件类型和作用"></a>4.1.1 Springboot配置文件类型和作用</h3><p>Springboot是基于约定的，所以很多配置都有默认值，但<strong>如果想使用自己的配置替换默认配置的话，就可以使用application.properties或者application.yml（application.yaml）进行配置。</strong></p>
 <p>Springboot<strong>默认会从Resources目录下加载application.properties或application.yml（application.yaml）文件</strong></p>
-<p>其中，application.<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=properties&spm=1001.2101.3001.7020">properties</a>文件是键值对类型的文件，之前一直在使用，所以此处不在对properties文件的格式进行阐述。除了properties文件外，Springboot还可以使用yml文件进行配置，下面对yml文件进行讲解。</p>
-<h3 id="4-1-2-application-yml配置文件"><a href="#4-1-2-application-yml配置文件" class="headerlink" title="4.1.2 application.yml配置文件"></a>4.1.2 application.yml配置文件</h3><h4 id="4-1-2-1-yml配置文件简介"><a href="#4-1-2-1-yml配置文件简介" class="headerlink" title="4.1.2.1 yml配置文件简介"></a>4.1.2.1 yml配置文件简介</h4><p>YML文件格式是YAML (YAML Aint Markup Language)编写的文件格式，YAML是一种直观的能够被电脑识别的的<strong>数据序列化格式</strong>，并且容易被人类阅读，容易和脚本语言交互的，可以被支持YAML库的不同的编程语言程序导入，比如： C&#x2F;C++, Ruby, Python, Java, Perl, C#, PHP等。YML文件是<strong>以数据为核心的</strong>，比传统的xml方式更加简洁。</p>
+<p>其中，application.<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=properties&amp;spm=1001.2101.3001.7020">properties</a>文件是键值对类型的文件，之前一直在使用，所以此处不在对properties文件的格式进行阐述。除了properties文件外，Springboot还可以使用yml文件进行配置，下面对yml文件进行讲解。</p>
+<h3 id="4-1-2-application-yml配置文件"><a href="#4-1-2-application-yml配置文件" class="headerlink" title="4.1.2 application.yml配置文件"></a>4.1.2 application.yml配置文件</h3><h4 id="4-1-2-1-yml配置文件简介"><a href="#4-1-2-1-yml配置文件简介" class="headerlink" title="4.1.2.1 yml配置文件简介"></a>4.1.2.1 yml配置文件简介</h4><p>YML文件格式是YAML (YAML Aint Markup Language)编写的文件格式，YAML是一种直观的能够被电脑识别的的<strong>数据序列化格式</strong>，并且容易被人类阅读，容易和脚本语言交互的，可以被支持YAML库的不同的编程语言程序导入，比如： C/C++, Ruby, Python, Java, Perl, C#, PHP等。YML文件是<strong>以数据为核心的</strong>，比传统的xml方式更加简洁。</p>
 <p>YML文件的<strong>扩展名可以使用.yml或者.yaml</strong>。</p>
 <h4 id="4-1-2-2-yml配置文件的语法"><a href="#4-1-2-2-yml配置文件的语法" class="headerlink" title="4.1.2.2 yml配置文件的语法"></a>4.1.2.2 yml配置文件的语法</h4><h5 id="4-1-2-2-1-配置普通数据"><a href="#4-1-2-2-1-配置普通数据" class="headerlink" title="4.1.2.2.1 配置普通数据"></a>4.1.2.2.1 配置普通数据</h5><ul>
 <li><p>语法： key: value</p>
 </li>
 <li><p>示例代码：</p>
 </li>
-<li><pre><code class="yaml">name: haohao
+<li><p>```yaml<br>name: haohao</p>
 <pre class="language-none"><code class="language-none">
 - 注意：value之前有一个空格
 
@@ -1094,9 +1076,8 @@
 
   key:
 </code></pre>
-  key1: value1
-
-  key2: value2
+<p>  key1: value1</p>
+<p>  key2: value2</p>
 <pre class="language-none"><code class="language-none">
   或者：
 
@@ -1114,7 +1095,6 @@
   
   person: &#123;name: haohao,age: 31,addr: beijing&#125;
   12345678</code></pre>
-</code></pre>
 </li>
 <li><p>注意：key1前面的空格个数不限定，在yml语法中，相同缩进代表同一个级别</p>
 </li>
@@ -1126,22 +1106,20 @@
 <pre class="language-none"><code class="language-none">- value1
 
      - value2</code></pre>
-
 <p>或者：</p>
 <p>key: [value1,value2]</p>
 </li>
 <li><p>示例代码：</p>
 </li>
-<li><p>&#96;&#96;&#96;yaml<br>city:</p>
+<li><p>```yaml<br>city:</p>
 <ul>
 <li>beijing</li>
 <li>tianjin</li>
 <li>shanghai</li>
 <li>chongqing</li>
 </ul>
-<p>#或者</p>
-<p>city: [beijing,tianjin,shanghai,chongqing]</p>
-<p>#集合中的元素是对象形式<br>student:</p>
+<h1 id="或者"><a href="#或者" class="headerlink" title="或者"></a>或者</h1><p>city: [beijing,tianjin,shanghai,chongqing]</p>
+<h1 id="集合中的元素是对象形式"><a href="#集合中的元素是对象形式" class="headerlink" title="集合中的元素是对象形式"></a>集合中的元素是对象形式</h1><p>student:</p>
 <ul>
 <li>name: zhangsan<br>age: 18<br>score: 100</li>
 <li>name: lisi<br>age: 28<br>score: 88</li>
@@ -1197,7 +1175,8 @@ spring.elasticsearch.jest.proxy.port&#x3D; # Proxy port the HTTP client should u
 spring.elasticsearch.jest.read-timeout&#x3D;3s # Read timeout.
 spring.elasticsearch.jest.username&#x3D; # Login username.
 
-12345678910111213141516171819202122232425262728293031323334353637383940</code></pre></li>
+12345678910111213141516171819202122232425262728293031323334353637383940</code></pre>
+</li>
 </ul>
 </li>
 </ul>
@@ -1206,25 +1185,21 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
 <p>application.properties文件</p>
 <pre class="language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">server.port</span><span class="token punctuation">=</span><span class="token value attr-value">8888</span>
 <span class="token key attr-name">server.servlet.context-path</span><span class="token punctuation">=</span><span class="token value attr-value">demo</span></code></pre>
-
 <p>application.yml文件</p>
 <pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
   <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8888</span>
   <span class="token key atrule">servlet</span><span class="token punctuation">:</span>
     <span class="token key atrule">context-path</span><span class="token punctuation">:</span> /demo</code></pre>
-
 <h2 id="4-2-配置文件与配置类的属性映射方式"><a href="#4-2-配置文件与配置类的属性映射方式" class="headerlink" title="4.2 配置文件与配置类的属性映射方式"></a>4.2 配置文件与配置类的属性映射方式</h2><h3 id="4-2-1-使用注解-Value映射"><a href="#4-2-1-使用注解-Value映射" class="headerlink" title="4.2.1 使用注解@Value映射"></a>4.2.1 使用注解@Value映射</h3><p>我们可以通过@Value注解将配置文件中的值映射到一个Spring管理的Bean的字段上</p>
 <p>例如：</p>
 <p>application.properties配置如下：</p>
 <pre class="language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">person</span><span class="token punctuation">:</span>
 <span class="token key attr-name">  name</span><span class="token punctuation">:</span> <span class="token value attr-value">zhangsan</span>
 <span class="token key attr-name">  age</span><span class="token punctuation">:</span> <span class="token value attr-value">18</span></code></pre>
-
 <p>或者，application.yml配置如下：</p>
 <pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">person</span><span class="token punctuation">:</span>
   <span class="token key atrule">name</span><span class="token punctuation">:</span> zhangsan
   <span class="token key atrule">age</span><span class="token punctuation">:</span> <span class="token number">18</span></code></pre>
-
 <p>实体Bean代码如下：</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Controller</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">QuickStartController</span> <span class="token punctuation">&#123;</span>
@@ -1242,20 +1217,17 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
     <span class="token punctuation">&#125;</span>
 
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>浏览器访问地址：<a target="_blank" rel="noopener" href="http://localhost:8080/quick">http://localhost:8080/quick</a> 结果如下：</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601122242664.png" alt="image-20220601122242664"></p>
-<h3 id="4-2-2-使用注解-ConfigurationProperties映射"><a href="#4-2-2-使用注解-ConfigurationProperties映射" class="headerlink" title="4.2.2 使用注解@ConfigurationProperties映射"></a>4.2.2 使用注解@ConfigurationProperties映射</h3><p>通过注解@ConfigurationProperties(prefix&#x3D;“配置文件中的key的前缀”)可以将配置文件中的配置自动与实体进行映射</p>
+<p><img src="image-20220601122242664.png" alt="image-20220601122242664"></p>
+<h3 id="4-2-2-使用注解-ConfigurationProperties映射"><a href="#4-2-2-使用注解-ConfigurationProperties映射" class="headerlink" title="4.2.2 使用注解@ConfigurationProperties映射"></a>4.2.2 使用注解@ConfigurationProperties映射</h3><p>通过注解@ConfigurationProperties(prefix=“配置文件中的key的前缀”)可以将配置文件中的配置自动与实体进行映射</p>
 <p>application.properties配置如下：</p>
 <pre class="language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">person</span><span class="token punctuation">:</span>
 <span class="token key attr-name">  name</span><span class="token punctuation">:</span> <span class="token value attr-value">zhangsan</span>
 <span class="token key attr-name">  age</span><span class="token punctuation">:</span> <span class="token value attr-value">18</span></code></pre>
-
 <p>或者，application.yml配置如下：</p>
 <pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">person</span><span class="token punctuation">:</span>
   <span class="token key atrule">name</span><span class="token punctuation">:</span> zhangsan
   <span class="token key atrule">age</span><span class="token punctuation">:</span> <span class="token number">18</span></code></pre>
-
 <p>实体Bean代码如下：</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Controller</span>
 <span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"person"</span><span class="token punctuation">)</span>
@@ -1278,7 +1250,6 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
         <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>浏览器访问地址：<a target="_blank" rel="noopener" href="http://localhost:8080/quick">http://localhost:8080/quick</a> 结果相同</p>
 <p>注意：使用@ConfigurationProperties方式可以进行配置文件与实体字段的自动映射，但需要字段必须提供set方法才可以，而使用@Value注解修饰的字段不需要提供set方法</p>
 <h1 id="五、Springboot整合其他技术"><a href="#五、Springboot整合其他技术" class="headerlink" title="五、Springboot整合其他技术"></a>五、Springboot整合其他技术</h1><h2 id="5-1-Springboot整合swagger"><a href="#5-1-Springboot整合swagger" class="headerlink" title="5.1 Springboot整合swagger"></a>5.1 Springboot整合swagger</h2><h3 id="5-1-1-添加swagger的依赖"><a href="#5-1-1-添加swagger的依赖" class="headerlink" title="5.1.1 添加swagger的依赖"></a>5.1.1 添加swagger的依赖</h3><p>swagger</p>
@@ -1288,7 +1259,6 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>knife4j-spring-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.0.3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
-
 <h3 id="5-1-2-添加SwaggerConfig的配置类"><a href="#5-1-2-添加SwaggerConfig的配置类" class="headerlink" title="5.1.2 添加SwaggerConfig的配置类"></a>5.1.2 添加SwaggerConfig的配置类</h3><pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>fasterxml<span class="token punctuation">.</span>classmate<span class="token punctuation">.</span></span><span class="token class-name">TypeResolver</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Autowired</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">Bean</span></span><span class="token punctuation">;</span>
@@ -1357,7 +1327,6 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
                 <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>到此swagger的集成就差不多了。剩下的都可以参考swagger的一些注解。</p>
 <p>可以参考这几篇文章：</p>
 <blockquote>
@@ -1366,7 +1335,7 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
 <h2 id="5-2-Springboot整合druid数据源"><a href="#5-2-Springboot整合druid数据源" class="headerlink" title="5.2 Springboot整合druid数据源"></a>5.2 Springboot整合druid数据源</h2><blockquote>
 <p>ava程序很大一部分要操作数据库，为了提高性能操作数据库的时候，又不得不使用数据库连接池。 Druid 是阿里巴巴开源平台上一个数据库连接池实现，结合了 C3P0、DBCP 等 DB 池的优点，同时加入了日志监控。 Druid 可以很好的监控 DB 池连接和 SQL 的执行情况，天生就是针对监控而生的 DB 连接池。 </p>
 </blockquote>
-<p>Druid连接池是阿里巴巴内部唯一使用的连接池，内置强大的监控功能，监控特性不影响性能。功能强大，能防SQL注入，内置Loging能诊断Hack应用行为。，在内部数据库相关中间件TDDL&#x2F;DRDS 都内置使用强依赖了Druid连接池，经过阿里内部数千上万的系统大规模验证，经过历年双十一超大规模并发验证。<br>Spring Boot 2.0 以上默认使用 Hikari 数据源，可以说 Hikari 与 Driud 都是当前 Java Web 上最优秀的数据源。</p>
+<p>Druid连接池是阿里巴巴内部唯一使用的连接池，内置强大的监控功能，监控特性不影响性能。功能强大，能防SQL注入，内置Loging能诊断Hack应用行为。，在内部数据库相关中间件TDDL/DRDS 都内置使用强依赖了Druid连接池，经过阿里内部数千上万的系统大规模验证，经过历年双十一超大规模并发验证。<br>Spring Boot 2.0 以上默认使用 Hikari 数据源，可以说 Hikari 与 Driud 都是当前 Java Web 上最优秀的数据源。</p>
 <ul>
 <li>稳定性特性，阿里巴巴的业务验证</li>
 <li>完备的监控信息，快速诊断系统的瓶颈</li>
@@ -1378,7 +1347,6 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>druid<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.2.8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
-
 <h4 id="5-2-2-切换默认的数据源"><a href="#5-2-2-切换默认的数据源" class="headerlink" title="5.2.2 切换默认的数据源"></a>5.2.2 切换默认的数据源</h4><pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
   <span class="token key atrule">datasource</span><span class="token punctuation">:</span>
     <span class="token key atrule">username</span><span class="token punctuation">:</span> root               <span class="token comment">#数据库的用户名</span>
@@ -1386,7 +1354,6 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
     <span class="token key atrule">url</span><span class="token punctuation">:</span> jdbc<span class="token punctuation">:</span>mysql<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span>3306/demo<span class="token punctuation">?</span>useUnicode=true<span class="token important">&amp;characterEncoding=utf-8&amp;useSSL=true&amp;serverTimezone=Asia/Shanghai</span>   <span class="token comment">#url</span>
     <span class="token key atrule">driver-class-name</span><span class="token punctuation">:</span> com.mysql.cj.jdbc.Driver             <span class="token comment">#数据库的驱动</span>
     <span class="token key atrule">type</span><span class="token punctuation">:</span> com.alibaba.druid.pool.DruidDataSource</code></pre>
-
 <p>配置完成后，重新启动项目，通过测试类DataSource可以看到数据源已经切换成功</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@SpringbootTest</span>
 <span class="token keyword">class</span> <span class="token class-name">DemoApplicationTests</span> <span class="token punctuation">&#123;</span>
@@ -1400,9 +1367,8 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
     <span class="token punctuation">&#125;</span>
 
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>查看输出：</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601155816210.png" alt="image-20220601155816210"></p>
+<p><img src="image-20220601155816210.png" alt="image-20220601155816210"></p>
 <h4 id="5-2-3-修改数据源相关配置"><a href="#5-2-3-修改数据源相关配置" class="headerlink" title="5.2.3 修改数据源相关配置"></a>5.2.3 修改数据源相关配置</h4><pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
   <span class="token key atrule">datasource</span><span class="token punctuation">:</span>
     <span class="token key atrule">username</span><span class="token punctuation">:</span> root               <span class="token comment">#数据库的用户名</span>
@@ -1440,131 +1406,134 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
     <span class="token key atrule">useGlobalDataSourceStat</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
     <span class="token comment"># 通过connectProperties属性来打开mergeSql功能；慢SQL记录</span>
     <span class="token key atrule">connectionProperties</span><span class="token punctuation">:</span> druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500</code></pre>
-
-<h4 id="5-2-4-druid-常用配置项及解释"><a href="#5-2-4-druid-常用配置项及解释" class="headerlink" title="5.2.4 druid 常用配置项及解释"></a>5.2.4 druid 常用配置项及解释</h4><table>
+<h4 id="5-2-4-druid-常用配置项及解释"><a href="#5-2-4-druid-常用配置项及解释" class="headerlink" title="5.2.4 druid 常用配置项及解释"></a>5.2.4 druid 常用配置项及解释</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">配置</th>
-<th align="left">缺省值</th>
-<th align="left">说明</th>
+<th style="text-align:left">配置</th>
+<th style="text-align:left">缺省值</th>
+<th style="text-align:left">说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">name</td>
-<td align="left"></td>
-<td align="left">配置这个属性的意义在于没如果存在多个数据源，监控的时候可以通过名字来区分开来。如果没有配置，将会生成一个名字，格式是”DataSource-“+System.identityHashCode(this)</td>
+<tbody>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">配置这个属性的意义在于没如果存在多个数据源，监控的时候可以通过名字来区分开来。如果没有配置，将会生成一个名字，格式是”DataSource-“+System.identityHashCode(this)</td>
 </tr>
 <tr>
-<td align="left">jdbcurl</td>
-<td align="left"></td>
-<td align="left">连接数据库的url，不同数据库不一样</td>
+<td style="text-align:left">jdbcurl</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">连接数据库的url，不同数据库不一样</td>
 </tr>
 <tr>
-<td align="left">username</td>
-<td align="left"></td>
-<td align="left">连接数据库的用户名</td>
+<td style="text-align:left">username</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">连接数据库的用户名</td>
 </tr>
 <tr>
-<td align="left">password</td>
-<td align="left"></td>
-<td align="left">连接数据库的密码。如果你不希望密码直接写在配置文件中</td>
+<td style="text-align:left">password</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">连接数据库的密码。如果你不希望密码直接写在配置文件中</td>
 </tr>
 <tr>
-<td align="left">driverClassName</td>
-<td align="left"></td>
-<td align="left">这一项可配可不配，如果不配置druid会根据url自动识别dbType，然后选择相应的driverClassName(建议配置下)</td>
+<td style="text-align:left">driverClassName</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">这一项可配可不配，如果不配置druid会根据url自动识别dbType，然后选择相应的driverClassName(建议配置下)</td>
 </tr>
 <tr>
-<td align="left">initialSize</td>
-<td align="left">0</td>
-<td align="left">初始化时建立物理连接的个数，初始化发生在显示调用init方法，或者第一次getConnection时</td>
+<td style="text-align:left">initialSize</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">初始化时建立物理连接的个数，初始化发生在显示调用init方法，或者第一次getConnection时</td>
 </tr>
 <tr>
-<td align="left">maxActive</td>
-<td align="left">8</td>
-<td align="left">最大连接池数量</td>
+<td style="text-align:left">maxActive</td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">最大连接池数量</td>
 </tr>
 <tr>
-<td align="left">maxIdle</td>
-<td align="left">8</td>
-<td align="left">已经不再使用，配置了也没效果</td>
+<td style="text-align:left">maxIdle</td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">已经不再使用，配置了也没效果</td>
 </tr>
 <tr>
-<td align="left">minIdle</td>
-<td align="left"></td>
-<td align="left">最小连接池数量</td>
+<td style="text-align:left">minIdle</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">最小连接池数量</td>
 </tr>
 <tr>
-<td align="left">maxWait</td>
-<td align="left"></td>
-<td align="left">获取连接时最大等待时间，单位毫秒，配置了maxWait之后，缺省启用公平锁，并发效率会有所下降，如果需要可以通过配置useUnfairLock属性为true使用非公平锁</td>
+<td style="text-align:left">maxWait</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">获取连接时最大等待时间，单位毫秒，配置了maxWait之后，缺省启用公平锁，并发效率会有所下降，如果需要可以通过配置useUnfairLock属性为true使用非公平锁</td>
 </tr>
 <tr>
-<td align="left">poolPreparedStatements</td>
-<td align="left">false</td>
-<td align="left">是否缓存preparedStatement，也就是PsCache。PSCache对支持游标的数据库性能提升巨大，比如说oracle。在mysql下建议关闭</td>
+<td style="text-align:left">poolPreparedStatements</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">是否缓存preparedStatement，也就是PsCache。PSCache对支持游标的数据库性能提升巨大，比如说oracle。在mysql下建议关闭</td>
 </tr>
 <tr>
-<td align="left">maxOpenPreparedStatements</td>
-<td align="left">-1</td>
-<td align="left">要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true。在Druid中，不会存在Oracle下PSCache占用内存过多的问题，可以把这个数值配置打一下，比如说100</td>
+<td style="text-align:left">maxOpenPreparedStatements</td>
+<td style="text-align:left">-1</td>
+<td style="text-align:left">要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true。在Druid中，不会存在Oracle下PSCache占用内存过多的问题，可以把这个数值配置打一下，比如说100</td>
 </tr>
 <tr>
-<td align="left">validationQuery</td>
-<td align="left"></td>
-<td align="left">用来检测连接是否有效的sql，要求是一个查询语句。如果validationQuery为null，testOnBorrow、testOnReturn 、testWhileIdle都不会起作用</td>
+<td style="text-align:left">validationQuery</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">用来检测连接是否有效的sql，要求是一个查询语句。如果validationQuery为null，testOnBorrow、testOnReturn 、testWhileIdle都不会起作用</td>
 </tr>
 <tr>
-<td align="left">testOnBorrow</td>
-<td align="left">true</td>
-<td align="left">申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能</td>
+<td style="text-align:left">testOnBorrow</td>
+<td style="text-align:left">true</td>
+<td style="text-align:left">申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能</td>
 </tr>
 <tr>
-<td align="left">testOnReturn</td>
-<td align="left">false</td>
-<td align="left">归还连接时执行它validationQuery检测连接是否有效，做了这个配置会降低性能</td>
+<td style="text-align:left">testOnReturn</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">归还连接时执行它validationQuery检测连接是否有效，做了这个配置会降低性能</td>
 </tr>
 <tr>
-<td align="left">testWhileIdle</td>
-<td align="left">false</td>
-<td align="left">建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunMills，执行validationQuery检测连接是否有效</td>
+<td style="text-align:left">testWhileIdle</td>
+<td style="text-align:left">false</td>
+<td style="text-align:left">建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunMills，执行validationQuery检测连接是否有效</td>
 </tr>
 <tr>
-<td align="left">timeBetweenEvictionRunMillis</td>
-<td align="left">1分钟</td>
-<td align="left">有两个含义:Destory线程会检测连接的间隔时间 testWhileIdle的判断依据，详细看testWhileIdele属性的说明</td>
+<td style="text-align:left">timeBetweenEvictionRunMillis</td>
+<td style="text-align:left">1分钟</td>
+<td style="text-align:left">有两个含义:Destory线程会检测连接的间隔时间 testWhileIdle的判断依据，详细看testWhileIdele属性的说明</td>
 </tr>
 <tr>
-<td align="left">numTestsPerEvictionRun</td>
-<td align="left"></td>
-<td align="left">不再使用，一个DruidDataSource只支持一个EvicationRun</td>
+<td style="text-align:left">numTestsPerEvictionRun</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">不再使用，一个DruidDataSource只支持一个EvicationRun</td>
 </tr>
 <tr>
-<td align="left">minEvictableIdleTimeMillis</td>
-<td align="left">30分钟</td>
-<td align="left"></td>
+<td style="text-align:left">minEvictableIdleTimeMillis</td>
+<td style="text-align:left">30分钟</td>
+<td style="text-align:left"></td>
 </tr>
 <tr>
-<td align="left">connectionInitSqls</td>
-<td align="left"></td>
-<td align="left">物理连接初始化的时候执行sql</td>
+<td style="text-align:left">connectionInitSqls</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">物理连接初始化的时候执行sql</td>
 </tr>
 <tr>
-<td align="left">exceptionSorter</td>
-<td align="left">根据DBType自动识别</td>
-<td align="left">当数据库抛出一些不可恢复的异常时，抛弃连接</td>
+<td style="text-align:left">exceptionSorter</td>
+<td style="text-align:left">根据DBType自动识别</td>
+<td style="text-align:left">当数据库抛出一些不可恢复的异常时，抛弃连接</td>
 </tr>
 <tr>
-<td align="left">filters</td>
-<td align="left"></td>
-<td align="left">属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有:监控统计用的filter：stat日志用的filter;log4j防御注入的filter:wall</td>
+<td style="text-align:left">filters</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有:监控统计用的filter：stat日志用的filter;log4j防御注入的filter:wall</td>
 </tr>
 <tr>
-<td align="left">proxyFilters</td>
-<td align="left"></td>
-<td align="left">类型是List&lt;com.alibaba.druid,filter.Filter&gt;，如果同时配置filter和proxyFilters，是组合关系，并非</td>
+<td style="text-align:left">proxyFilters</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">类型是List<com.alibaba.druid,filter.Filter>，如果同时配置filter和proxyFilters，是组合关系，并非</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h4 id="5-2-5-编写druid监控"><a href="#5-2-5-编写druid监控" class="headerlink" title="5.2.5 编写druid监控"></a>5.2.5 编写druid监控</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>pool<span class="token punctuation">.</span></span><span class="token class-name">DruidDataSource</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>support<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">StatViewServlet</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>support<span class="token punctuation">.</span>http<span class="token punctuation">.</span></span><span class="token class-name">WebStatFilter</span></span><span class="token punctuation">;</span>
@@ -1643,33 +1612,29 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
     <span class="token punctuation">&#125;</span>
     
 <span class="token punctuation">&#125;</span></code></pre>
-
-<h4 id="5-2-6-监控连接"><a href="#5-2-6-监控连接" class="headerlink" title="5.2.6 监控连接"></a>5.2.6 监控连接</h4><p>启动项目，访问 <a target="_blank" rel="noopener" href="http://localhost/">http://localhost</a>:8080&#x2F;druid&#x2F;login.html 即可进入Druid监控的登录页面<br>输入刚刚配置的用户名和密码</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601160725082.png" alt="image-20220601160725082"></p>
+<h4 id="5-2-6-监控连接"><a href="#5-2-6-监控连接" class="headerlink" title="5.2.6 监控连接"></a>5.2.6 监控连接</h4><p>启动项目，访问 <a target="_blank" rel="noopener" href="http://localhost/">http://localhost</a>:8080/druid/login.html 即可进入Druid监控的登录页面<br>输入刚刚配置的用户名和密码</p>
+<p><img src="image-20220601160725082.png" alt="image-20220601160725082"></p>
 <p>顺利登陆相关后台，在后台可以对当前数据源的各项数据进行查看</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601160831465.png" alt="image-20220601160831465"></p>
+<p><img src="image-20220601160831465.png" alt="image-20220601160831465"></p>
 <h4 id="5-2-7-可能出现的问题"><a href="#5-2-7-可能出现的问题" class="headerlink" title="5.2.7 可能出现的问题"></a>5.2.7 可能出现的问题</h4><p>如果出现这个报错：</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601160540334.png" alt="image-20220601160540334"></p>
+<p><img src="image-20220601160540334.png" alt="image-20220601160540334"></p>
 <p>可能是没有引入log4j 的依赖。在pom文件中引入log4j即可：</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>log4j<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>log4j<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.2.17<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
-
 <h2 id="5-3-Springboot整合mybatis-plus"><a href="#5-3-Springboot整合mybatis-plus" class="headerlink" title="5.3 Springboot整合mybatis-plus"></a>5.3 Springboot整合mybatis-plus</h2><h3 id="5-3-1-添加mybatis-plus的依赖"><a href="#5-3-1-添加mybatis-plus的依赖" class="headerlink" title="5.3.1 添加mybatis-plus的依赖"></a>5.3.1 添加mybatis-plus的依赖</h3><pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!--mybatis-plus 的依赖--></span>		
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.baomidou<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mybatis-plus-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.5.3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
-
 <h3 id="5-3-2-添加数据库驱动坐标"><a href="#5-3-2-添加数据库驱动坐标" class="headerlink" title="5.3.2 添加数据库驱动坐标"></a>5.3.2 添加数据库驱动坐标</h3><pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!-- MySQL连接驱动 --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>mysql<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mysql-connector-java<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
-
 <h3 id="5-3-3添加数据库连接信息"><a href="#5-3-3添加数据库连接信息" class="headerlink" title="5.3.3添加数据库连接信息"></a>5.3.3添加数据库连接信息</h3><p>在application.properties中添加数据库的连接信息</p>
 <p>注意：高版本的url现在需要设置时区等信息</p>
 <pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>  
@@ -1678,7 +1643,6 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
     <span class="token key atrule">password</span><span class="token punctuation">:</span> mysql729           <span class="token comment">#数据库的密码</span>
     <span class="token key atrule">url</span><span class="token punctuation">:</span> jdbc<span class="token punctuation">:</span>mysql<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span>3306/demo<span class="token punctuation">?</span>useUnicode=true<span class="token important">&amp;characterEncoding=utf-8&amp;useSSL=true&amp;serverTimezone=Asia/Shanghai</span>   <span class="token comment">#url</span>
     <span class="token key atrule">driver-class-name</span><span class="token punctuation">:</span> com.mysql.cj.jdbc.Driver             <span class="token comment">#数据库的驱动</span></code></pre>
-
 <h3 id="5-3-4-添加mybatis-plus-配置信息"><a href="#5-3-4-添加mybatis-plus-配置信息" class="headerlink" title="5.3.4 添加mybatis-plus 配置信息"></a>5.3.4 添加mybatis-plus 配置信息</h3><pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">mybatis-plus</span><span class="token punctuation">:</span>
   <span class="token key atrule">configuration</span><span class="token punctuation">:</span>
     <span class="token key atrule">call-setters-on-nulls</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>                             <span class="token comment">#如果map查出字段为空，也显示</span>
@@ -1690,7 +1654,6 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
     <span class="token key atrule">db-config</span><span class="token punctuation">:</span>
       <span class="token key atrule">logic-delete-value</span><span class="token punctuation">:</span> <span class="token number">0</span>                                <span class="token comment"># 逻辑删除（不存在） 0</span>
       <span class="token key atrule">logic-not-delete-value</span><span class="token punctuation">:</span> <span class="token number">1</span>                             <span class="token comment"># 逻辑删除（存在） 1</span></code></pre>
-
 <h3 id="5-3-5-编写mybatis-plus-的配置类"><a href="#5-3-5-编写mybatis-plus-的配置类" class="headerlink" title="5.3.5 编写mybatis-plus 的配置类"></a>5.3.5 编写mybatis-plus 的配置类</h3><p>包括分页插件、乐观锁等等</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>controller<span class="token punctuation">.</span>config<span class="token punctuation">.</span>mybatis</span><span class="token punctuation">;</span>
 
@@ -1750,7 +1713,6 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
         <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>一个自动填充的配置类：</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>config<span class="token punctuation">.</span>mybatis</span><span class="token punctuation">;</span>
 
@@ -1780,21 +1742,18 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
 </code></pre>
-
 <h3 id="5-3-6-添加mybatis-plus代码生成器的依赖"><a href="#5-3-6-添加mybatis-plus代码生成器的依赖" class="headerlink" title="5.3.6 添加mybatis-plus代码生成器的依赖"></a>5.3.6 添加mybatis-plus代码生成器的依赖</h3><p>生成器的依赖：</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.baomidou<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mybatis-plus-generator<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.5.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
-
 <p>模板引擎的依赖：</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.velocity<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>velocity-engine-core<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
-
 <h3 id="5-3-7-编写mybatis-plus代码生成器工具类"><a href="#5-3-7-编写mybatis-plus代码生成器工具类" class="headerlink" title="5.3.7 编写mybatis-plus代码生成器工具类"></a>5.3.7 编写mybatis-plus代码生成器工具类</h3><pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>config<span class="token punctuation">.</span>mybatis</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">FieldFill</span></span><span class="token punctuation">;</span>
@@ -1899,7 +1858,6 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
 
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
 <h3 id="5-3-8-使用mybatis-plus代码生成器工具类"><a href="#5-3-8-使用mybatis-plus代码生成器工具类" class="headerlink" title="5.3.8 使用mybatis-plus代码生成器工具类"></a>5.3.8 使用mybatis-plus代码生成器工具类</h3><p>创建一张user表：</p>
 <pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token identifier"><span class="token punctuation">`</span>user<span class="token punctuation">`</span></span> <span class="token punctuation">(</span>
   <span class="token identifier"><span class="token punctuation">`</span>user_id<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
@@ -1909,9 +1867,8 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
   <span class="token identifier"><span class="token punctuation">`</span>update_time<span class="token punctuation">`</span></span> <span class="token keyword">datetime</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">COMMENT</span> <span class="token string">'更新时间'</span><span class="token punctuation">,</span>
   <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>user_id<span class="token punctuation">`</span></span><span class="token punctuation">)</span> <span class="token keyword">USING</span> <span class="token keyword">BTREE</span>
 <span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8<span class="token punctuation">;</span></code></pre>
-
 <p>使用工具类生成：</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601153403042.png" alt="image-20220601153403042"></p>
+<p><img src="image-20220601153403042.png" alt="image-20220601153403042"></p>
 <h3 id="5-3-9-查看生成的代码"><a href="#5-3-9-查看生成的代码" class="headerlink" title="5.3.9 查看生成的代码"></a>5.3.9 查看生成的代码</h3><h4 id="实体类Bean"><a href="#实体类Bean" class="headerlink" title="实体类Bean"></a>实体类Bean</h4><p>如果数据库中的字段有注释，则会以@ApiModelProperty(“”)的形式展示：</p>
 <p>@TableName(“user”) 表名</p>
 <p>@TableId(“user_id”) 主键</p>
@@ -1942,12 +1899,10 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
     <span class="token keyword">private</span> <span class="token class-name">Date</span> updateTime<span class="token punctuation">;</span>
 
 <span class="token punctuation">&#125;</span></code></pre>
-
 <h4 id="Mapper"><a href="#Mapper" class="headerlink" title="Mapper"></a>Mapper</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Mapper</span>
 <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserMapper</span> <span class="token keyword">extends</span> <span class="token class-name">BaseMapper</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
 
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>注意：@Mapper标记该类是一个mybatis-plus的mapper接口，可以被spring boot自动扫描到spring上下文中</p>
 <h4 id="Mapper-xml-映射文件"><a href="#Mapper-xml-映射文件" class="headerlink" title="Mapper.xml 映射文件"></a>Mapper.xml 映射文件</h4><pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
 <span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">mapper</span> <span class="token name">PUBLIC</span> <span class="token string">"-//mybatis.org//DTD Mapper 3.0//EN"</span> <span class="token string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span><span class="token punctuation">></span></span>
@@ -1968,7 +1923,6 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sql</span><span class="token punctuation">></span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mapper</span><span class="token punctuation">></span></span></code></pre>
-
 <h4 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>pojo<span class="token punctuation">.</span></span><span class="token class-name">User</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>extension<span class="token punctuation">.</span>service<span class="token punctuation">.</span></span><span class="token class-name">IService</span></span><span class="token punctuation">;</span>
 
@@ -1980,7 +1934,6 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
 <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserService</span> <span class="token keyword">extends</span> <span class="token class-name">IService</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
 
 <span class="token punctuation">&#125;</span></code></pre>
-
 <h4 id="Impl"><a href="#Impl" class="headerlink" title="Impl"></a>Impl</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>pojo<span class="token punctuation">.</span></span><span class="token class-name">User</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>mapper<span class="token punctuation">.</span></span><span class="token class-name">UserMapper</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>service<span class="token punctuation">.</span></span><span class="token class-name">UserService</span></span><span class="token punctuation">;</span>
@@ -1996,7 +1949,6 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserServiceImpl</span> <span class="token keyword">extends</span> <span class="token class-name">ServiceImpl</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">UserMapper</span><span class="token punctuation">,</span> <span class="token class-name">User</span><span class="token punctuation">></span></span> <span class="token keyword">implements</span> <span class="token class-name">UserService</span> <span class="token punctuation">&#123;</span>
 
 <span class="token punctuation">&#125;</span></code></pre>
-
 <h4 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">RequestMapping</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">RestController</span></span><span class="token punctuation">;</span>
 
@@ -2010,7 +1962,6 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">&#123;</span>
 
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>@RestController 是 @Controller和@ResponseBody 结合。</p>
 <h3 id="5-3-9测试"><a href="#5-3-9测试" class="headerlink" title="5.3.9测试"></a>5.3.9测试</h3><p>在新生成的UserController类编写测试：</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
@@ -2027,15 +1978,14 @@ spring.elasticsearch.jest.username&#x3D; # Login username.
     <span class="token punctuation">&#125;</span>
 
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>在浏览器入<a target="_blank" rel="noopener" href="http://localhost:8080/user/queryUser">http://localhost:8080/user/queryUser</a>  测试</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601154552894.png" alt="image-20220601154552894"></p>
+<p><img src="image-20220601154552894.png" alt="image-20220601154552894"></p>
 <p>可以看到数据库的数据已经被查询出来了。并进行展示。</p>
 <h4 id="5-3-10-可能会出现的问题"><a href="#5-3-10-可能会出现的问题" class="headerlink" title="5.3.10 可能会出现的问题"></a>5.3.10 可能会出现的问题</h4><p>如果启动失败，出现这个错误：</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601154755466.png" alt="image-20220601154755466"></p>
-<p>这是因为Springfox使用的路径匹配是基于AntPathMatcher的，而Spring Boot 2.6.X使用的是PathPatternMatcher。该注解可以更改匹配规则。你也可以直接修改配置spring.mvc.pathmatch.matching-strategy&#x3D;ANT_PATH_MATCHER来更改规则</p>
+<p><img src="image-20220601154755466.png" alt="image-20220601154755466"></p>
+<p>这是因为Springfox使用的路径匹配是基于AntPathMatcher的，而Spring Boot 2.6.X使用的是PathPatternMatcher。该注解可以更改匹配规则。你也可以直接修改配置spring.mvc.pathmatch.matching-strategy=ANT_PATH_MATCHER来更改规则</p>
 <p>在yml配置文件中添加这个：</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601154926499.png" alt="image-20220601154926499"></p>
+<p><img src="image-20220601154926499.png" alt="image-20220601154926499"></p>
 <p>还有就可在启动类上添加：@EnableWebMvc</p>
 <pre class="language-JAVA" data-language="JAVA"><code class="language-JAVA">@EnableWebMvc
 @SpringbootApplication
@@ -2045,14 +1995,12 @@ public class DemoApplication &#123;
         SpringApplication.run(DemoApplication.class, args);
     &#125;
 &#125;</code></pre>
-
 <p>OK。</p>
 <h2 id="5-4-Springboot-整合Redis"><a href="#5-4-Springboot-整合Redis" class="headerlink" title="5.4 Springboot 整合Redis"></a>5.4 Springboot 整合Redis</h2><h3 id="5-4-1-添加redis-的起步依赖"><a href="#5-4-1-添加redis-的起步依赖" class="headerlink" title="5.4.1 添加redis 的起步依赖"></a>5.4.1 添加redis 的起步依赖</h3><pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!-- 配置使用redis启动器 --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-data-redis<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
-
 <h3 id="5-4-2-配置redis的连接信息"><a href="#5-4-2-配置redis的连接信息" class="headerlink" title="5.4.2 配置redis的连接信息"></a>5.4.2 配置redis的连接信息</h3><pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>  
   <span class="token key atrule">redis</span><span class="token punctuation">:</span>
     <span class="token key atrule">database</span><span class="token punctuation">:</span> <span class="token number">0</span>             <span class="token comment">#redis 数据库索引（默认为0）</span>
@@ -2065,7 +2013,6 @@ public class DemoApplication &#123;
         <span class="token key atrule">max-wait</span><span class="token punctuation">:</span> <span class="token number">-1</span>         <span class="token comment">#连接池最大阻塞等待时间（使用负值表示没有限制） 默认-1</span>
         <span class="token key atrule">max-idle</span><span class="token punctuation">:</span> <span class="token number">8</span>          <span class="token comment">#连接池最大空闲连接 默认8</span>
         <span class="token key atrule">min-idle</span><span class="token punctuation">:</span> <span class="token number">0</span>          <span class="token comment">#连接池最小空闲连接 默认 0</span></code></pre>
-
 <h3 id="5-4-3-编写redis-的配置类"><a href="#5-4-3-编写redis-的配置类" class="headerlink" title="5.4.3 编写redis 的配置类"></a>5.4.3 编写redis 的配置类</h3><pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>fasterxml<span class="token punctuation">.</span>jackson<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">JsonAutoDetect</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>fasterxml<span class="token punctuation">.</span>jackson<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">PropertyAccessor</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>fasterxml<span class="token punctuation">.</span>jackson<span class="token punctuation">.</span>databind<span class="token punctuation">.</span></span><span class="token class-name">ObjectMapper</span></span><span class="token punctuation">;</span>
@@ -2134,7 +2081,6 @@ public class DemoApplication &#123;
         <span class="token keyword">return</span> cacheManager<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
 <h3 id="5-4-4-编写redis-的工具类"><a href="#5-4-4-编写redis-的工具类" class="headerlink" title="5.4.4 编写redis 的工具类"></a>5.4.4 编写redis 的工具类</h3><pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>data<span class="token punctuation">.</span>redis<span class="token punctuation">.</span>core<span class="token punctuation">.</span></span><span class="token class-name">RedisTemplate</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Component</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">CollectionUtils</span></span><span class="token punctuation">;</span>
@@ -2196,7 +2142,6 @@ public class DemoApplication &#123;
     <span class="token punctuation">&#125;</span>
   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
 <h3 id="5-4-5测试："><a href="#5-4-5测试：" class="headerlink" title="5.4.5测试："></a>5.4.5测试：</h3><pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/user"</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">&#123;</span>
@@ -2211,11 +2156,10 @@ public class DemoApplication &#123;
     <span class="token punctuation">&#125;</span>
     
 <span class="token punctuation">&#125;</span></code></pre>
-
 <p>在浏览器输入：<a target="_blank" rel="noopener" href="http://localhost:8080/user/code?code=666">http://localhost:8080/user/code?code=666</a></p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601162023993.png" alt="image-20220601162023993"></p>
+<p><img src="image-20220601162023993.png" alt="image-20220601162023993"></p>
 <p>查看redis 的情况：</p>
-<p><img src="/2022/06/01/Springboot%E5%85%A5%E9%97%A8%E5%8F%8A%E4%BD%BF%E7%94%A8/image-20220601161951238.png" alt="image-20220601161951238"></p>
+<p><img src="image-20220601161951238.png" alt="image-20220601161951238"></p>
 
                 
             </div>

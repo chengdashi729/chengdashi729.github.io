@@ -589,22 +589,22 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><h3 id="什么是MQ"><a href="#什么是MQ" class="headerlink" title="什么是MQ"></a>什么是MQ</h3><p>MQ（Message Quene）：消息队列，通过典型的生产者和消费者模型不断向消息队列中生产消息，消费者不断从队列中获取消息。因为消息的生产和消费是异步的，而且只关系消息的发送和接收，没有业务逻辑的侵入，轻松地实现系统间解耦。别名为消息中间件，通过利用高效可靠的消息传递机制进行平台无关的数据交流，并给予数据通信进行分布式系统的集成。</p>
-<h3 id="AMQP协议"><a href="#AMQP协议" class="headerlink" title="AMQP协议"></a>AMQP协议</h3><p>AMQP（advanced message queuing protocol）在2003年时被提出，最早用于解决金融领不同平台之间的消息传递交互问题。顾名思义，AMQP是一种协议，更准确的说是一种binary wire-level protocol（链接协议）。这是其和JMS的本质差别，AMQP不从API层进行限定，而是直接定义网络交换的数据格式。这使得实现了AMQP的provider天然性就是跨平台的。以下是AMQP协议模型:<br><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220518085612216.png" alt="image-20220518085612216"></p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220518085548646.png" alt="image-20220518085548646"></p>
+<h3 id="AMQP协议"><a href="#AMQP协议" class="headerlink" title="AMQP协议"></a>AMQP协议</h3><p>AMQP（advanced message queuing protocol）在2003年时被提出，最早用于解决金融领不同平台之间的消息传递交互问题。顾名思义，AMQP是一种协议，更准确的说是一种binary wire-level protocol（链接协议）。这是其和JMS的本质差别，AMQP不从API层进行限定，而是直接定义网络交换的数据格式。这使得实现了AMQP的provider天然性就是跨平台的。以下是AMQP协议模型:<br><img src="image-20220518085612216.png" alt="image-20220518085612216"></p>
+<p><img src="image-20220518085548646.png" alt="image-20220518085548646"></p>
 <h3 id="不同MQ特点："><a href="#不同MQ特点：" class="headerlink" title="不同MQ特点："></a>不同MQ特点：</h3><ul>
 <li>ActiveMQ：是Apache出品，是最流行，能力强劲的开源消息总线。它是一个完全支持JMS规范的消息中间件。有丰富的API，多种集群架构模式让ActiveMQ称为老牌成熟的消息中间件，中小企业使用广泛</li>
 <li>Kafka：是LinkedIn开源的分布式发布-订阅消息系统，目前属于Apache顶级项目。主要特点是基于Pull的模式处理消息消费，追求吞吐量。一开始的目的就是用于日志收集和传输，0.8版本之后开始支持复制，不支持事务，对消息的重复、丢失、错误没有严格要求，适合产生大量数据的互联网服务的数据收集业务</li>
 <li>RocketMQ：是阿里开源的消息中间件，纯java开发，具有高吞吐量、高可用性、适合大规模分布式系统应用的特点。RocketMQ起源于Kafka，对消息的可靠传输及事务性做了优化，在阿里被广泛用于交易、充值、流计算、消息推送、日志流式处理、binglog分发等场景</li>
-<li>RabbitMQ：使用Erlang语言开发的消息队列系统。基于AMQP协议来实现。主要特征是面向消息、队列、路由(包括点对点和发布&#x2F;订阅)、可靠性、安全。AMQP协议更多用在企业系统内对数据一致性、稳定性和可靠性要求很高的场景，对性能和吞吐量的要求在其次。</li>
+<li>RabbitMQ：使用Erlang语言开发的消息队列系统。基于AMQP协议来实现。主要特征是面向消息、队列、路由(包括点对点和发布/订阅)、可靠性、安全。AMQP协议更多用在企业系统内对数据一致性、稳定性和可靠性要求很高的场景，对性能和吞吐量的要求在其次。</li>
 </ul>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=RabbitMQ&spm=1001.2101.3001.7020">RabbitMQ</a>比Kafka更可靠，Kafka更适合IO高吞吐的处理，一般应用在大数据日志处理或对实时性(少量延迟)，可靠性(少量丢失数据)要求稍低的场景使用，比如ELK日志收集</p>
+<p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=RabbitMQ&amp;spm=1001.2101.3001.7020">RabbitMQ</a>比Kafka更可靠，Kafka更适合IO高吞吐的处理，一般应用在大数据日志处理或对实时性(少量延迟)，可靠性(少量丢失数据)要求稍低的场景使用，比如ELK日志收集</p>
 </blockquote>
 <h3 id="RabbitMQ安装"><a href="#RabbitMQ安装" class="headerlink" title="RabbitMQ安装"></a>RabbitMQ安装</h3><blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.rabbitmq.com/">RabbitMQ官网</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.rabbitmq.com/news.html">RabbitMQ下载</a> (注意与erlang版本对应关系)</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/rabbitmq/rabbitmq-server/releases/">Releases · rabbitmq&#x2F;rabbitmq-server (github.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/rabbitmq/erlang-rpm/releases">Releases · rabbitmq&#x2F;erlang-rpm (github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/rabbitmq/rabbitmq-server/releases/">Releases · rabbitmq/rabbitmq-server (github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/rabbitmq/erlang-rpm/releases">Releases · rabbitmq/erlang-rpm (github.com)</a></p>
 </blockquote>
 <pre class="language-java" data-language="java"><code class="language-java"># <span class="token number">1.</span>将安装包上传到服务器
 erlang<span class="token operator">-</span><span class="token number">23.3</span><span class="token number">.1</span><span class="token operator">-</span><span class="token number">1.</span>el7<span class="token punctuation">.</span>x86_64<span class="token punctuation">.</span>rpm 
@@ -642,19 +642,17 @@ http<span class="token operator">:</span><span class="token operator">/</span><s
 # <span class="token number">10.</span>初始登录
 guest guest
 </code></pre>
-
 <blockquote>
 <p>rabbitmq-server-3.8.13配置文件</p>
-<p>安装之后&#x2F;etc&#x2F;rabbitmq&#x2F;目录下没有rabbitmq的配置文件，在&#x2F;usr&#x2F;share&#x2F;doc&#x2F;rabbitmq-server-3.8.13&#x2F;目录下也没有提供配置文件模板</p>
+<p>安装之后/etc/rabbitmq/目录下没有rabbitmq的配置文件，在/usr/share/doc/rabbitmq-server-3.8.13/目录下也没有提供配置文件模板</p>
 <p>可以到github上下载将其拷贝到目录下</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/rabbitmq/rabbitmq-server/tree/v3.8.x/deps/rabbit/docs">https://github.com/rabbitmq/rabbitmq-server/tree/v3.8.x/deps/rabbit/docs</a></p>
-<p>因为没有多少配置，此处直接在&#x2F;etc&#x2F;rabbitmq&#x2F;目录下新建rabbit.conf，添加</p>
+<p>因为没有多少配置，此处直接在/etc/rabbitmq/目录下新建rabbit.conf，添加</p>
 <pre class="language-java" data-language="java"><code class="language-java">loopback_users<span class="token punctuation">.</span>guest <span class="token operator">=</span> <span class="token boolean">false</span></code></pre>
-
 <p>我个人使用这个：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40584261/article/details/106826044">https://blog.csdn.net/weixin_40584261/article/details/106826044</a></p>
 </blockquote>
 <p>登录成功显示：</p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfbGV0dGVy,size_16,color_FFFFFF,t_70.png" alt="在这里插入图片描述"></p>
+<p><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfbGV0dGVy,size_16,color_FFFFFF,t_70.png" alt="在这里插入图片描述"></p>
 <h2 id="RabbitMQ配置"><a href="#RabbitMQ配置" class="headerlink" title="RabbitMQ配置"></a>RabbitMQ配置</h2><p>web界面连接rabbitmq端口：15672</p>
 <p>java连接rabbitmq端口：5672</p>
 <h3 id="RabbitMQ管理命令行"><a href="#RabbitMQ管理命令行" class="headerlink" title="RabbitMQ管理命令行"></a>RabbitMQ管理命令行</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 1,服务启动相关</span>
@@ -665,8 +663,7 @@ rabbitmq <span class="token builtin class-name">help</span> 可以查看更多�
 
 <span class="token comment">#3，插件管理命令行</span>
 rabbitmq-plugins <span class="token builtin class-name">enable</span> <span class="token operator">|</span> list <span class="token operator">|</span> disable</code></pre>
-
-<h3 id="web管理界面介绍"><a href="#web管理界面介绍" class="headerlink" title="web管理界面介绍"></a>web管理界面介绍</h3><h4 id="导航栏介绍"><a href="#导航栏介绍" class="headerlink" title="导航栏介绍"></a>导航栏介绍</h4><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfbGV0dGVy,size_16,color_FFFFFF,t_70-16528347206292.png" alt="在这里插入图片描述"></p>
+<h3 id="web管理界面介绍"><a href="#web管理界面介绍" class="headerlink" title="web管理界面介绍"></a>web管理界面介绍</h3><h4 id="导航栏介绍"><a href="#导航栏介绍" class="headerlink" title="导航栏介绍"></a>导航栏介绍</h4><p><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfbGV0dGVy,size_16,color_FFFFFF,t_70-16528347206292.png" alt="在这里插入图片描述"></p>
 <h4 id="常见概念："><a href="#常见概念：" class="headerlink" title="常见概念："></a>常见概念：</h4><blockquote>
 <p>Server(broker): 接受客户端连接，实现AMQP消息队列和路由功能的进程。</p>
 <p>Virtual Host：虚拟主机，类似于权限控制组，一个Virtual Host里面可以有若干个Exchange和Queue，但是权限控制的最小粒度是Virtual Host</p>
@@ -676,7 +673,7 @@ rabbitmq-plugins <span class="token builtin class-name">enable</span> <span clas
 <p>Message Queues：消息队列，消息存放在队列中，等待消费，消费后被移除队列</p>
 <p>Message：由Header和Body组成。Header是由生产者添加的各种属性的集合，包括Message是否被持久化、由哪个Message Queue接受、优先级是多少等。而Body是真正需要传输的APP数据。</p>
 </blockquote>
-<h4 id="Admin用户管理和虚拟主机管理"><a href="#Admin用户管理和虚拟主机管理" class="headerlink" title="Admin用户管理和虚拟主机管理"></a>Admin用户管理和虚拟主机管理</h4><h5 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h5><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfbGV0dGVy,size_16,color_FFFFFF,t_70-16528347206293.png" alt="在这里插入图片描述"></p>
+<h4 id="Admin用户管理和虚拟主机管理"><a href="#Admin用户管理和虚拟主机管理" class="headerlink" title="Admin用户管理和虚拟主机管理"></a>Admin用户管理和虚拟主机管理</h4><h5 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h5><p><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfbGV0dGVy,size_16,color_FFFFFF,t_70-16528347206293.png" alt="在这里插入图片描述"></p>
 <h5 id="Tags选项用户可选类型"><a href="#Tags选项用户可选类型" class="headerlink" title="Tags选项用户可选类型"></a>Tags选项用户可选类型</h5><ul>
 <li>Admin：超级管理员，可登录管理控制台，可查看所有信息，并且可以对用户，策略(policy)进行操作</li>
 <li>Monitoring：监控者，可登陆管理控制台，同时可以查看rabbitmq节点的相关信息(进程数，内存使用情况，磁盘使用情况等)</li>
@@ -685,17 +682,17 @@ rabbitmq-plugins <span class="token builtin class-name">enable</span> <span clas
 <li>其他：无法登陆管理控制台，通常就是普通的生产者和消费者。</li>
 </ul>
 <h5 id="创建虚拟主机"><a href="#创建虚拟主机" class="headerlink" title="创建虚拟主机"></a>创建虚拟主机</h5><p>为了让各个用户可以互不干扰的工作，RabbitMQ添加了虚拟主机（Virtual Hosts）的概念。其实就是一个独立的访问路径，不同用户使用不同路径，各自有自己的队列、交换机，互相不会影响。</p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfbGV0dGVy,size_16,color_FFFFFF,t_70-16528347206304.png" alt="在这里插入图片描述"></p>
-<h5 id="绑定虚拟主机和用户"><a href="#绑定虚拟主机和用户" class="headerlink" title="绑定虚拟主机和用户"></a>绑定虚拟主机和用户</h5><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfbGV0dGVy,size_16,color_FFFFFF,t_70-16528347206305.png" alt="在这里插入图片描述"></p>
+<p><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfbGV0dGVy,size_16,color_FFFFFF,t_70-16528347206304.png" alt="在这里插入图片描述"></p>
+<h5 id="绑定虚拟主机和用户"><a href="#绑定虚拟主机和用户" class="headerlink" title="绑定虚拟主机和用户"></a>绑定虚拟主机和用户</h5><p><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2FfbGV0dGVy,size_16,color_FFFFFF,t_70-16528347206305.png" alt="在这里插入图片描述"></p>
 <h2 id="RabbitMQ支持的消息模型"><a href="#RabbitMQ支持的消息模型" class="headerlink" title="RabbitMQ支持的消息模型"></a>RabbitMQ支持的消息模型</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.rabbitmq.com/getstarted.html">https://www.rabbitmq.com/getstarted.html</a></p>
 </blockquote>
 <p>添加端口访问：</p>
 <blockquote>
-<p>firewall-cmd –add-port&#x3D;5672&#x2F;tcp –permanent</p>
-<p>firewall-cmd –add-port&#x3D;15672&#x2F;tcp –permanent</p>
-<p>firewall-cmd –reload</p>
-<p>firewall-cmd –list-all</p>
+<p>firewall-cmd —add-port=5672/tcp —permanent</p>
+<p>firewall-cmd —add-port=15672/tcp —permanent</p>
+<p>firewall-cmd —reload</p>
+<p>firewall-cmd —list-all</p>
 </blockquote>
 <p>rabbitmq依赖</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
@@ -703,10 +700,7 @@ rabbitmq-plugins <span class="token builtin class-name">enable</span> <span clas
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>amqp-client<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>5.11.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
-
-
-
-<h3 id="第一种模型（直连）"><a href="#第一种模型（直连）" class="headerlink" title="第一种模型（直连）"></a>第一种模型（直连）</h3><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117142437407.png" alt="image-20220117142437407"></p>
+<h3 id="第一种模型（直连）"><a href="#第一种模型（直连）" class="headerlink" title="第一种模型（直连）"></a>第一种模型（直连）</h3><p><img src="image-20220117142437407.png" alt="image-20220117142437407"></p>
 <p>在上图的模型中，有以下概念：</p>
 <ul>
 <li>P:生产者，也就是要发送消息的程序</li>
@@ -747,7 +741,6 @@ channel<span class="token punctuation">.</span><span class="token function">queu
 channel<span class="token punctuation">.</span><span class="token function">basicPublish</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token string">"hello"</span><span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">,</span><span class="token string">"hello rabbitmq"</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">//将队列中的消息持久化</span>
 channel<span class="token punctuation">.</span><span class="token function">basicPublish</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token string">"hello"</span><span class="token punctuation">,</span> <span class="token class-name">MessageProperties</span><span class="token punctuation">.</span>PERSISTENT_TEXT_PLAIN<span class="token punctuation">,</span><span class="token string">"hello rabbitmq"</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-
 <h4 id="2-开发消费者"><a href="#2-开发消费者" class="headerlink" title="2.开发消费者"></a>2.开发消费者</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//创建连接mq的连接工厂对象</span>
 <span class="token class-name">ConnectionFactory</span> connectionFactory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ConnectionFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">//设置连接rabbitmq的主机</span>
@@ -785,7 +778,6 @@ channel<span class="token punctuation">.</span><span class="token function">basi
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"new String(body) = "</span><span class="token operator">+</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-
 <h4 id="3-参数的说明"><a href="#3-参数的说明" class="headerlink" title="3,参数的说明"></a>3,参数的说明</h4><pre class="language-java" data-language="java"><code class="language-java">		<span class="token comment">/*
          * 通道绑定对应的消息队列
          * 参数一：queue       队列名称，如果队列不存在自动创建
@@ -795,9 +787,8 @@ channel<span class="token punctuation">.</span><span class="token function">basi
          * 参数五：arguments   额外附加参数
          */</span>
 channel<span class="token punctuation">.</span><span class="token function">queueDeclare</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-
 <h3 id="第二种模型（work-queue）"><a href="#第二种模型（work-queue）" class="headerlink" title="第二种模型（work queue）"></a>第二种模型（work queue）</h3><p>Work queues ，也被称为（Task queues），任务模型。当消息处理比较耗时的时候，可能生产消息的速度会远远大于消息的消费速度。长此以往，消息就会堆积越来越多，无法及时处理。此时可以使用work模型：让多个消费者绑定到一个队列，共同消费队列中的消息。队列中的消息一旦消费，就会消失，因此任务是不会被重复执行的。</p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117145602393.png" alt="image-20220117145602393"></p>
+<p><img src="image-20220117145602393.png" alt="image-20220117145602393"></p>
 <p>角色：</p>
 <ul>
 <li>P:生产者：任务的发布者</li>
@@ -808,7 +799,6 @@ channel<span class="token punctuation">.</span><span class="token function">queu
 <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span>i <span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     channel<span class="token punctuation">.</span><span class="token function">basicPublish</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token string">"hello"</span><span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">,</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token string">"====>:MSG"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
 <h4 id="2-开发消费者-1"><a href="#2-开发消费者-1" class="headerlink" title="2.开发消费者-1"></a>2.开发消费者-1</h4><pre class="language-java" data-language="java"><code class="language-java">channel<span class="token punctuation">.</span><span class="token function">queueDeclare</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 channel<span class="token punctuation">.</span><span class="token function">basicConsume</span><span class="token punctuation">(</span><span class="token string">"work"</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">DefaultConsumer</span><span class="token punctuation">(</span>channel<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token annotation punctuation">@Override</span>
@@ -816,7 +806,6 @@ channel<span class="token punctuation">.</span><span class="token function">basi
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"消费者-1："</span><span class="token operator">+</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-
 <h4 id="3-开发消费者-2"><a href="#3-开发消费者-2" class="headerlink" title="3.开发消费者-2"></a>3.开发消费者-2</h4><pre class="language-java" data-language="java"><code class="language-java">channel<span class="token punctuation">.</span><span class="token function">queueDeclare</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 channel<span class="token punctuation">.</span><span class="token function">basicConsume</span><span class="token punctuation">(</span><span class="token string">"work"</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">DefaultConsumer</span><span class="token punctuation">(</span>channel<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token annotation punctuation">@Override</span>
@@ -824,14 +813,13 @@ channel<span class="token punctuation">.</span><span class="token function">basi
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"消费者-1："</span><span class="token operator">+</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-
-<h4 id="4-测试结果"><a href="#4-测试结果" class="headerlink" title="4,测试结果"></a>4,测试结果</h4><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117152604409.png" alt="image-20220117152604409"></p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117152617846.png" alt="image-20220117152617846"></p>
+<h4 id="4-测试结果"><a href="#4-测试结果" class="headerlink" title="4,测试结果"></a>4,测试结果</h4><p><img src="image-20220117152604409.png" alt="image-20220117152604409"></p>
+<p><img src="image-20220117152617846.png" alt="image-20220117152617846"></p>
 <blockquote>
 <p>总结：默认情况下，RabbitMQ将按顺序将每个消息发送给下一个使用者。平均而言，每个消费者都会收到相同数量的消息。这种分发消息的方式称为循环。</p>
 </blockquote>
 <h4 id="5-消息自动确认机制"><a href="#5-消息自动确认机制" class="headerlink" title="5,消息自动确认机制"></a>5,消息自动确认机制</h4><blockquote>
-<p>​			Doing a taskcan tale a few seconds.Ylou may wonder what happens if one of the consumers starts a longtask and dies with itonly partly done. .ith our curent code, once<br>Rabitue delvesamessageto the consume it imeditely marks it fordeleton. n thiscase,f y il aworker we il lose the message itwas just processing W ell alse lose al themessages that were dispatched to this particular worker but were not yet handled.<br>​			But we don’t want to lose any tasks. If a worker dies, we’d like the task to be delivered to another worker.</p>
+<p>​            Doing a taskcan tale a few seconds.Ylou may wonder what happens if one of the consumers starts a longtask and dies with itonly partly done. .ith our curent code, once<br>Rabitue delvesamessageto the consume it imeditely marks it fordeleton. n thiscase,f y il aworker we il lose the message itwas just processing W ell alse lose al themessages that were dispatched to this particular worker but were not yet handled.<br>​            But we don’t want to lose any tasks. If a worker dies, we’d like the task to be delivered to another worker.</p>
 </blockquote>
 <pre class="language-java" data-language="java"><code class="language-java">channel<span class="token punctuation">.</span><span class="token function">basicQos</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//一次只接受一条未确认的消息</span>
 <span class="token comment">//参数2：关闭自动确认消息</span>
@@ -842,16 +830,16 @@ channel<span class="token punctuation">.</span><span class="token function">basi
         channel<span class="token punctuation">.</span><span class="token function">basicAck</span><span class="token punctuation">(</span>envelope<span class="token punctuation">.</span><span class="token function">getDeliveryTag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//手动确认消息</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-
 <ul>
 <li>这是通道一次只能消费一个消息</li>
 <li>关闭消息的自动确认。开启手动确认消息。</li>
 </ul>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117154610522.png" alt="image-20220117154610522"></p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117154621828.png" alt="image-20220117154621828"></p>
-<h3 id="第三种模型（fanout）"><a href="#第三种模型（fanout）" class="headerlink" title="第三种模型（fanout）"></a>第三种模型（fanout）</h3><p><font color="red">fanout 也称为广播</font></p>
+<p><img src="image-20220117154610522.png" alt="image-20220117154610522"></p>
+<p><img src="image-20220117154621828.png" alt="image-20220117154621828"></p>
+<h3 id="第三种模型（fanout）"><a href="#第三种模型（fanout）" class="headerlink" title="第三种模型（fanout）"></a>第三种模型（fanout）</h3><font color="red">fanout 也称为广播</font>
+
 <p>Putting it all together</p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117154957193.png" alt="image-20220117154957193"></p>
+<p><img src="image-20220117154957193.png" alt="image-20220117154957193"></p>
 <p>在广播模式下，消息发送流程是这样的：</p>
 <ul>
 <li>可以有多个消费者。</li>
@@ -865,7 +853,6 @@ channel<span class="token punctuation">.</span><span class="token function">basi
 channel<span class="token punctuation">.</span><span class="token function">exchangeDeclare</span><span class="token punctuation">(</span><span class="token string">"logs"</span><span class="token punctuation">,</span><span class="token string">"fanout"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//广播 一条消息多个消费者同时消费</span>
 <span class="token comment">//发布消息</span>
 channel<span class="token punctuation">.</span><span class="token function">basicPublish</span><span class="token punctuation">(</span><span class="token string">"logs"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">,</span><span class="token string">"hello"</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-
 <h4 id="2-开发消费者-1-1"><a href="#2-开发消费者-1-1" class="headerlink" title="2.开发消费者 -1"></a>2.开发消费者 -1</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//通道绑定交换机</span>
 channel<span class="token punctuation">.</span><span class="token function">exchangeDeclare</span><span class="token punctuation">(</span><span class="token string">"logs"</span><span class="token punctuation">,</span><span class="token string">"fanout"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -882,7 +869,6 @@ channel<span class="token punctuation">.</span><span class="token function">basi
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Consumer 1 "</span><span class="token operator">+</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-
 <h4 id="3-开发消费者-2-1"><a href="#3-开发消费者-2-1" class="headerlink" title="3.开发消费者 -2"></a>3.开发消费者 -2</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//通道绑定交换机</span>
 channel<span class="token punctuation">.</span><span class="token function">exchangeDeclare</span><span class="token punctuation">(</span><span class="token string">"logs"</span><span class="token punctuation">,</span><span class="token string">"fanout"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -899,7 +885,6 @@ channel<span class="token punctuation">.</span><span class="token function">basi
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Consumer 1 "</span><span class="token operator">+</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-
 <h4 id="4-开发消费者-3"><a href="#4-开发消费者-3" class="headerlink" title="4,开发消费者-3"></a>4,开发消费者-3</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//通道绑定交换机</span>
 channel<span class="token punctuation">.</span><span class="token function">exchangeDeclare</span><span class="token punctuation">(</span><span class="token string">"logs"</span><span class="token punctuation">,</span><span class="token string">"fanout"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -916,11 +901,11 @@ channel<span class="token punctuation">.</span><span class="token function">basi
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Consumer 1 "</span><span class="token operator">+</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="5-测试结果"><a href="#5-测试结果" class="headerlink" title="5,测试结果"></a>5,测试结果</h4><p><img src="image-20220117161350681.png" alt="image-20220117161350681"></p>
+<p><img src="image-20220117161404352.png" alt="image-20220117161404352"></p>
+<p><img src="image-20220117161420304.png" alt="image-20220117161420304"></p>
+<h3 id="第四种模型（route）"><a href="#第四种模型（route）" class="headerlink" title="第四种模型（route）"></a>第四种模型（route）</h3><h4 id="1-Routing之订阅模型-Direct"><a href="#1-Routing之订阅模型-Direct" class="headerlink" title="1,Routing之订阅模型-Direct"></a>1,Routing之订阅模型-Direct</h4><font color="orange">在Fanout模式中，一条消息，会被所有订阅的队列消费。但是，在某种场景下，我们希望不同的消息被不同的队列消费。这是就要用到Direct类型的Exchange。</font>
 
-<h4 id="5-测试结果"><a href="#5-测试结果" class="headerlink" title="5,测试结果"></a>5,测试结果</h4><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117161350681.png" alt="image-20220117161350681"></p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117161404352.png" alt="image-20220117161404352"></p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117161420304.png" alt="image-20220117161420304"></p>
-<h3 id="第四种模型（route）"><a href="#第四种模型（route）" class="headerlink" title="第四种模型（route）"></a>第四种模型（route）</h3><h4 id="1-Routing之订阅模型-Direct"><a href="#1-Routing之订阅模型-Direct" class="headerlink" title="1,Routing之订阅模型-Direct"></a>1,Routing之订阅模型-Direct</h4><p><font color="orange">在Fanout模式中，一条消息，会被所有订阅的队列消费。但是，在某种场景下，我们希望不同的消息被不同的队列消费。这是就要用到Direct类型的Exchange。</font></p>
 <p>在Direct模型中：</p>
 <ul>
 <li><p>队列与交换机的绑定，不能是任意绑定了，而是指定一个RoutingKey（路由Key）。</p>
@@ -931,7 +916,7 @@ channel<span class="token punctuation">.</span><span class="token function">basi
 <p>流程：</p>
 </li>
 </ul>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117161449322.png" alt="image-20220117161449322"></p>
+<p><img src="image-20220117161449322.png" alt="image-20220117161449322"></p>
 <p>图解：</p>
 <ul>
 <li>P：生产者，向Exchange发送消息，发送消息时，会指定一个routing key。</li>
@@ -944,7 +929,6 @@ channel<span class="token punctuation">.</span><span class="token function">exch
 <span class="token class-name">String</span> key <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
 #发布消息
 channel<span class="token punctuation">.</span><span class="token function">basicPublish</span><span class="token punctuation">(</span><span class="token string">"logs_direct"</span><span class="token punctuation">,</span>key<span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token string">"指定的route key"</span><span class="token operator">+</span>key<span class="token operator">+</span><span class="token string">"的消息"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-
 <h4 id="2-开发消费者-1-2"><a href="#2-开发消费者-1-2" class="headerlink" title="2,开发消费者-1"></a>2,开发消费者-1</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//通过通道去声明交换机以及交换的类型</span>
 channel<span class="token punctuation">.</span><span class="token function">exchangeDeclare</span><span class="token punctuation">(</span><span class="token string">"logs_direct"</span><span class="token punctuation">,</span><span class="token string">"direct"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -961,7 +945,6 @@ channel<span class="token punctuation">.</span><span class="token function">basi
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Consumer 1 "</span><span class="token operator">+</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-
 <h4 id="3-开发消费者-2-2"><a href="#3-开发消费者-2-2" class="headerlink" title="3,开发消费者-2"></a>3,开发消费者-2</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//通过通道去声明交换机以及交换的类型</span>
 channel<span class="token punctuation">.</span><span class="token function">exchangeDeclare</span><span class="token punctuation">(</span><span class="token string">"logs_direct"</span><span class="token punctuation">,</span><span class="token string">"direct"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -980,26 +963,23 @@ channel<span class="token punctuation">.</span><span class="token function">basi
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Consumer 2 "</span><span class="token operator">+</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-
-<h4 id="4-测试结果-1"><a href="#4-测试结果-1" class="headerlink" title="4,测试结果"></a>4,测试结果</h4><h5 id="发布info消息"><a href="#发布info消息" class="headerlink" title="发布info消息"></a>发布info消息</h5><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117165459262.png" alt="image-20220117165459262"></p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117165508443.png" alt="image-20220117165508443"></p>
-<h5 id="发布error消息"><a href="#发布error消息" class="headerlink" title="发布error消息"></a>发布error消息</h5><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117165633333.png" alt="image-20220117165633333"></p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117165642971.png" alt="image-20220117165642971"></p>
-<h5 id="发布没有绑定的"><a href="#发布没有绑定的" class="headerlink" title="发布没有绑定的"></a>发布没有绑定的</h5><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117165726987.png" alt="image-20220117165726987"></p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117165735835.png" alt="image-20220117165735835"></p>
+<h4 id="4-测试结果-1"><a href="#4-测试结果-1" class="headerlink" title="4,测试结果"></a>4,测试结果</h4><h5 id="发布info消息"><a href="#发布info消息" class="headerlink" title="发布info消息"></a>发布info消息</h5><p><img src="image-20220117165459262.png" alt="image-20220117165459262"></p>
+<p><img src="image-20220117165508443.png" alt="image-20220117165508443"></p>
+<h5 id="发布error消息"><a href="#发布error消息" class="headerlink" title="发布error消息"></a>发布error消息</h5><p><img src="image-20220117165633333.png" alt="image-20220117165633333"></p>
+<p><img src="image-20220117165642971.png" alt="image-20220117165642971"></p>
+<h5 id="发布没有绑定的"><a href="#发布没有绑定的" class="headerlink" title="发布没有绑定的"></a>发布没有绑定的</h5><p><img src="image-20220117165726987.png" alt="image-20220117165726987"></p>
+<p><img src="image-20220117165735835.png" alt="image-20220117165735835"></p>
 <h3 id="第五种模型-Routing之订阅模式-Topic"><a href="#第五种模型-Routing之订阅模式-Topic" class="headerlink" title="第五种模型 Routing之订阅模式-Topic"></a>第五种模型 Routing之订阅模式-Topic</h3><p>Topic类型的Exchange与Direct相比，都是可以根据Routingkey把消息路由到不同的队列。只不过Topic类型Exchange可以让队列在绑定Routing key 的时候使用通配符!这种模型Routingkey一般都是由一个或多个单词组成，多个单词之间以””分割，例如: item.insert</p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220117170033173.png" alt="image-20220117170033173"></p>
+<p><img src="image-20220117170033173.png" alt="image-20220117170033173"></p>
 <pre class="language-java" data-language="java"><code class="language-java"># 通配符
 <span class="token operator">*</span> <span class="token punctuation">(</span>star<span class="token punctuation">)</span> can substitute <span class="token keyword">for</span> exactly one word       匹配不多不少恰好一个单词
 <span class="token operator">*</span> <span class="token punctuation">(</span>hash<span class="token punctuation">)</span> can substitute <span class="token keyword">for</span> zero or more word      匹配一个或多个词
 # 如
     audit<span class="token punctuation">.</span>#           匹配audit<span class="token punctuation">.</span>irs<span class="token punctuation">.</span>corporate 或者audit<span class="token punctuation">.</span>irs等
     audit<span class="token punctuation">.</span>*           只能匹配audit<span class="token punctuation">.</span>irs</code></pre>
-
 <h4 id="1-开发生产者-4"><a href="#1-开发生产者-4" class="headerlink" title="1,开发生产者"></a>1,开发生产者</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//生命交换机和交换机类型 topic 使用动态路由（通配符方式）</span>
 channel<span class="token punctuation">.</span><span class="token function">exchangeDeclare</span><span class="token punctuation">(</span><span class="token string">"topics"</span><span class="token punctuation">,</span><span class="token string">"topic"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">String</span> routeKey <span class="token operator">=</span> <span class="token string">"user.save"</span><span class="token punctuation">;</span>    <span class="token comment">//动态路由</span></code></pre>
-
 <h4 id="2，开发消费者-1"><a href="#2，开发消费者-1" class="headerlink" title="2，开发消费者-1"></a>2，开发消费者-1</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//声明交换机以及交换类型 topic</span>
 channel<span class="token punctuation">.</span><span class="token function">exchangeDeclare</span><span class="token punctuation">(</span><span class="token string">"topics"</span><span class="token punctuation">,</span><span class="token string">"topic"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -1016,7 +996,6 @@ channel<span class="token punctuation">.</span><span class="token function">basi
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Consumer 1 :"</span> <span class="token operator">+</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-
 <h4 id="3-开发消费者-2-3"><a href="#3-开发消费者-2-3" class="headerlink" title="3,开发消费者-2"></a>3,开发消费者-2</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//声明交换机以及交换类型 topic</span>
 channel<span class="token punctuation">.</span><span class="token function">exchangeDeclare</span><span class="token punctuation">(</span><span class="token string">"topics"</span><span class="token punctuation">,</span><span class="token string">"topic"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -1033,7 +1012,6 @@ channel<span class="token punctuation">.</span><span class="token function">basi
         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Consumer 2 :"</span> <span class="token operator">+</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-
 <h3 id="封装工具类"><a href="#封装工具类" class="headerlink" title="封装工具类"></a>封装工具类</h3><pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RabbitMqUtils</span> <span class="token punctuation">&#123;</span>
 
     <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">ConnectionFactory</span> connectionFactory<span class="token punctuation">;</span>
@@ -1077,13 +1055,11 @@ channel<span class="token punctuation">.</span><span class="token function">basi
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-
 <h2 id="Springboot-集成-RabbitMQ"><a href="#Springboot-集成-RabbitMQ" class="headerlink" title="Springboot 集成 RabbitMQ"></a>Springboot 集成 RabbitMQ</h2><h3 id="搭建初始环境"><a href="#搭建初始环境" class="headerlink" title="搭建初始环境"></a>搭建初始环境</h3><h4 id="1-引入依赖"><a href="#1-引入依赖" class="headerlink" title="1,引入依赖"></a>1,引入依赖</h4><pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!--rabbitmq 集成的依赖--></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-amqp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
-
 <h4 id="2-配置配置文件"><a href="#2-配置配置文件" class="headerlink" title="2,配置配置文件"></a>2,配置配置文件</h4><pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
   <span class="token key atrule">rabbitmq</span><span class="token punctuation">:</span>
     <span class="token key atrule">host</span><span class="token punctuation">:</span> 192.168.200.130
@@ -1091,9 +1067,13 @@ channel<span class="token punctuation">.</span><span class="token function">basi
     <span class="token key atrule">username</span><span class="token punctuation">:</span> ems
     <span class="token key atrule">password</span><span class="token punctuation">:</span> <span class="token number">123</span>
     <span class="token key atrule">virtual-host</span><span class="token punctuation">:</span> /ems</code></pre>
+<font color="orange">RabbitTemplate</font>用来简化操作，使用的时候，直接在项目中注入即可使用。
 
-<p><font color="orange">RabbitTemplate</font>用来简化操作，使用的时候，直接在项目中注入即可使用。</p>
-<h3 id="第一种Hello-world模型使用"><a href="#第一种Hello-world模型使用" class="headerlink" title="第一种Hello world模型使用"></a>第一种Hello world模型使用</h3><h4 id="1-开发生产者-5"><a href="#1-开发生产者-5" class="headerlink" title="1,开发生产者"></a>1,开发生产者</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//注入rabbitmqTemplate</span>
+### 第一种Hello world模型使用
+
+#### 1,开发生产者
+
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//注入rabbitmqTemplate</span>
 <span class="token annotation punctuation">@Autowired</span>
 <span class="token keyword">private</span> <span class="token class-name">RabbitTemplate</span> rabbitTemplate<span class="token punctuation">;</span>
 
@@ -1103,7 +1083,9 @@ channel<span class="token punctuation">.</span><span class="token function">basi
     rabbitTemplate<span class="token punctuation">.</span><span class="token function">convertAndSend</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">,</span><span class="token string">"hello world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code></pre>
 
-<h4 id="2-开发消费者-1"><a href="#2-开发消费者-1" class="headerlink" title="2,开发消费者"></a>2,开发消费者</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>   
+#### 2,开发消费者
+
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>   
 <span class="token annotation punctuation">@RabbitListener</span><span class="token punctuation">(</span>queuesToDeclare <span class="token operator">=</span> <span class="token annotation punctuation">@Queue</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"hello"</span><span class="token punctuation">,</span>durable <span class="token operator">=</span> <span class="token string">"false"</span><span class="token punctuation">,</span>autoDelete <span class="token operator">=</span> <span class="token string">"true"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> helloCustomer <span class="token punctuation">&#123;</span>
 
@@ -1113,8 +1095,15 @@ channel<span class="token punctuation">.</span><span class="token function">basi
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span></code></pre>
 
-<h4 id="3-测试结果"><a href="#3-测试结果" class="headerlink" title="3,测试结果"></a>3,测试结果</h4><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220118133734854.png" alt="image-20220118133734854"></p>
-<h3 id="第二种work模型的使用"><a href="#第二种work模型的使用" class="headerlink" title="第二种work模型的使用"></a>第二种work模型的使用</h3><h4 id="1-开发生产者-6"><a href="#1-开发生产者-6" class="headerlink" title="1,开发生产者"></a>1,开发生产者</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//注入rabbitmqTemplate</span>
+#### 3,测试结果
+
+![image-20220118133734854](image-20220118133734854.png)
+
+### 第二种work模型的使用
+
+#### 1,开发生产者
+
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//注入rabbitmqTemplate</span>
 <span class="token annotation punctuation">@Autowired</span>
 <span class="token keyword">private</span> <span class="token class-name">RabbitTemplate</span> rabbitTemplate<span class="token punctuation">;</span>
 
@@ -1126,7 +1115,9 @@ channel<span class="token punctuation">.</span><span class="token function">basi
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span></code></pre>
 
-<h4 id="2-开发消费者-2"><a href="#2-开发消费者-2" class="headerlink" title="2,开发消费者"></a>2,开发消费者</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+#### 2,开发消费者
+
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Consumer</span> <span class="token punctuation">&#123;</span>
 
     <span class="token comment">//一个消费者</span>
@@ -1142,8 +1133,15 @@ channel<span class="token punctuation">.</span><span class="token function">basi
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span></code></pre>
 
-<h4 id="3-测试结果-1"><a href="#3-测试结果-1" class="headerlink" title="3,测试结果"></a>3,测试结果</h4><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220118134030447.png" alt="image-20220118134030447"></p>
-<h3 id="第三种fanout（广播）模型使用"><a href="#第三种fanout（广播）模型使用" class="headerlink" title="第三种fanout（广播）模型使用"></a>第三种fanout（广播）模型使用</h3><h4 id="1-开发生产者-7"><a href="#1-开发生产者-7" class="headerlink" title="1,开发生产者"></a>1,开发生产者</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//注入rabbitmqTemplate</span>
+#### 3,测试结果
+
+![image-20220118134030447](image-20220118134030447.png)
+
+### 第三种fanout（广播）模型使用
+
+#### 1,开发生产者
+
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//注入rabbitmqTemplate</span>
 <span class="token annotation punctuation">@Autowired</span>
 <span class="token keyword">private</span> <span class="token class-name">RabbitTemplate</span> rabbitTemplate<span class="token punctuation">;</span>
 
@@ -1153,7 +1151,9 @@ channel<span class="token punctuation">.</span><span class="token function">basi
     rabbitTemplate<span class="token punctuation">.</span><span class="token function">convertAndSend</span><span class="token punctuation">(</span><span class="token string">"logs"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token string">"fanout 模型！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code></pre>
 
-<h4 id="2-开发消费者-3"><a href="#2-开发消费者-3" class="headerlink" title="2,开发消费者"></a>2,开发消费者</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+#### 2,开发消费者
+
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">FanoutCustomer</span> <span class="token punctuation">&#123;</span>
 
     <span class="token annotation punctuation">@RabbitListener</span><span class="token punctuation">(</span>bindings <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
@@ -1178,8 +1178,15 @@ channel<span class="token punctuation">.</span><span class="token function">basi
 <span class="token punctuation">&#125;</span>
 </code></pre>
 
-<h4 id="3-测试的结果"><a href="#3-测试的结果" class="headerlink" title="3,测试的结果"></a>3,测试的结果</h4><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220118134317791.png" alt="image-20220118134317791"></p>
-<h3 id="第四种Route模型"><a href="#第四种Route模型" class="headerlink" title="第四种Route模型"></a>第四种Route模型</h3><h4 id="1-开发生产者-8"><a href="#1-开发生产者-8" class="headerlink" title="1,开发生产者"></a>1,开发生产者</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//注入rabbitmqTemplate</span>
+#### 3,测试的结果
+
+![image-20220118134317791](image-20220118134317791.png)
+
+### 第四种Route模型
+
+#### 1,开发生产者
+
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//注入rabbitmqTemplate</span>
 <span class="token annotation punctuation">@Autowired</span>
 <span class="token keyword">private</span> <span class="token class-name">RabbitTemplate</span> rabbitTemplate<span class="token punctuation">;</span>
 
@@ -1189,7 +1196,9 @@ channel<span class="token punctuation">.</span><span class="token function">basi
     rabbitTemplate<span class="token punctuation">.</span><span class="token function">convertAndSend</span><span class="token punctuation">(</span><span class="token string">"directs"</span><span class="token punctuation">,</span><span class="token string">"error"</span><span class="token punctuation">,</span><span class="token string">"发送info的key 的路由信息！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code></pre>
 
-<h4 id="2-开发消费者-4"><a href="#2-开发消费者-4" class="headerlink" title="2,开发消费者"></a>2,开发消费者</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+#### 2,开发消费者
+
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RouteCustomer</span> <span class="token punctuation">&#123;</span>
 
     <span class="token annotation punctuation">@RabbitListener</span><span class="token punctuation">(</span>bindings <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
@@ -1216,10 +1225,25 @@ channel<span class="token punctuation">.</span><span class="token function">basi
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span></code></pre>
 
-<h4 id="3-测试结果-2"><a href="#3-测试结果-2" class="headerlink" title="3,测试结果"></a>3,测试结果</h4><h5 id="error信息"><a href="#error信息" class="headerlink" title="error信息"></a>error信息</h5><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220118134531098.png" alt="image-20220118134531098"></p>
-<h5 id="info信息"><a href="#info信息" class="headerlink" title="info信息"></a>info信息</h5><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220118134602104.png" alt="image-20220118134602104"></p>
-<h5 id="warn信息"><a href="#warn信息" class="headerlink" title="warn信息"></a>warn信息</h5><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220118134644195.png" alt="image-20220118134644195"></p>
-<h3 id="第五种Topic模型"><a href="#第五种Topic模型" class="headerlink" title="第五种Topic模型"></a>第五种Topic模型</h3><h4 id="1-开发生产者-9"><a href="#1-开发生产者-9" class="headerlink" title="1,开发生产者"></a>1,开发生产者</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//注入rabbitmqTemplate</span>
+#### 3,测试结果
+
+##### error信息
+
+![image-20220118134531098](image-20220118134531098.png)
+
+##### info信息
+
+![image-20220118134602104](image-20220118134602104.png)
+
+##### warn信息
+
+![image-20220118134644195](image-20220118134644195.png)
+
+### 第五种Topic模型
+
+#### 1,开发生产者
+
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//注入rabbitmqTemplate</span>
 <span class="token annotation punctuation">@Autowired</span>
 <span class="token keyword">private</span> <span class="token class-name">RabbitTemplate</span> rabbitTemplate<span class="token punctuation">;</span>
 
@@ -1229,7 +1253,9 @@ channel<span class="token punctuation">.</span><span class="token function">basi
     rabbitTemplate<span class="token punctuation">.</span><span class="token function">convertAndSend</span><span class="token punctuation">(</span><span class="token string">"topics"</span><span class="token punctuation">,</span><span class="token string">"user"</span><span class="token punctuation">,</span><span class="token string">"user.save 的路由信息！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code></pre>
 
-<h4 id="2-开发消费者-5"><a href="#2-开发消费者-5" class="headerlink" title="2,开发消费者"></a>2,开发消费者</h4><pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+#### 2,开发消费者
+
+<pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TopicCustomer</span> <span class="token punctuation">&#123;</span>
 
     <span class="token annotation punctuation">@RabbitListener</span><span class="token punctuation">(</span>bindings <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
@@ -1257,48 +1283,60 @@ channel<span class="token punctuation">.</span><span class="token function">basi
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span></code></pre>
 
-<h4 id="3-测试结果-3"><a href="#3-测试结果-3" class="headerlink" title="3,测试结果"></a>3,测试结果</h4><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220118143907267.png" alt="image-20220118143907267"></p>
-<h2 id="MQ的应用场景"><a href="#MQ的应用场景" class="headerlink" title="MQ的应用场景"></a>MQ的应用场景</h2><h3 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h3><p><font color ="orange">场景说明：用户注册后，需要发送注册邮件和注册短信，传统的做法有两种： 1，串行的方式；2，并行的方式</font></p>
+#### 3,测试结果
+
+![image-20220118143907267](image-20220118143907267.png)
+
+## MQ的应用场景
+
+### 异步处理
+
+<font color ="orange">场景说明：用户注册后，需要发送注册邮件和注册短信，传统的做法有两种： 1，串行的方式；2，并行的方式</font>
+
 <ul>
 <li><font color="orange">串行方式：</font>将注册信息写入数据库后，发送注册邮件，再发送注册短信，以上三个任务全部完成后才返回给客户端。这有一个问题是，邮件，短信并不是必须的，它只是一个通知，而这种做法让客户端等待没有必要等待的东西。</li>
 </ul>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220118144429472.png" alt="image-20220118144429472"></p>
+<p><img src="image-20220118144429472.png" alt="image-20220118144429472"></p>
 <ul>
 <li><font color="orange">并行方式：</font>将注册信息写入数据库后，发送邮件的同时，发送短信，以上三个任务完成后，返回给客户端，并行的方式能提高处理的事件。</li>
 </ul>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220118144556401.png" alt="image-20220118144556401"></p>
+<p><img src="image-20220118144556401.png" alt="image-20220118144556401"></p>
 <ul>
 <li><font color = "orange">消息队列：</font>·假设三个业务节点分别使用50ms，串行方式使用时间150ms，并行使用时间100ms。虽然并行已经提高的处理时间,但是前面说过邮件和短信对我正常的使用网站没有任何影响，客户端没有必要等着其发送完成才显示注册成功应该是写入数据库后就返回．<font color = "orange">消息队列：</font>引入消息队列后，把发送邮件短信不是必须的业务逻辑异步处理</li>
 </ul>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220118144854793.png" alt="image-20220118144854793"></p>
+<p><img src="image-20220118144854793.png" alt="image-20220118144854793"></p>
 <blockquote>
 <p>由此可以看出，引入消息队列后，用户的响应时间就等于写入数据库的时间+写入消息队列的时间（可以忽略不计），引入消息队列后处理后，响应时间是串行的三倍，是并行的两倍。</p>
 </blockquote>
-<h3 id="应用解耦"><a href="#应用解耦" class="headerlink" title="应用解耦"></a>应用解耦</h3><p><font color="orange">场景：双十一，用户下单后，订单系统需要通知库存系统，传统的做法就是订单系统调用库存系统的接口。</font></p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220118145133031.png" alt="image-20220118145133031"></p>
+<h3 id="应用解耦"><a href="#应用解耦" class="headerlink" title="应用解耦"></a>应用解耦</h3><font color="orange">场景：双十一，用户下单后，订单系统需要通知库存系统，传统的做法就是订单系统调用库存系统的接口。</font>
+
+<p><img src="image-20220118145133031.png" alt="image-20220118145133031"></p>
 <p>这种做法有一个缺点：</p>
 <p>当库存系统出现故障时，订单就会失败。订单系统和库存系统高耦合，引入消息队列。</p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220118145230792.png" alt="image-20220118145230792"></p>
+<p><img src="image-20220118145230792.png" alt="image-20220118145230792"></p>
 <ul>
 <li><font color = "orange">订单系统：</font>用户下单后，订单系统完成持久化处理，将消息写入消息队列，返回用户订单下单成功。</li>
 <li><font color = "orange">库存系统：</font>订阅下单的消息，获取下单的消息，进行库操作。就算库存系统出现故障，消息队列能保证消息的可靠投递，不会导致消息的丢失。</li>
 </ul>
-<h3 id="流量削峰"><a href="#流量削峰" class="headerlink" title="流量削峰"></a>流量削峰</h3><p><font color = "orange">场景：</font>秒杀活动，一般会因为流量过大，导致应用挂掉，为解决这个问题，一般在应用前端加入消息队列。</p>
-<p><font color = "orange">作用：</font></p>
+<h3 id="流量削峰"><a href="#流量削峰" class="headerlink" title="流量削峰"></a>流量削峰</h3><font color = "orange">场景：</font>秒杀活动，一般会因为流量过大，导致应用挂掉，为解决这个问题，一般在应用前端加入消息队列。
+
+<font color = "orange">作用：</font>
+
 <ul>
 <li>可以控制活动人数，超过此一定阈值的订单直接丢弃。</li>
 <li>可以缓解短时间的高流量压垮应用(应用程序按自己的最大处理能力获取订单)。</li>
 </ul>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220118150245500.png" alt="image-20220118150245500"></p>
+<p><img src="image-20220118150245500.png" alt="image-20220118150245500"></p>
 <blockquote>
 <p>1，用户的请求，服务器收到之后，首先写入消息队列，假如消息队列长度超过最大值，则直接抛弃用户请求或跳转到错误页面。</p>
 <p>2，秒杀业务根据消息队列中的请求信息，再做后续处理。</p>
 </blockquote>
 <h2 id="RabbiMQ的集群"><a href="#RabbiMQ的集群" class="headerlink" title="RabbiMQ的集群"></a>RabbiMQ的集群</h2><h3 id="集群架构"><a href="#集群架构" class="headerlink" title="集群架构"></a>集群架构</h3><h4 id="普通集群（副本集群）"><a href="#普通集群（副本集群）" class="headerlink" title="普通集群（副本集群）"></a>普通集群（副本集群）</h4><blockquote>
-<p>All data&#x2F;state required for the operation of a RabbitMQ broker is replicated across all nodes. An exception to this message queues,which by default reside on one node,though they are visible and reachable from all nodes. To replicate queues across nodes in a cluster  –摘自官网</p>
+<p>All data/state required for the operation of a RabbitMQ broker is replicated across all nodes. An exception to this message queues,which by default reside on one node,though they are visible and reachable from all nodes. To replicate queues across nodes in a cluster  —摘自官网</p>
 </blockquote>
-<p><font color = "orange">默认情况下：RabbitMQ代理操作所需的所有数据&#x2F;状态都将跨所有节点复制，这方面的一个例外是消息队列，默认情况下，消息队列位于一个节点上，尽管它们可以从所有节点看到和访问</font></p>
-<h5 id="1-架构图"><a href="#1-架构图" class="headerlink" title="1, 架构图"></a>1, 架构图</h5><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220118151113890.png" alt="image-20220118151113890"></p>
+<font color = "orange">默认情况下：RabbitMQ代理操作所需的所有数据/状态都将跨所有节点复制，这方面的一个例外是消息队列，默认情况下，消息队列位于一个节点上，尽管它们可以从所有节点看到和访问</font>
+
+<h5 id="1-架构图"><a href="#1-架构图" class="headerlink" title="1, 架构图"></a>1, 架构图</h5><p><img src="image-20220118151113890.png" alt="image-20220118151113890"></p>
 <p>核心解决问题：<font color = "orange">当集群中某一时刻master节点宕机，可以对Queue中信息，进行备份。</font></p>
 <h5 id="2-集群搭建"><a href="#2-集群搭建" class="headerlink" title="2, 集群搭建"></a>2, 集群搭建</h5><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 0.集群规划</span>
     node1: <span class="token number">192.168</span>.200.130  mq1 master  主节点
@@ -1343,18 +1381,17 @@ channel<span class="token punctuation">.</span><span class="token function">basi
 	<span class="token punctuation">&#123;</span>alarms,<span class="token punctuation">[</span><span class="token punctuation">&#123;</span>rabbit@mq1,<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span>,<span class="token punctuation">&#123;</span>rabbit@mq2,<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span>,<span class="token punctuation">&#123;</span>rabbit@mq3,<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">]</span>
 
 <span class="token comment"># 8,登录管理界面，展示如下状态：</span></code></pre>
-
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20220523140558358.png" alt="image-20220523140558358"></p>
-<h6 id="测试集群在node1上，创建队列"><a href="#测试集群在node1上，创建队列" class="headerlink" title="测试集群在node1上，创建队列"></a>测试集群在node1上，创建队列</h6><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70.png" alt="在这里插入图片描述"></p>
-<h6 id="查看node2和node3节点"><a href="#查看node2和node3节点" class="headerlink" title="查看node2和node3节点"></a>查看node2和node3节点</h6><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70-16528347206337.png" alt="在这里插入图片描述"></p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70-16528347206338.png" alt="在这里插入图片描述"></p>
-<h6 id="关闭node1节点，执行（rabbitmqctl-stop-app-，查看node2和node3"><a href="#关闭node1节点，执行（rabbitmqctl-stop-app-，查看node2和node3" class="headerlink" title="关闭node1节点，执行（rabbitmqctl stop_app)，查看node2和node3"></a>关闭node1节点，执行（rabbitmqctl stop_app)，查看node2和node3</h6><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70-16528347206339.png" alt="在这里插入图片描述"></p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70-165283472063310.png" alt="在这里插入图片描述"></p>
+<p><img src="image-20220523140558358.png" alt="image-20220523140558358"></p>
+<h6 id="测试集群在node1上，创建队列"><a href="#测试集群在node1上，创建队列" class="headerlink" title="测试集群在node1上，创建队列"></a>测试集群在node1上，创建队列</h6><p><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70.png" alt="在这里插入图片描述"></p>
+<h6 id="查看node2和node3节点"><a href="#查看node2和node3节点" class="headerlink" title="查看node2和node3节点"></a>查看node2和node3节点</h6><p><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70-16528347206337.png" alt="在这里插入图片描述"></p>
+<p><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70-16528347206338.png" alt="在这里插入图片描述"></p>
+<h6 id="关闭node1节点，执行（rabbitmqctl-stop-app-，查看node2和node3"><a href="#关闭node1节点，执行（rabbitmqctl-stop-app-，查看node2和node3" class="headerlink" title="关闭node1节点，执行（rabbitmqctl stop_app)，查看node2和node3"></a>关闭node1节点，执行（rabbitmqctl stop_app)，查看node2和node3</h6><p><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70-16528347206339.png" alt="在这里插入图片描述"></p>
+<p><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70-165283472063310.png" alt="在这里插入图片描述"></p>
 <h4 id="镜像集群"><a href="#镜像集群" class="headerlink" title="镜像集群"></a>镜像集群</h4><blockquote>
-<p>This guide covers mirroring (queue contents replication) of classic queues  –摘自官网</p>
-<p>By default, contents of a queue within a RabbitMQ cluster are located on a single node (the node on which the queue was declared). This is in contrast to exchanges and bindings, which can always be considered to be on all nodes. Queues can optionally be made <em>mirrored</em> across multiple nodes.<br>–摘自官网<br>镜像队列机制就是将队列在三个节点之间设置主从关系，消息会在三个节点之间进行自动同步，且如果其中一个节点不可用，并不会导致消息丢失或服务不可用的情况，提升MQ集群的整体高可用性。</p>
+<p>This guide covers mirroring (queue contents replication) of classic queues  —摘自官网</p>
+<p>By default, contents of a queue within a RabbitMQ cluster are located on a single node (the node on which the queue was declared). This is in contrast to exchanges and bindings, which can always be considered to be on all nodes. Queues can optionally be made <em>mirrored</em> across multiple nodes.<br>—摘自官网<br>镜像队列机制就是将队列在三个节点之间设置主从关系，消息会在三个节点之间进行自动同步，且如果其中一个节点不可用，并不会导致消息丢失或服务不可用的情况，提升MQ集群的整体高可用性。</p>
 </blockquote>
-<h5 id="集群架构图"><a href="#集群架构图" class="headerlink" title="集群架构图"></a>集群架构图</h5><p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70#pic_center-165283472063311.png" alt="在这里插入图片描述"></p>
+<h5 id="集群架构图"><a href="#集群架构图" class="headerlink" title="集群架构图"></a>集群架构图</h5><p><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70#pic_center-165283472063311.png" alt="在这里插入图片描述"></p>
 <h5 id="配置集群架构"><a href="#配置集群架构" class="headerlink" title="配置集群架构"></a>配置集群架构</h5><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 0.策略说明</span>
 rabbitmqctl set_policy <span class="token punctuation">[</span>-p <span class="token operator">&lt;</span>vhost<span class="token operator">></span><span class="token punctuation">]</span> <span class="token punctuation">[</span>--priority <span class="token operator">&lt;</span>priority<span class="token operator">></span><span class="token punctuation">]</span> <span class="token punctuation">[</span>--apply-to <span class="token operator">&lt;</span>apply-to<span class="token operator">></span><span class="token punctuation">]</span> <span class="token operator">&lt;</span>name<span class="token operator">></span> <span class="token operator">&lt;</span>pattern<span class="token operator">></span>  <span class="token operator">&lt;</span>definition<span class="token operator">></span>
 -p Vhost： 可选参数，针对指定vhost下的queue进行设置
@@ -1381,10 +1418,9 @@ rabbitmqctl set_policy ha-all <span class="token string">'^hello'</span> <span c
 rabbitmqctl clear_policy ha-all
 
 <span class="token comment"># 4.测试集群</span></code></pre>
-
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70-165283472063312.png" alt="在这里插入图片描述"></p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70-165283472063313.png" alt="在这里插入图片描述"></p>
-<p><img src="/2022/05/18/RabbitMQ-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70-165283472063314.png" alt="在这里插入图片描述"></p>
+<p><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70-165283472063312.png" alt="在这里插入图片描述"></p>
+<p><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70-165283472063313.png" alt="在这里插入图片描述"></p>
+<p><img src="watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3VuaXF1ZV9wZXJmZWN0,size_16,color_FFFFFF,t_70-165283472063314.png" alt="在这里插入图片描述"></p>
 
                 
             </div>
@@ -1892,32 +1928,43 @@ rabbitmqctl clear_policy ha-all
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/05/19/java-8-%E6%96%B0%E7%89%B9%E6%80%A7/">
+                <a href="/2022/05/20/%E6%80%9D%E6%83%B3%E6%B1%87%E6%8A%A5/">
                     <div class="card-image">
                         
+                        <img src="/medias/index/3.jpg" class="responsive-img" alt="思想汇报">
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
+                        <span class="card-title">思想汇报</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            四篇的思想汇报
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-20
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            成大事
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%80%9D%E6%83%B3%E6%B1%87%E6%8A%A5/" class="post-category">
+                                    思想汇报
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%80%9D%E6%83%B3%E6%B1%87%E6%8A%A5/">
+                        <span class="chip bg-color">思想汇报</span>
+                    </a>
+                    
                 </div>
                 
             </div>
