@@ -650,7 +650,7 @@
 <li>Set：即一组Drive的集合,分布式部署根据集群规模自动划分一个或多个Set，每个Set中的Drive分布在不同位置。一个对象存储在一个Set上。(For example: {1…64} is divided into 4 sets each of size 16.)<br>。一个对象存储在一个Set上<br>。一个集群划分为多个Set<br>。一个Set包含的Drive数量是固定的,默认由系统根据集群规模自动计算得出<br>。一个SET中的Drive尽可能分布在不同的节点上</li>
 </ul>
 <h2 id="1-4纠删码EC-Erasure-Code"><a href="#1-4纠删码EC-Erasure-Code" class="headerlink" title="1.4纠删码EC(Erasure Code)"></a>1.4纠删码EC(Erasure Code)</h2><p>MinlO使用纠删码机制来保证高可靠性,使用highwayhash来处理数据损坏( Bit Rot Protection)。关于纠删码,简单来说就是可以通过数学计算,把丢失的数据进行还原，它可以将n份原始数据，增加m份数据，并能通过n+m份中的任意n份数据,还原为原始数据。<br>即如果有任意小于等于m份的数据失效,仍然能通过剩下的数据还原出来。</p>
-<h2 id="1-5存储方案"><a href="#1-5存储方案" class="headerlink" title="1.5存储方案"></a>1.5存储方案</h2><p><img src="Minio笔记/51b824a7fdac48e6b33c126e2a3e8d53.png" alt="在这里插入图片描述"></p>
+<h2 id="1-5存储方案"><a href="#1-5存储方案" class="headerlink" title="1.5存储方案"></a>1.5存储方案</h2><img src="/2022/05/29/Minio%E7%AC%94%E8%AE%B0/51b824a7fdac48e6b33c126e2a3e8d53.png" class="" title="在这里插入图片描述">
 <h1 id="2-环境搭建"><a href="#2-环境搭建" class="headerlink" title="2.环境搭建"></a>2.环境搭建</h1><h2 id="2-1单机部署介绍"><a href="#2-1单机部署介绍" class="headerlink" title="2.1单机部署介绍"></a>2.1单机部署介绍</h2><p>minio server的standalone模式，即要管理的磁盘都在host本地。该启动模式一般仅用于实验环境、 测试环境的验证和学习使用。在standalone模式下，还可以分为non-erasure code mode（无纠删码模式）和erasure code mode（纠删码模式）。<br><strong>non-erasure code mode</strong><br>在此启动模式下，对于每一份对象数据， minio直接在data 下面存储这份数据，不会建立副本，也不会启用纠删码机制。因此，这种模式无论是服务实例还是磁盘都是“单点”，无任何高可用保障，磁盘损坏就表示数据丢失。<br><strong>erasure code mode</strong><br>此模式为minio server实例传入多个本地磁盘参数。一旦遇到多于一个磁盘参数，minio server会自动启用erasure code mode.<br>erasure code对磁盘的个数是有要求的，如不满足要求，实例启动将失败。erasure code启后，要求传给minio server的endpoint（standalone模式下，即本地磁盘上的目录）至少为4个。</p>
 <h2 id="2-2单机部署（无纠删码模式）"><a href="#2-2单机部署（无纠删码模式）" class="headerlink" title="2.2单机部署（无纠删码模式）"></a>2.2单机部署（无纠删码模式）</h2><p><strong>基于ceentos7</strong><br>使用以下命令在运行 64 位 Intel/AMD 架构的 Linux 主机上运行独立的 MinIO 服务器。将/data 替换为您希望 MinIO 存储数据的驱动器或目录的路径。</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 下载minio执行文件</span>
@@ -676,8 +676,8 @@ firewall-cmd --reload
 <span class="token comment"># 查看已经开放的端口号</span>
 firewall-cmd --zone<span class="token operator">=</span>public --list-ports
 <span class="token number">123456</span></code></pre>
-<p>启动之后，可以通过url访问，如图所示：<br><img src="Minio笔记/97ba47139f4d4dd992b2ecba7c0f980e.png" alt="在这里插入图片描述"><br><img src="Minio笔记/4f0059029ba9486aa109cc9226a52050.png" alt="在这里插入图片描述"></p>
-<h2 id="2-3通过URL地址对文件进行访问"><a href="#2-3通过URL地址对文件进行访问" class="headerlink" title="2.3通过URL地址对文件进行访问"></a>2.3通过URL地址对文件进行访问</h2><p>例如图片或视频资源等，在上传到minio服务器之后。<br>可以通过 <code>http://ip:port/桶名/文件名</code> 的形式访问。<br>例如：<code>http://8.142.121.122:9000/avatars/123456789.jpg</code><br>注意：使用URL访问前，一定要把该桶的访问权限改成public.<br><img src="Minio笔记/f1540e8f036443018118737947e69e5f.png" alt="在这里插入图片描述"></p>
+<p>启动之后，可以通过url访问，如图所示：<br><img src="/2022/05/29/Minio%E7%AC%94%E8%AE%B0/97ba47139f4d4dd992b2ecba7c0f980e.png" class="" title="在这里插入图片描述"><br><img src="/2022/05/29/Minio%E7%AC%94%E8%AE%B0/4f0059029ba9486aa109cc9226a52050.png" class="" title="在这里插入图片描述"></p>
+<h2 id="2-3通过URL地址对文件进行访问"><a href="#2-3通过URL地址对文件进行访问" class="headerlink" title="2.3通过URL地址对文件进行访问"></a>2.3通过URL地址对文件进行访问</h2><p>例如图片或视频资源等，在上传到minio服务器之后。<br>可以通过 <code>http://ip:port/桶名/文件名</code> 的形式访问。<br>例如：<code>http://8.142.121.122:9000/avatars/123456789.jpg</code><br>注意：使用URL访问前，一定要把该桶的访问权限改成public.<br><img src="/2022/05/29/Minio%E7%AC%94%E8%AE%B0/f1540e8f036443018118737947e69e5f.png" class="" title="在这里插入图片描述"></p>
 <h2 id="2-4使用Docker单机部署（无纠删码模式）"><a href="#2-4使用Docker单机部署（无纠删码模式）" class="headerlink" title="2.4使用Docker单机部署（无纠删码模式）"></a>2.4使用Docker单机部署（无纠删码模式）</h2><p>首先拉取minio/minio</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> pull minio/minio
 <span class="token number">1</span></code></pre>
@@ -694,7 +694,8 @@ firewall-cmd --zone<span class="token operator">=</span>public --list-ports
 <blockquote>
 <p>纠删码是一种恢复丢失和损坏数据的数学算法，Minio采用Reed-Solomon code将对象拆分成N/2数据和N/2奇偶校验块。这就意味着如果是12块盘，一个对象会被分成6个数据块、6个奇偶校验块，你可以丢失任意6块盘〈不管其是存放的数据块还是奇偶校验块)，你仍可以从剩下的盘中的数据进行恢复。</p>
 </blockquote>
-<p><img src="Minio笔记/69ef7c817afa428b9cffb2f7a56ca8d9.png" alt="在这里插入图片描述"><br>使用Minio Docker镜像，在八块盘中启动Minio服务。</p>
+<img src="/2022/05/29/Minio%E7%AC%94%E8%AE%B0/69ef7c817afa428b9cffb2f7a56ca8d9.png" class="" title="在这里插入图片描述">
+<p>使用Minio Docker镜像，在八块盘中启动Minio服务。</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run -d -p <span class="token number">9000</span>:9000 -p <span class="token number">50000</span>:50000 --name minioec <span class="token punctuation">\</span>
   -e <span class="token string">"MINIO_ROOT_USER=admin"</span> <span class="token punctuation">\</span>
   -e <span class="token string">"MINIO_ROOT_PASSWORD=12345678"</span> <span class="token punctuation">\</span>
