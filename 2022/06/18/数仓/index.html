@@ -529,10 +529,6 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
-                            </a>
-                        
                             <a href="/tags/hadoop/">
                                 <span class="chip bg-color">hadoop</span>
                             </a>
@@ -543,6 +539,10 @@
                         
                             <a href="/tags/hive/">
                                 <span class="chip bg-color">hive</span>
+                            </a>
+                        
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
                             </a>
                         
                             <a href="/tags/sqoop/">
@@ -578,14 +578,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    12.3k
+                    12.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    68 分
+                    70 分
                 </div>
                 
 
@@ -787,6 +787,27 @@ xcall.sh jps</code></pre>
 
 <span class="token comment">#创建file-flume-kafka.conf：</span>
 <span class="token function">vim</span> file-flume-kafka.conf</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#为各组件命名</span>
+a1.sources <span class="token operator">=</span> r1
+a1.channels <span class="token operator">=</span> c1
+
+<span class="token comment">#描述source</span>
+a1.sources.r1.type <span class="token operator">=</span> TAILDIR
+a1.sources.r1.filegroups <span class="token operator">=</span> f1
+a1.sources.r1.filegroups.f1 <span class="token operator">=</span> /root/soft/applog/log/app.*
+a1.sources.r1.positionFile <span class="token operator">=</span> /root/soft/flume/taildir_position.json
+a1.sources.r1.interceptors <span class="token operator">=</span>  i1
+a1.sources.r1.interceptors.i1.type <span class="token operator">=</span> com.atguigu.flume.interceptor.ETLInterceptor<span class="token variable">$Builder</span>
+
+<span class="token comment">#描述channel</span>
+a1.channels.c1.type <span class="token operator">=</span> org.apache.flume.channel.kafka.KafkaChannel
+a1.channels.c1.kafka.bootstrap.servers <span class="token operator">=</span> hadoop1:9092,hadoop2:9092
+a1.channels.c1.kafka.topic <span class="token operator">=</span> topic_log
+a1.channels.c1.parseAsFlumeEvent <span class="token operator">=</span> <span class="token boolean">false</span>
+
+<span class="token comment">#绑定source和channel以及sink和channel的关系</span>
+a1.sources.r1.channels <span class="token operator">=</span> c1
+a1.sinks.k1.channel <span class="token operator">=</span> c1</code></pre>
 <p><img src="wpsEE3D.tmp.jpg" alt="img"> </p>
 <p>编写flume拦截器（展示部分代码）：</p>
 <p><img src="wpsEE3E.tmp.jpg" alt="img"> </p>
@@ -848,8 +869,48 @@ bin/flume-ng agent --name a1 --conf-file conf/file-flume-kafka.conf <span class=
 
 <span class="token comment">#创建kafka-flume-hdfs.conf</span>
 <span class="token function">vim</span> kafka-flume-hdfs.conf</code></pre>
+<pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 组件</span>
+a1.sources<span class="token operator">=</span>r1
+a1.channels<span class="token operator">=</span>c1
+a1.sinks<span class="token operator">=</span>k1
+
+<span class="token comment"># source1</span>
+a1.sources.r1.type <span class="token operator">=</span> org.apache.flume.source.kafka.KafkaSource
+a1.sources.r1.batchSize <span class="token operator">=</span> <span class="token number">5000</span>
+a1.sources.r1.batchDurationMillis <span class="token operator">=</span> <span class="token number">2000</span>
+a1.sources.r1.kafka.bootstrap.servers <span class="token operator">=</span> hadoop1:9092,hadoop2:9092,hadoop3:9092
+a1.sources.r1.kafka.topics<span class="token operator">=</span>topic_log
+a1.sources.r1.interceptors <span class="token operator">=</span> i1
+a1.sources.r1.interceptors.i1.type <span class="token operator">=</span> com.atguigu.flume.interceptor.TimeStampInterceptor<span class="token variable">$Builder</span>
+
+<span class="token comment"># channel1</span>
+a1.channels.c1.type <span class="token operator">=</span> <span class="token function">file</span>
+a1.channels.c1.checkpointDir <span class="token operator">=</span> /root/soft/flume/checkpoint/behavior1
+a1.channels.c1.dataDirs <span class="token operator">=</span> /root/soft/flume/data/behavior1/
+a1.channels.c1.maxFileSize <span class="token operator">=</span> <span class="token number">2146435071</span>
+a1.channels.c1.capacity <span class="token operator">=</span> <span class="token number">1000000</span>
+a1.channels.c1.keep-alive <span class="token operator">=</span> <span class="token number">6</span>
+
+
+<span class="token comment"># sink1</span>
+a1.sinks.k1.type <span class="token operator">=</span> hdfs
+a1.sinks.k1.hdfs.path <span class="token operator">=</span> /origin_data/gmall/log/topic_log/%Y-%m-%d
+a1.sinks.k1.hdfs.filePrefix <span class="token operator">=</span> log-
+a1.sinks.k1.hdfs.round <span class="token operator">=</span> <span class="token boolean">false</span>
+
+
+a1.sinks.k1.hdfs.rollInterval <span class="token operator">=</span> <span class="token number">10</span>
+a1.sinks.k1.hdfs.rollSize <span class="token operator">=</span> <span class="token number">134217728</span>
+a1.sinks.k1.hdfs.rollCount <span class="token operator">=</span> <span class="token number">0</span>
+
+<span class="token comment"># 控制输出文件是原生文件。</span>
+a1.sinks.k1.hdfs.fileType <span class="token operator">=</span> CompressedStream
+a1.sinks.k1.hdfs.codeC <span class="token operator">=</span> lzop
+
+<span class="token comment"># 拼装</span>
+a1.sources.r1.channels <span class="token operator">=</span> c1
+a1.sinks.k1.channel<span class="token operator">=</span> c1</code></pre>
 <p><img src="wpsEE44.tmp.jpg" alt="img"> </p>
-<p><img src="wpsEE45.tmp.jpg" alt="img"> </p>
 <p>编写日志消费flume启停脚本：vim f2.sh</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#! /bin/bash</span>
 
@@ -3699,10 +3760,6 @@ superset.sh restart</code></pre>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
-                                </a>
-                            
                                 <a href="/tags/hadoop/">
                                     <span class="chip bg-color">hadoop</span>
                                 </a>
@@ -3713,6 +3770,10 @@ superset.sh restart</code></pre>
                             
                                 <a href="/tags/hive/">
                                     <span class="chip bg-color">hive</span>
+                                </a>
+                            
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
                                 </a>
                             
                                 <a href="/tags/sqoop/">
