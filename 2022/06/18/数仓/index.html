@@ -529,16 +529,16 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
                             <a href="/tags/hadoop/">
                                 <span class="chip bg-color">hadoop</span>
                             </a>
                         
                             <a href="/tags/kafka/">
                                 <span class="chip bg-color">kafka</span>
-                            </a>
-                        
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
                             </a>
                         
                             <a href="/tags/hive/">
@@ -603,29 +603,29 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-用户行为数据采集；"><a href="#1-用户行为数据采集；" class="headerlink" title="1.用户行为数据采集；"></a>1.用户行为数据采集；</h2><h3 id="1-大数据集群的搭建：hadoop、zookeeper、kafka、hbase；"><a href="#1-大数据集群的搭建：hadoop、zookeeper、kafka、hbase；" class="headerlink" title="(1).大数据集群的搭建：hadoop、zookeeper、kafka、hbase；"></a>(1).大数据集群的搭建：hadoop、zookeeper、kafka、hbase；</h3><p><a target="_blank" rel="noopener" href="https://blog.chengdashi.cn/2022/05/16/hadoop/">大数据集群搭建</a></p>
-<h3 id="2-模拟数据上传；"><a href="#2-模拟数据上传；" class="headerlink" title="(2).模拟数据上传；"></a>(2).模拟数据上传；</h3><p><img src="wpsEE05.tmp.jpg" alt="img"> </p>
-<p><img src="wpsEE06.tmp.jpg" alt="img"> </p>
-<p><img src="wpsEE07.tmp.jpg" alt="img"> </p>
+                <h2 id="1-用户行为数据采集；"><a href="#1-用户行为数据采集；" class="headerlink" title="1.用户行为数据采集；"></a>1.用户行为数据采集；</h2><h3 id="1-大数据集群的搭建：hadoop、zookeeper、kafka、hbase；"><a href="#1-大数据集群的搭建：hadoop、zookeeper、kafka、hbase；" class="headerlink" title="(1).大数据集群的搭建：hadoop、zookeeper、kafka、hbase；"></a>(1).大数据集群的搭建：hadoop、zookeeper、kafka、hbase；</h3><p><a href="数仓/https://blog.chengdashi.cn/2022/05/16/hadoop/">大数据集群搭建</a></p>
+<h3 id="2-模拟数据上传；"><a href="#2-模拟数据上传；" class="headerlink" title="(2).模拟数据上传；"></a>(2).模拟数据上传；</h3><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE05.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE06.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE07.tmp.jpg" class="" title="img"> 
 <h3 id="3-修改配置文件application-properties、logback-xml；"><a href="#3-修改配置文件application-properties、logback-xml；" class="headerlink" title="(3).修改配置文件application.properties、logback.xml；"></a>(3).修改配置文件application.properties、logback.xml；</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># （数仓4.0为yml文件）</span>
 <span class="token function">vim</span> application.properties</code></pre>
-<p><img src="wpsEE08.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE08.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> logback.xml</code></pre>
-<p><img src="wpsEE09.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE09.tmp.jpg" class="" title="img"> 
 <h3 id="4-生成日志并查看日志；"><a href="#4-生成日志并查看日志；" class="headerlink" title="(4).生成日志并查看日志；"></a>(4).生成日志并查看日志；</h3><pre class="language-bash" data-language="bash"><code class="language-bash">java -jar gmall2020-mock-log-2020-05-10.jar</code></pre>
-<p><img src="wpsEE0A.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE0A.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 进入log文件夹</span>
 <span class="token builtin class-name">cd</span> log
 <span class="token comment"># 查看</span>
 ll</code></pre>
-<p><img src="wpsEE0B.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE0B.tmp.jpg" class="" title="img"> 
 <h3 id="4-分发applog；"><a href="#4-分发applog；" class="headerlink" title="(4).分发applog；"></a>(4).分发applog；</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 进入applog所在目录</span>
 <span class="token builtin class-name">cd</span> /root/soft
 <span class="token comment"># 分发</span>
 xsync applog</code></pre>
 <h3 id="5-编写集群日志生成脚本；"><a href="#5-编写集群日志生成脚本；" class="headerlink" title="(5).编写集群日志生成脚本；"></a>(5).编写集群日志生成脚本；</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token environment constant">$PATH</span>
 <span class="token function">vim</span> lg.sh</code></pre>
-<p><img src="wpsEE0C.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE0C.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
 
 <span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> hadoop1 hadoop2<span class="token punctuation">;</span> <span class="token keyword">do</span>
@@ -635,16 +635,16 @@ xsync applog</code></pre>
   <span class="token function">ssh</span> <span class="token variable">$i</span> <span class="token string">"cd /root/soft/applog; java -jar gmall2020-mock-log-2020-05-10.jar >/dev/null 2>&amp;1 &amp;"</span>
 
 <span class="token keyword">done</span></code></pre>
-<p><img src="wpsEE0D.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE0D.tmp.jpg" class="" title="img"> 
 <p>为脚本赋执行权限并启动脚本：chmod u+x lg.sh</p>
-<p><img src="wpsEE0E.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE0E.tmp.jpg" class="" title="img"> 
 <p>查看hadoop2的log文件是否生成日志：cd /root/soft/applog/log</p>
-<p><img src="wpsEE1E.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE1E.tmp.jpg" class="" title="img"> 
 <h3 id="6-数据采集模块；"><a href="#6-数据采集模块；" class="headerlink" title="(6).数据采集模块；"></a>(6).数据采集模块；</h3><p>编写集群所有进程查看脚本并赋权限：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /root/bin
 <span class="token function">vim</span> xcall.sh
 <span class="token function">chmod</span> <span class="token number">777</span> xcall.sh</code></pre>
-<p><img src="wpsEE1F.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE1F.tmp.jpg" class="" title="img"> 
 <p>脚本内容：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#! /bin/bash</span>
 <span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> hadoop1 hadoop2 hadoop3
@@ -652,9 +652,9 @@ xsync applog</code></pre>
   <span class="token builtin class-name">echo</span> --------- <span class="token variable">$i</span> ----------
   <span class="token function">ssh</span> <span class="token variable">$i</span> <span class="token string">"<span class="token variable">$*</span>"</span>
 <span class="token keyword">done</span></code></pre>
-<p><img src="wpsEE20.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE20.tmp.jpg" class="" title="img"> 
 <p>启动脚本：xcall.sh jps</p>
-<p><img src="wpsEE21.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE21.tmp.jpg" class="" title="img"> 
 <h3 id="7-LZO压缩配置；"><a href="#7-LZO压缩配置；" class="headerlink" title="(7).LZO压缩配置；"></a>(7).LZO压缩配置；</h3><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#下载wget：</span>
 yum -y <span class="token function">install</span> <span class="token function">wget</span>
 
@@ -666,7 +666,7 @@ yum -y <span class="token function">install</span> gcc-c++ lzo-devel zlib-devel 
 
 <span class="token comment">#解压：</span>
 <span class="token function">tar</span> -zxvf lzo-2.10.tar.gz -C /root/soft</code></pre>
-<p><img src="wpsEE22.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE22.tmp.jpg" class="" title="img"> 
 <p>切换lzo目录并运行以下命令： cd /root/soft/lzo-2.10/</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">./configure -prefix<span class="token operator">=</span>/root/soft/hadoop/lzo/
 
@@ -677,10 +677,10 @@ yum -y <span class="token function">install</span> gcc-c++ lzo-devel zlib-devel 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">C_INCLUDE_PATH</span><span class="token operator">=</span>/usr/local/hadoop/lzo/include
 
 <span class="token builtin class-name">export</span> <span class="token assign-left variable">LIBRARY_PATH</span><span class="token operator">=</span>/usr/local/hadoop/lzo/lib </code></pre>
-<p><img src="wpsEE23.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE23.tmp.jpg" class="" title="img"> 
 <p>上传hadoop-lzo-0.4.20.jar并放入hadoop下的common：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">mv</span> hadoop-lzo-0.4.20.jar /root/soft/hadoop/share/hadoop/common</code></pre>
-<p><img src="wpsEE24.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE24.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#切换到common目录：</span>
 <span class="token builtin class-name">cd</span>  /root/soft/hadoop/share/hadoop/common
 
@@ -705,8 +705,8 @@ xsync hadoop-lzo-0.4.20.jar
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>io.compression.codec.lzo.class<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>com.hadoop.compression.lzo.LzoCodec<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span></code></pre>
-<p><img src="wpsEE25.tmp.jpg" alt="img"> </p>
-<p><img src="wpsEE26.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE25.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE26.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#分发core-site.xml：</span>
 xsync core-site.xml
 
@@ -742,7 +742,7 @@ xsync core-site.xml
 <span class="token builtin class-name">echo</span> <span class="token string">"Input Args Error..."</span>
 <span class="token punctuation">;</span><span class="token punctuation">;</span>
 <span class="token keyword">esac</span></code></pre>
-<p><img src="wpsEE27.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE27.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
 <span class="token function">chmod</span> <span class="token number">777</span> hdp.sh
 
@@ -753,24 +753,24 @@ hdp.sh start
 xcall.sh jps</code></pre>
 <h3 id="8-LZO创建索引；"><a href="#8-LZO创建索引；" class="headerlink" title="(8).LZO创建索引；"></a>(8).LZO创建索引；</h3><p>上传bigtable.lzo到hdfs：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">hdfs dfs -put bigtable.lzo /input</code></pre>
-<p><img src="wpsEE28.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE28.tmp.jpg" class="" title="img"> 
 <p>执行wordcount程序(如果执行不成功，hadoop配置就有问题，请重新配置)：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">hadoop jar /root/soft/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.3.jar wordcount -Dmapreduce.job.inputformat.class<span class="token operator">=</span>com.hadoop.mapreduce.LzoTextInputFormat /input /output1</code></pre>
-<p><img src="wpsEE29.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE29.tmp.jpg" class="" title="img"> 
 <p>执行成功后查看output1中是否有文件(没有文件就是执行失败)：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">hdfs dfs -ls /output1</code></pre>
 <p>对bigtable.lzo文件索引：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">hadoop jar /root/soft/hadoop/share/hadoop/common/hadoop-lzo-0.4.20.jar com.hadoop.compression.lzo.DistributedLzoIndexer /input/bigtable.lzo</code></pre>
 <p>再次执行wordcount：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">hadoop jar /root/soft/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.3.jar wordcount -Dmapreduce.job.inputformat.class<span class="token operator">=</span>com.hadoop.mapreduce.LzoTextInputFormat /input /output2</code></pre>
-<p><img src="wpsEE2A.tmp.jpg" alt="img"></p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE2A.tmp.jpg" class="" title="img">
 <h3 id="9-日志采集Flume安装配置；"><a href="#9-日志采集Flume安装配置；" class="headerlink" title="(9).日志采集Flume安装配置；"></a>(9).日志采集Flume安装配置；</h3><p>上传flume安装包并解压：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> -zxvf apache-flume-1.9.0-bin.tar.gz -C /root/soft</code></pre>
-<p><img src="wpsEE3B.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE3B.tmp.jpg" class="" title="img"> 
 <p>切换到soft目录并重命名flume：cd /root/soft</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">mv</span> apache-flume-1.9.0-bin flume</code></pre>
 <p><strong>最好不要使用软连接，后面使用flume可能会报如下图错误：</strong></p>
-<p><img src="wpsEE3C.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE3C.tmp.jpg" class="" title="img"> 
 <p>删除flume的lib下的guava-11.0.2.jar：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> flume/lib
 
@@ -808,13 +808,13 @@ a1.channels.c1.parseAsFlumeEvent <span class="token operator">=</span> <span cla
 <span class="token comment">#绑定source和channel以及sink和channel的关系</span>
 a1.sources.r1.channels <span class="token operator">=</span> c1
 a1.sinks.k1.channel <span class="token operator">=</span> c1</code></pre>
-<p><img src="wpsEE3D.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE3D.tmp.jpg" class="" title="img"> 
 <p>编写flume拦截器（展示部分代码）：</p>
-<p><img src="wpsEE3E.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE3E.tmp.jpg" class="" title="img"> 
 <p>打jar包：</p>
-<p><img src="wpsEE3F.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE3F.tmp.jpg" class="" title="img"> 
 <p>上传至flume的lib目录：</p>
-<p><img src="wpsEE40.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE40.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#切换到soft目录：</span>
 <span class="token builtin class-name">cd</span> /root/soft
 
@@ -832,10 +832,10 @@ kf.sh
 
 <span class="token comment"># 启动</span>
 bin/flume-ng agent --name a1 --conf-file conf/file-flume-kafka.conf <span class="token operator">&amp;</span></code></pre>
-<p><img src="wpsEE41.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE41.tmp.jpg" class="" title="img"> 
 <p>在hadoop3上的kafka中查看是否有数据存在，切换到kafka目录下：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">bin/kafka-console-consumer.sh --bootstrap-server hadoop1:9092 --topic topic_log</code></pre>
-<p><img src="wpsEE42.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE42.tmp.jpg" class="" title="img"> 
 <p>编写日志采集flume启停脚本：cd /root/bin</p>
 <p>vim f1.sh</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#! /bin/bash</span>
@@ -857,7 +857,7 @@ bin/flume-ng agent --name a1 --conf-file conf/file-flume-kafka.conf <span class=
 
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
 <span class="token keyword">esac</span></code></pre>
-<p><img src="wpsEE43.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE43.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
 <span class="token function">chmod</span> <span class="token number">777</span> f1.sh
 
@@ -910,7 +910,7 @@ a1.sinks.k1.hdfs.codeC <span class="token operator">=</span> lzop
 <span class="token comment"># 拼装</span>
 a1.sources.r1.channels <span class="token operator">=</span> c1
 a1.sinks.k1.channel<span class="token operator">=</span> c1</code></pre>
-<p><img src="wpsEE44.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE44.tmp.jpg" class="" title="img"> 
 <p>编写日志消费flume启停脚本：vim f2.sh</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#! /bin/bash</span>
 
@@ -931,7 +931,7 @@ a1.sinks.k1.channel<span class="token operator">=</span> c1</code></pre>
 
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
 <span class="token keyword">esac</span></code></pre>
-<p><img src="wpsEE46.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE46.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
 <span class="token function">chmod</span> <span class="token number">777</span> f2.sh</code></pre>
 <p>编写通道启脚本：</p>
@@ -978,8 +978,8 @@ a1.sinks.k1.channel<span class="token operator">=</span> c1</code></pre>
 
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
 <span class="token keyword">esac</span></code></pre>
-<p><img src="wpsEE56.tmp.jpg" alt="img"> </p>
-<p><img src="wpsEE57.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE56.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE57.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
 <span class="token function">chmod</span> <span class="token number">777</span> cluster.sh
 
@@ -989,26 +989,26 @@ cluster.sh start
 <span class="token comment">#执行lg.sh：</span>
 lg.sh</code></pre>
 <p>查看网页端是否有数据存在：hadoop1:9870</p>
-<p><img src="wpsEE58.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE58.tmp.jpg" class="" title="img"> 
 <p>切换到applog修改application.properties中的业务日期为15：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /root/soft/applog/
 
 <span class="token function">vim</span> application.properties</code></pre>
-<p><img src="wpsEE59.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE59.tmp.jpg" class="" title="img"> 
 <p>执行lg.sh：lg.sh</p>
 <p>观察网页端是否有数据存在：</p>
-<p><img src="wpsEE5A.tmp.jpg" alt="img"> </p>
-<h2 id="2-业务数据采集平台；"><a href="#2-业务数据采集平台；" class="headerlink" title="2.业务数据采集平台；"></a>2.业务数据采集平台；</h2><h3 id="1-安装mysql（参考如下网址）；"><a href="#1-安装mysql（参考如下网址）；" class="headerlink" title="(1).安装mysql（参考如下网址）；"></a>(1).安装mysql（参考如下网址）；</h3><p><a target="_blank" rel="noopener" href="https://blog.chengdashi.cn/2022/05/23/Docker%E9%83%A8%E7%BD%B2Springboot%E9%A1%B9%E7%9B%AE/">docker 安装mysql</a></p>
-<h3 id="2-连接navicat并创建gmall数据库："><a href="#2-连接navicat并创建gmall数据库：" class="headerlink" title="(2).连接navicat并创建gmall数据库："></a>(2).连接navicat并创建gmall数据库：</h3><p><img src="wpsEE5B.tmp.jpg" alt="img"> </p>
-<p><img src="wpsEE5C.tmp.jpg" alt="img"> </p>
-<p><img src="wpsEE5D.tmp.jpg" alt="img"> </p>
-<p><img src="wpsEE5E.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE5A.tmp.jpg" class="" title="img"> 
+<h2 id="2-业务数据采集平台；"><a href="#2-业务数据采集平台；" class="headerlink" title="2.业务数据采集平台；"></a>2.业务数据采集平台；</h2><h3 id="1-安装mysql（参考如下网址）；"><a href="#1-安装mysql（参考如下网址）；" class="headerlink" title="(1).安装mysql（参考如下网址）；"></a>(1).安装mysql（参考如下网址）；</h3><p><a href="数仓/https://blog.chengdashi.cn/2022/05/23/Docker%E9%83%A8%E7%BD%B2Springboot%E9%A1%B9%E7%9B%AE/">docker 安装mysql</a></p>
+<h3 id="2-连接navicat并创建gmall数据库："><a href="#2-连接navicat并创建gmall数据库：" class="headerlink" title="(2).连接navicat并创建gmall数据库："></a>(2).连接navicat并创建gmall数据库：</h3><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE5B.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE5C.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE5D.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE5E.tmp.jpg" class="" title="img"> 
 <p>生成业务数据，在soft目录下创建db_log目录；</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> /root/soft/db_log</code></pre>
 <p>上传gmall2020-mock-db-2020-05-18.jar、application.properties到db_log；</p>
-<p><img src="wpsEE5F.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE5F.tmp.jpg" class="" title="img"> 
 <p>修改application.properties配置：vim application.properties</p>
-<p><img src="wpsEE70.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE70.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash">mock.date<span class="token operator">=</span><span class="token number">2020</span>-06-14
 
 mock.clear<span class="token operator">=</span><span class="token number">1</span></code></pre>
@@ -1021,7 +1021,7 @@ mock.clear<span class="token operator">=</span><span class="token number">0</spa
 
 java -jar gmall2020-mock-db-2020-05-18.jar </code></pre>
 <h3 id="3-sqoop安装；"><a href="#3-sqoop安装；" class="headerlink" title="(3).sqoop安装；"></a>(3).sqoop安装；</h3><p>上传sqoop安装包并解压：</p>
-<p><img src="wpsEE71.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE71.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> -zxvf sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz -C /root/soft
 
 <span class="token comment">#创建软连接：</span>
@@ -1040,21 +1040,21 @@ java -jar gmall2020-mock-db-2020-05-18.jar </code></pre>
 <span class="token builtin class-name">export</span> <span class="token assign-left variable">ZOOKEEPER_HOME</span><span class="token operator">=</span>/root/soft/zookeeper
 
 <span class="token builtin class-name">export</span> <span class="token assign-left variable">ZOOCFGDIR</span><span class="token operator">=</span>/root/soft/zookeeper/conf</code></pre>
-<p><img src="wpsEE72.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE72.tmp.jpg" class="" title="img"> 
 <p>拷贝JDBC驱动，上传驱动并拷贝到sqoop的lib下：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">cp</span> mysql-connector-java-5.1.46.jar /root/soft/sqoop/lib</code></pre>
-<p><img src="wpsEE73.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE73.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#验证sqoop，进入到sqoop目录：</span>
 <span class="token builtin class-name">cd</span> /root/soft/sqoop
 
 <span class="token comment">#执行sqoop命令：</span>
 bin/sqoop <span class="token builtin class-name">help</span></code></pre>
-<p><img src="wpsEE74.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE74.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#测试sqoop是否能够成功连接数据库：</span>
 bin/sqoop list-databases --connect jdbc:mysql://hadoop1:3306/ --username root --password <span class="token number">123456</span></code></pre>
-<p><img src="wpsEE75.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE75.tmp.jpg" class="" title="img"> 
 <h3 id="4-业务数据导入HDFS；"><a href="#4-业务数据导入HDFS；" class="headerlink" title="(4).业务数据导入HDFS；"></a>(4).业务数据导入HDFS；</h3><p>在root/bin下编写mysql_to_hdfs.sh脚本（展示部分需要修改的代码）：vim mysql_to_hdfs.sh</p>
-<p><img src="wpsEE76.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE76.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
 <span class="token function">chmod</span> <span class="token number">777</span> mysql_to_hdfs.sh
 
@@ -1077,7 +1077,7 @@ mysql_to_hdfs.sh all <span class="token number">2020</span>-06-15</code></pre>
 <span class="token builtin class-name">export</span> <span class="token assign-left variable">SPARK_HOME</span><span class="token operator">=</span>/root/soft/spark
 <span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span><span class="token builtin class-name">:</span><span class="token variable">$SPARK_HOME</span>/bin
 <span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span><span class="token builtin class-name">:</span><span class="token variable">$SPARK_HOME</span>/sbin</code></pre>
-<p><img src="wpsEE77.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE77.tmp.jpg" class="" title="img"> 
 <p>使环境变量生效：source ~/.bashrc</p>
 <p>解决/root/soft/hive/lib下的日志jar包冲突：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">mv</span> log4j-slf4j-impl-2.10.0.jar log4j-slf4j-impl-2.10.0.jar.bak</code></pre>
@@ -1160,14 +1160,14 @@ mysql_to_hdfs.sh all <span class="token number">2020</span>-06-15</code></pre>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span></code></pre>
-<p><img src="wpsEE78.tmp.jpg" alt="img"> </p>
-<p><img src="wpsEE79.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE78.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE79.tmp.jpg" class="" title="img"> 
 <p>初始化元数据库，创建mysql数据库metastore：</p>
-<p><img src="wpsEE7A.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE7A.tmp.jpg" class="" title="img"> 
 <p>初始化命令： schematool -initSchema -dbType mysql -verbose</p>
 <p>启动hive客户端：hive</p>
 <p>查看数据库：show databases；</p>
-<p><img src="wpsEE7B.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE7B.tmp.jpg" class="" title="img"> 
 <h3 id="6-配置Yarn容量调度器多队列"><a href="#6-配置Yarn容量调度器多队列" class="headerlink" title="(6)配置Yarn容量调度器多队列"></a>(6)配置Yarn容量调度器多队列</h3><h4 id="1-修改容量调度器配置文件"><a href="#1-修改容量调度器配置文件" class="headerlink" title="1,修改容量调度器配置文件"></a>1,修改容量调度器配置文件</h4><blockquote>
 <p>默认Yarn的配置下，容量调度器只有一条default队列。在capacity-scheduler.xml中可以配置多条队列，<strong><em>\</em>修改**</strong>以下属性，增加hive队列。</p>
 </blockquote>
@@ -1258,10 +1258,10 @@ mysql_to_hdfs.sh all <span class="token number">2020</span>-06-15</code></pre>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span></code></pre>
 <h4 id="2、分发配置文件"><a href="#2、分发配置文件" class="headerlink" title="2、分发配置文件"></a>2、分发配置文件</h4><pre class="language-bash" data-language="bash"><code class="language-bash">xsync /root/soft/hadoop/etc/hadoop/capacity-scheduler.xml</code></pre>
-<h2 id="3-数据仓库系统；"><a href="#3-数据仓库系统；" class="headerlink" title="3.数据仓库系统；"></a>3.数据仓库系统；</h2><h3 id="1-部署hive-on-spark；"><a href="#1-部署hive-on-spark；" class="headerlink" title="(1).部署hive on spark；"></a>(1).部署hive on spark；</h3><p><img src="wpsEE7C.tmp.jpg" alt="img"> </p>
-<p><img src="wpsEE8D.tmp.jpg" alt="img"> </p>
+<h2 id="3-数据仓库系统；"><a href="#3-数据仓库系统；" class="headerlink" title="3.数据仓库系统；"></a>3.数据仓库系统；</h2><h3 id="1-部署hive-on-spark；"><a href="#1-部署hive-on-spark；" class="headerlink" title="(1).部署hive on spark；"></a>(1).部署hive on spark；</h3><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE7C.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE8D.tmp.jpg" class="" title="img"> 
 <p>上传spark安装包（必须使用尚硅谷提供的安装包一个包为纯净版）并解压：</p>
-<p><img src="wpsEE8E.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE8E.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> -zxvf spark-3.0.0-bin-hadoop3.2.tgz -C /root/soft
 
 <span class="token function">tar</span> -zxvf spark-3.0.0-bin-without-hadoop.tgz -C /root/soft
@@ -1278,14 +1278,14 @@ spark.eventLog.enabled          <span class="token boolean">true</span>
 spark.eventLog.dir              hdfs://hadoop1:8020/spark-history
 spark.executor.memory           1g
 spark.driver.memory             1g</code></pre>
-<p><img src="wpsEE8F.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE8F.tmp.jpg" class="" title="img"> 
 <p>在HDFS创建如下路径：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">hdfs dfs -mkdir /spark-history
 hdfs dfs -mkdir /spark-jars</code></pre>
 <p>上传spark纯净版jar包到hdfs</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">hdfs dfs -put /root/soft/spark-3.0.0-bin-without-hadoop/jars/*  /spark-jars</code></pre>
 <p>运行hive on spark之前需要更改，否则会报以下错误：</p>
-<p><img src="wpsEE90.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE90.tmp.jpg" class="" title="img"> 
 <p>在/root/soft/hadoop/etc/hadoop/yarn-site.xml中配置：</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>yarn.nodemanager.pmem-check-enabled<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
@@ -1295,7 +1295,7 @@ hdfs dfs -mkdir /spark-jars</code></pre>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>yarn.nodemanager.vmem-check-enabled<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span></code></pre>
-<p><img src="wpsEE91.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE91.tmp.jpg" class="" title="img"> 
 <p>同步到hadoop2、hadoop3：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">xsync yarn-site.xml</code></pre>
 <p>进入/root/soft/spark/conf</p>
@@ -1303,7 +1303,7 @@ hdfs dfs -mkdir /spark-jars</code></pre>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">cp</span> spark-env.sh.template spark-env.sh</code></pre>
 <p>然后在spark-env.sh中配置：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">SPARK_DIST_CLASSPATH</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>hadoop classpath<span class="token variable">)</span></span></code></pre>
-<p><img src="wpsEE92.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE92.tmp.jpg" class="" title="img"> 
 <p>启动hive客户端，并进行hive on spark测试；</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#启动hive客户端命令：</span>
 hive
@@ -1313,19 +1313,19 @@ create table student<span class="token punctuation">(</span>id int, name string<
 
 <span class="token comment">#插入数据： </span>
 insert into table student values<span class="token punctuation">(</span><span class="token number">1</span>,<span class="token string">'abc'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p><img src="wpsEE93.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE93.tmp.jpg" class="" title="img"> 
 <p>上图表示spark测试成功；</p>
 <p>创建gmall数据库：create database gmall;</p>
 <h3 id="2-启动hiveserver2，连接idea，"><a href="#2-启动hiveserver2，连接idea，" class="headerlink" title="(2).启动hiveserver2，连接idea，"></a>(2).启动hiveserver2，连接idea，</h3><p>启动命令：hiveserver2</p>
 <p>等待跑出4个session，连接idea：</p>
-<p><img src="wpsEE95.tmp.jpg" alt="img"> </p>
-<p><img src="wpsEE94.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE95.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE94.tmp.jpg" class="" title="img"> 
 <p>测试连接：</p>
-<p><img src="wpsEE96.tmp.jpg" alt="img"> </p>
-<p><img src="wpsEE97.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE96.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEE97.tmp.jpg" class="" title="img"> 
 <p>连接成功就可以使用了。</p>
 <p>如果出现：</p>
-<p><img src="image-20220618150714310.png" alt="image-20220618150714310"></p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/image-20220618150714310.png" class="" title="image-20220618150714310">
 <p>则需要：</p>
 <p>修改 $HADOOP_HOME/etc/hadoop/core-site.xml 配置文件，添加如下配置：</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"> <span class="token comment">&lt;!--远程登录 hive --></span>
@@ -1345,7 +1345,7 @@ insert into table student values<span class="token punctuation">(</span><span cl
 <pre class="language-bash" data-language="bash"><code class="language-bash">hdp.sh start</code></pre>
 <p>重新测试连接</p>
 <h3 id="3-创建UDTF函数；"><a href="#3-创建UDTF函数；" class="headerlink" title="(3).创建UDTF函数；"></a>(3).创建UDTF函数；</h3><p>创建一个maven工程：hivefunction</p>
-<p><img src="image-20220618172825987.png" alt="image-20220618172825987"></p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/image-20220618172825987.png" class="" title="image-20220618172825987">
 <p>在pom.xml 添加hive依赖</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
         <span class="token comment">&lt;!--添加hive依赖--></span>
@@ -1356,7 +1356,7 @@ insert into table student values<span class="token punctuation">(</span><span cl
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span></code></pre>
 <p>创建ExplodeJSONArray类：</p>
-<p><img src="image-20220618174653107.png" alt="image-20220618174653107"></p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/image-20220618174653107.png" class="" title="image-20220618174653107">
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>hive<span class="token punctuation">.</span>udtf</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>hadoop<span class="token punctuation">.</span>hive<span class="token punctuation">.</span>ql<span class="token punctuation">.</span>exec<span class="token punctuation">.</span></span><span class="token class-name">UDFArgumentException</span></span><span class="token punctuation">;</span>
@@ -1428,7 +1428,7 @@ insert into table student values<span class="token punctuation">(</span><span cl
 <p>先使用use gmall ：</p>
 <p>然后在hive里面创建永久函数：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">create <span class="token keyword">function</span> explode_json_array as <span class="token string">'com.example.hive.udtf.ExplodeJSONArray'</span> using jar <span class="token string">'hdfs://hadoop1:8020/user/hive/jars/hivefunction-1.0-SNAPSHOT.jar'</span><span class="token punctuation">;</span></code></pre>
-<p><img src="image-20220618180614182.png" alt="image-20220618180614182"></p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/image-20220618180614182.png" class="" title="image-20220618180614182">
 <h3 id="4-建ODS层-用户行为数据-表；"><a href="#4-建ODS层-用户行为数据-表；" class="headerlink" title="(4).建ODS层(用户行为数据)表；"></a>(4).建ODS层(用户行为数据)表；</h3><pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">drop</span> <span class="token keyword">table</span> <span class="token keyword">if</span> <span class="token keyword">exists</span> ods_log<span class="token punctuation">;</span>
 <span class="token keyword">CREATE</span> EXTERNAL <span class="token keyword">TABLE</span> ods_log <span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>line<span class="token punctuation">`</span></span> string<span class="token punctuation">)</span>
     PARTITIONED <span class="token keyword">BY</span> <span class="token punctuation">(</span><span class="token identifier"><span class="token punctuation">`</span>dt<span class="token punctuation">`</span></span> string<span class="token punctuation">)</span> <span class="token comment">-- 按照时间创建分区</span>
@@ -1464,7 +1464,7 @@ load data inpath '/origin_data/<span class="token variable">$APP</span>/log/topi
 <span class="token variable">$hive</span> -e <span class="token string">"<span class="token variable">$sql</span>"</span>
 
 <span class="token variable">$hadoop</span> jar /root/soft/hadoop/share/hadoop/common/hadoop-lzo-0.4.20.jar com.hadoop.compression.lzo.DistributedLzoIndexer -Dmapreduce.job.queuename<span class="token operator">=</span>hive /warehouse/<span class="token variable">$APP</span>/ods/ods_log/dt<span class="token operator">=</span><span class="token variable">$do_date</span></code></pre>
-<p><img src="wpsEEAB.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEAB.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
 <span class="token function">chmod</span> <span class="token number">777</span> hdfs_to_ods_log.sh
 
@@ -1473,8 +1473,8 @@ hdfs_to_ods_log.sh <span class="token number">2020</span>-06-15</code></pre>
 <p>查看数据：</p>
 <pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> ods_log <span class="token keyword">where</span> dt<span class="token operator">=</span><span class="token string">'2020-06-15'</span> <span class="token keyword">limit</span> <span class="token number">2</span><span class="token punctuation">;</span></code></pre>
 <p>创建ODS层业务数据表，仅展示部分sql代码;</p>
-<p><img src="wpsEEAC.tmp.jpg" alt="img"> </p>
-<p><img src="wpsEEAD.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEAC.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEAD.tmp.jpg" class="" title="img"> 
 <p>创建ODS数据加载脚本：vim hdfs_to_ods_db.sh</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
 
@@ -1545,7 +1545,7 @@ load data inpath '/origin_data/<span class="token variable">$APP</span>/db/base_
     <span class="token variable">$hive</span> -e <span class="token string">"<span class="token variable">$sql1</span>"</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
 <span class="token keyword">esac</span></code></pre>
-<p><img src="wpsEEAE.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEAE.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
 <span class="token function">chmod</span> <span class="token number">777</span> hdfs_to_ods_db.sh
 
@@ -1556,8 +1556,8 @@ hdfs_to_ods_db.sh first <span class="token number">2020</span>-06-14
 hdfs_to_ods_db.sh all <span class="token number">2020</span>-06-15</code></pre>
 <p>测试是否成功导入数据： </p>
 <pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> ods_order_detail <span class="token keyword">where</span> dt<span class="token operator">=</span><span class="token string">'2020-06-15'</span><span class="token punctuation">;</span></code></pre>
-<p><img src="wpsEEAF.tmp.jpg" alt="img"> </p>
-<h3 id="5-建DWD层-用户行为日志解析-表；"><a href="#5-建DWD层-用户行为日志解析-表；" class="headerlink" title="(5).建DWD层(用户行为日志解析)表；"></a>(5).建DWD层(用户行为日志解析)表；</h3><p><img src="wpsEEB0.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEAF.tmp.jpg" class="" title="img"> 
+<h3 id="5-建DWD层-用户行为日志解析-表；"><a href="#5-建DWD层-用户行为日志解析-表；" class="headerlink" title="(5).建DWD层(用户行为日志解析)表；"></a>(5).建DWD层(用户行为日志解析)表；</h3><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEB0.tmp.jpg" class="" title="img"> 
 <p>仅展示部分sql代码，创建加载数据脚本：vim ods_to_dwd_log.sh</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
 
@@ -1697,7 +1697,7 @@ and get_json_object(line,'$.err') is not null;
 "</span>
 
 <span class="token variable">$hive</span> -e <span class="token string">"<span class="token variable">$sql</span>"</span></code></pre>
-<p><img src="wpsEEB1.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEB1.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
 <span class="token function">chmod</span> <span class="token number">777</span> ods_to_dwd_log.sh
 
@@ -1706,8 +1706,8 @@ ods_to_dwd_log.sh <span class="token number">2020</span>-06-15</code></pre>
 <p>查询导入结果：</p>
 <pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> dwd_start_log <span class="token keyword">where</span> dt<span class="token operator">=</span><span class="token string">'2020-06-15'</span> <span class="token keyword">limit</span> <span class="token number">2</span><span class="token punctuation">;</span></code></pre>
 <p>DWD层业务数据表，仅展示部分sql代码;</p>
-<p><img src="wpsEEB2.tmp.jpg" alt="img"> </p>
-<p><img src="wpsEEB3.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEB2.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEB3.tmp.jpg" class="" title="img"> 
 <p>创建DWD数据加载脚本：vim ods_to_dwd_db.sh</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
 
@@ -2134,7 +2134,7 @@ select * from <span class="token variable">$&#123;APP&#125;</span>.dwd_dim_user_
     <span class="token variable">$hive</span> -e <span class="token string">"<span class="token variable">$sql1</span><span class="token variable">$sql3</span>"</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
 <span class="token keyword">esac</span></code></pre>
-<p><img src="wpsEEC4.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEC4.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
 <span class="token function">chmod</span> <span class="token number">777</span> ods_to_dwd_db.sh
 
@@ -2145,8 +2145,8 @@ ods_to_dwd_db.sh first <span class="token number">2020</span>-06-14
 ods_to_dwd_db.sh all <span class="token number">2020</span>-06-15</code></pre>
 <p>查看数据是否导入：</p>
 <pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> id<span class="token punctuation">,</span> start_date<span class="token punctuation">,</span> end_date <span class="token keyword">from</span> dwd_dim_user_info_his <span class="token keyword">limit</span> <span class="token number">2</span><span class="token punctuation">;</span></code></pre>
-<p><img src="wpsEEC5.tmp.jpg" alt="img"> </p>
-<h3 id="6-建DWS层所有主题对象当天的汇总行为表；"><a href="#6-建DWS层所有主题对象当天的汇总行为表；" class="headerlink" title="(6).建DWS层所有主题对象当天的汇总行为表；"></a>(6).建DWS层所有主题对象当天的汇总行为表；</h3><p><img src="wpsEEC6.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEC5.tmp.jpg" class="" title="img"> 
+<h3 id="6-建DWS层所有主题对象当天的汇总行为表；"><a href="#6-建DWS层所有主题对象当天的汇总行为表；" class="headerlink" title="(6).建DWS层所有主题对象当天的汇总行为表；"></a>(6).建DWS层所有主题对象当天的汇总行为表；</h3><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEC6.tmp.jpg" class="" title="img"> 
 <p>仅展示部分sql代码，创建DWS加载数据脚本：vim dwd_to_dws.sh </p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
 
@@ -2590,7 +2590,7 @@ left join tmp_activity on nvl(tmp_op.activity_id,tmp_display.activity_id)=tmp_ac
 "</span>
 
 <span class="token variable">$hive</span> -e <span class="token string">"<span class="token variable">$sql</span>"</span></code></pre>
-<p><img src="wpsEEC7.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEC7.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
 <span class="token function">chmod</span> <span class="token number">777</span> dwd_to_dws.sh
 
@@ -2598,9 +2598,9 @@ left join tmp_activity on nvl(tmp_op.activity_id,tmp_display.activity_id)=tmp_ac
 dwd_to_dws.sh <span class="token number">2020</span>-06-15</code></pre>
 <p>查看导入数据：</p>
 <pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> dws_area_stats_daycount <span class="token keyword">where</span> dt<span class="token operator">=</span><span class="token string">'2020-06-15'</span> <span class="token keyword">limit</span> <span class="token number">2</span><span class="token punctuation">;</span></code></pre>
-<p><img src="wpsEEC8.tmp.jpg" alt="img"> </p>
-<h3 id="7-建DWT层所有主题对象的累积行为表；"><a href="#7-建DWT层所有主题对象的累积行为表；" class="headerlink" title="(7).建DWT层所有主题对象的累积行为表；"></a>(7).建DWT层所有主题对象的累积行为表；</h3><p><img src="wps8920.tmp.jpg" alt="img"> </p>
-<p><img src="wps8921.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wpsEEC8.tmp.jpg" class="" title="img"> 
+<h3 id="7-建DWT层所有主题对象的累积行为表；"><a href="#7-建DWT层所有主题对象的累积行为表；" class="headerlink" title="(7).建DWT层所有主题对象的累积行为表；"></a>(7).建DWT层所有主题对象的累积行为表；</h3><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8920.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8921.tmp.jpg" class="" title="img"> 
 <p>仅展示部分sql代码，创建DWT数据加载脚本：vim dws_to_dwt.sh</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
 
@@ -2879,7 +2879,7 @@ on old.id=new.id;
 "</span>
 
 <span class="token variable">$hive</span> -e <span class="token string">"<span class="token variable">$sql</span>"</span></code></pre>
-<p><img src="wps8922.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8922.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
 <span class="token function">chmod</span> <span class="token number">777</span> dws_to_dwt.sh
 
@@ -2887,9 +2887,9 @@ on old.id=new.id;
 dws_to_dwt.sh <span class="token number">2020</span>-06-15</code></pre>
 <p>查看导入数据：</p>
 <pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> dwt_uv_topic <span class="token keyword">limit</span> <span class="token number">5</span><span class="token punctuation">;</span></code></pre>
-<p><img src="wps8923.tmp.jpg" alt="img"> </p>
-<h3 id="8-建ADS层所有主题指标分析表；"><a href="#8-建ADS层所有主题指标分析表；" class="headerlink" title="(8).建ADS层所有主题指标分析表；"></a>(8).建ADS层所有主题指标分析表；</h3><p><img src="wps8924.tmp.jpg" alt="img"> </p>
-<p><img src="wps8925.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8923.tmp.jpg" class="" title="img"> 
+<h3 id="8-建ADS层所有主题指标分析表；"><a href="#8-建ADS层所有主题指标分析表；" class="headerlink" title="(8).建ADS层所有主题指标分析表；"></a>(8).建ADS层所有主题指标分析表；</h3><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8924.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8925.tmp.jpg" class="" title="img"> 
 <p>仅展示部分sql代码，创建ADS层数据加载脚本：vim dwt_to_ads.sh</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
 
@@ -3363,7 +3363,7 @@ from <span class="token variable">$&#123;APP&#125;</span>.dwt_area_topic;
 "</span>
 
 <span class="token variable">$hive</span> -e <span class="token string">"<span class="token variable">$sql</span>"</span></code></pre>
-<p><img src="wps8926.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8926.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 赋权限：</span>
 <span class="token function">chmod</span> <span class="token number">777</span> dwt_to_ads.sh
 
@@ -3371,9 +3371,9 @@ from <span class="token variable">$&#123;APP&#125;</span>.dwt_area_topic;
 dwt_to_ads.sh <span class="token number">2020</span>-06-15</code></pre>
 <p>查看是否成功导入数据：</p>
 <pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> ads_area_topic <span class="token keyword">where</span> dt<span class="token operator">=</span><span class="token string">'2020-06-15'</span><span class="token punctuation">;</span> </code></pre>
-<p><img src="wps8927.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8927.tmp.jpg" class="" title="img"> 
 <h3 id="9-Azkaban调度；"><a href="#9-Azkaban调度；" class="headerlink" title="(9).Azkaban调度；"></a>(9).Azkaban调度；</h3><p>安装Azkaban，上传安装包：</p>
-<p><img src="wps8928.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8928.tmp.jpg" class="" title="img"> 
 <p>创建azkaban文件夹：mkdir /root/soft/azkaban</p>
 <p>解压：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> -zxvf azkaban-exec-server-3.84.4.tar.gz -C /root/soft/azkaban
@@ -3382,20 +3382,20 @@ dwt_to_ads.sh <span class="token number">2020</span>-06-15</code></pre>
 
 <span class="token function">tar</span> -zxvf azkaban-db-3.84.4.tar.gz -C /root/soft/azkaban</code></pre>
 <p>打开Navicat连接hadoop1的MySQL，创建azkaban数据库：</p>
-<p><img src="wps8929.tmp.jpg" alt="img"> </p>
-<p><img src="wps892A.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8929.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps892A.tmp.jpg" class="" title="img"> 
 <p>输入：</p>
 <pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">USER</span> <span class="token string">'azkaban'</span><span class="token variable">@'%'</span> IDENTIFIED <span class="token keyword">BY</span> <span class="token string">'000000'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">GRANT</span> <span class="token keyword">SELECT</span><span class="token punctuation">,</span><span class="token keyword">INSERT</span><span class="token punctuation">,</span><span class="token keyword">UPDATE</span><span class="token punctuation">,</span><span class="token keyword">DELETE</span> <span class="token keyword">ON</span> azkaban<span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">to</span> <span class="token string">'azkaban'</span><span class="token variable">@'%'</span> <span class="token keyword">WITH</span> <span class="token keyword">GRANT</span> <span class="token keyword">OPTION</span><span class="token punctuation">;</span></code></pre>
 <p>本地解压azkaban-db-3.84.4.tar.gz，导入sql代码：</p>
-<p><img src="wps892B.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps892B.tmp.jpg" class="" title="img"> 
 <p>更改MySQL包的大小，防止Azkaban连接MySQL阻塞：sudo vim /etc/my.cnf</p>
 <p>在[mysqld]下面加一行：max_allowed_packet=1024M</p>
 <p>重启MySQL：sudo systemctl restart mysqld</p>
 <p>如果是基于docker安装的MySQL，先启动docker服务：service docker start</p>
 <p>查看历史容器：docker ps -a</p>
-<p><img src="wps893B.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps893B.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#重启MySQL容器：</span>
 <span class="token function">docker</span> restart 容器id
 
@@ -3404,7 +3404,7 @@ dwt_to_ads.sh <span class="token number">2020</span>-06-15</code></pre>
 
 <span class="token comment">#输入MySQL启动命令：</span>
 mysql -uroot -p123456</code></pre>
-<p><img src="wps893C.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps893C.tmp.jpg" class="" title="img"> 
 <p>一般情况下，容器内没有vim</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 先更新我们的包管理工具</span>
 <span class="token function">apt-get</span> update
@@ -3413,9 +3413,9 @@ mysql -uroot -p123456</code></pre>
 <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">vim</span></code></pre>
 <p>切换到Mysql目录下，编辑mysql.conf.d：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/mysql/mysql.conf.d</code></pre>
-<p><img src="wps893D.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps893D.tmp.jpg" class="" title="img"> 
 <p>在[mysqld]下面加一行：max_allowed_packet=1024M</p>
-<p><img src="wps893E.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps893E.tmp.jpg" class="" title="img"> 
 <p>退出容器：exit</p>
 <p>重启容器：docker restart 容器id</p>
 <p>切换目录：cd /root/soft/azkaban/</p>
@@ -3425,7 +3425,7 @@ mysql -uroot -p123456</code></pre>
 <span class="token function">ln</span> -s azkaban-web-server-3.84.4 azkaban-web
 
 <span class="token function">ln</span> -s azkaban-db-3.84.4 azkaban-db</code></pre>
-<p><img src="wps893F.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps893F.tmp.jpg" class="" title="img"> 
 <p>修改azkaban-exec/conf目录下的azkaban.properties：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> azkaban-exec/conf/azkaban.properties</code></pre>
 <p>修改如下内容：</p>
@@ -3438,8 +3438,8 @@ mysql.host<span class="token operator">=</span>hadoop1
 mysql.password<span class="token operator">=</span>000000</code></pre>
 <p>在最后一行添加：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">executor.port<span class="token operator">=</span><span class="token number">12321</span></code></pre>
-<p><img src="wps8940.tmp.jpg" alt="img"> </p>
-<p><img src="wps8941.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8940.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8941.tmp.jpg" class="" title="img"> 
 <p>进入azkaban目录分发azkaban-exec：xsync azkaban-exec-server-3.84.4</p>
 <p>hadoop1,hadoop2,hadoop3进入azkaban-exec-server-3.84.4目录，启动executor：bin/start-exec.sh</p>
 <p>在第一台依次激活executor:</p>
@@ -3448,7 +3448,7 @@ mysql.password<span class="token operator">=</span>000000</code></pre>
 <span class="token function">curl</span> -G <span class="token string">"hadoop2:12321/executor?action=activate"</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span>
 
 <span class="token function">curl</span> -G <span class="token string">"hadoop3:12321/executor?action=activate"</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span></code></pre>
-<p><img src="image-20220619180917831.png" alt="image-20220619180917831"></p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/image-20220619180917831.png" class="" title="image-20220619180917831">
 <p>配置azkaban-web，进入azkaban-web/conf目录,编辑azkaban.properties：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /root/soft/azkaban/azkaban-web/conf/azkaban.properties</code></pre>
 <p>修改如下内容：</p>
@@ -3459,25 +3459,25 @@ mysql.host<span class="token operator">=</span>hadoop1
 mysql.password<span class="token operator">=</span>000000
 
 azkaban.executorselector.filters<span class="token operator">=</span>StaticRemainingFlowSize,CpuStatus</code></pre>
-<p><img src="wps8942.tmp.jpg" alt="img"> </p>
-<p><img src="wps8943.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8942.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8943.tmp.jpg" class="" title="img"> 
 <p>编辑azkaban-user.xml:</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /root/soft/azkaban/azkaban-web/conf/azkaban-users.xml</code></pre>
 <p>添加hadoop用户及密码，用于web登录：</p>
 <pre class="language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>user</span> <span class="token attr-name">password</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>root<span class="token punctuation">"</span></span> <span class="token attr-name">roles</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>admin<span class="token punctuation">"</span></span> <span class="token attr-name">username</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>root<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span></code></pre>
-<p><img src="wps8944.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8944.tmp.jpg" class="" title="img"> 
 <p>进入azkaban-web目录，启动web server：bin/start-web.sh</p>
 <p>在网页输入hadoop1:8081 (如果本地没有映射，就输入hadoop1的ip地址)</p>
-<p><img src="wps8945.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8945.tmp.jpg" class="" title="img"> 
 <p>修改/root/soft/applog/application.properties</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /root/soft/applog/application.properties</code></pre>
 <p>将日期修改成2020-06-26</p>
-<p><img src="image-20220619182924593.png" alt="image-20220619182924593"></p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/image-20220619182924593.png" class="" title="image-20220619182924593">
 <p>然后分发： xsync application.properties</p>
 <p>创建MySQL数据库和表：</p>
-<p><img src="wps8946.tmp.jpg" alt="img"> </p>
-<p><img src="wps8957.tmp.jpg" alt="img"> </p>
-<p><img src="wps8958.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8946.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8957.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8958.tmp.jpg" class="" title="img"> 
 <p>编写Sqoop导出脚本：vim hdfs_to_mysql.sh</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
 
@@ -3520,42 +3520,42 @@ azkaban.executorselector.filters<span class="token operator">=</span>StaticRemai
      <span class="token comment">#其余表省略未写</span>
 <span class="token punctuation">;</span><span class="token punctuation">;</span>
 <span class="token keyword">esac</span></code></pre>
-<p><img src="wps8959.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8959.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
 <span class="token function">chmod</span> <span class="token number">777</span> hdfs_to_mysql.sh</code></pre>
 <p>Sqoop导出数据：hdfs_to_mysql.sh all</p>
-<p><img src="wps895A.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps895A.tmp.jpg" class="" title="img"> 
 <p>编写Azkaban工作流程配置文件；</p>
-<p><img src="wps895B.tmp.jpg" alt="img"> </p>
-<p><img src="wps895C.tmp.jpg" alt="img"> </p>
-<p><img src="wps895D.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps895B.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps895C.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps895D.tmp.jpg" class="" title="img"> 
 <p>打包zip上传azkaban，创建gmall项目导入zip包：</p>
-<p><img src="wps895E.tmp.jpg" alt="img"> </p>
-<p><img src="wps895F.tmp.jpg" alt="img"> </p>
-<p><img src="wps8960.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps895E.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps895F.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8960.tmp.jpg" class="" title="img"> 
 <p>执行以下命令</p>
 <pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">use</span> azkaban<span class="token punctuation">;</span>
 <span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> executors<span class="token punctuation">;</span></code></pre>
-<p><img src="wps8961.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8961.tmp.jpg" class="" title="img"> 
 <p>第一个 dt  2020-06-26</p>
 <p>第二个 useExecutor 1</p>
-<p><img src="wps8962.tmp.jpg" alt="img"> </p>
-<p><img src="image-20220619182358618.png" alt="image-20220619182358618"></p>
-<p><img src="wps8963.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8962.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/image-20220619182358618.png" class="" title="image-20220619182358618">
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8963.tmp.jpg" class="" title="img"> 
 <h2 id="4-可视化报表。"><a href="#4-可视化报表。" class="headerlink" title="4.可视化报表。"></a>4.可视化报表。</h2><h3 id="1-Superset入门；"><a href="#1-Superset入门；" class="headerlink" title="(1).Superset入门；"></a>(1).Superset入门；</h3><p>安装Miniconda，上传安装包:</p>
 <p>安装命令：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">bash</span> Miniconda3-latest-Linux-x86_64.sh</code></pre>
-<p><img src="wps8964.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8964.tmp.jpg" class="" title="img"> 
 <p>一直按回车，直到出现下面输入yes：</p>
-<p><img src="wps8965.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8965.tmp.jpg" class="" title="img"> 
 <p>输入安装路径：</p>
-<p><img src="wps8966.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8966.tmp.jpg" class="" title="img"> 
 <p>安装完成后，加载环境变量，使之生效： source ~/.bashrc</p>
-<p><img src="wps8967.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8967.tmp.jpg" class="" title="img"> 
 <p>取消自动激活base环境：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">conda config --set auto_activate_base <span class="token boolean">false</span></code></pre>
 <p>激活base环境：conda activate base</p>
-<p><img src="wps8977.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8977.tmp.jpg" class="" title="img"> 
 <p>配置conda国内镜像：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"> conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
 
@@ -3563,7 +3563,7 @@ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/m
 
 conda config --set show_channel_urls <span class="token function">yes</span></code></pre>
 <p>查看conda的镜像配置：vim ~/.condarc</p>
-<p><img src="wps8978.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8978.tmp.jpg" class="" title="img"> 
 <p>创建Python3.6环境：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">conda create --name superset <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">3.6</span></code></pre>
 <p>查看所有环境：</p>
@@ -3598,7 +3598,7 @@ superset fab create-admin</code></pre>
 <p>在superset环境下启动Superset：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">gunicorn --workers <span class="token number">5</span> --timeout <span class="token number">120</span> --bind hadoop1:8787  <span class="token string">"superset.app:create_app()"</span> --daemon</code></pre>
 <p>网页端访问hadoop1:8787：</p>
-<p><img src="wps8979.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8979.tmp.jpg" class="" title="img"> 
 <p>停止superset：</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/superset/ &amp;&amp; !/awk/&#123;print $2&#125;'</span> <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">kill</span> -9</code></pre>
 <h3 id="2-superset启停脚本；"><a href="#2-superset启停脚本；" class="headerlink" title="(2).superset启停脚本；"></a>(2).superset启停脚本；</h3><p>在/root/bin目录下：vim superset.sh</p>
@@ -3669,8 +3669,8 @@ superset fab create-admin</code></pre>
             <span class="token builtin class-name">echo</span> <span class="token string">"superset正在运行"</span>
         <span class="token keyword">fi</span>
 <span class="token keyword">esac</span></code></pre>
-<p><img src="wps897A.tmp.jpg" alt="img"> </p>
-<p><img src="wps897B.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps897A.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps897B.tmp.jpg" class="" title="img"> 
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#赋权限：</span>
 <span class="token function">chmod</span> <span class="token number">777</span> superset.sh
 
@@ -3682,20 +3682,20 @@ conda <span class="token function">install</span> mysqlclient -y
 <span class="token comment">#重启Superset：</span>
 superset.sh restart</code></pre>
 <p>配置数据库：</p>
-<p><img src="wps897C.tmp.jpg" alt="img"> </p>
-<p><img src="wps897D.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps897C.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps897D.tmp.jpg" class="" title="img"> 
 <p>mysql://root:123456@hadoop1/gmall_report?charset=utf8</p>
-<p><img src="wps897E.tmp.jpg" alt="img"> </p>
-<p><img src="wps897F.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps897E.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps897F.tmp.jpg" class="" title="img"> 
 <p>表示连接成功，保存配置；</p>
 <p>配置表：</p>
-<p><img src="wps8980.tmp.jpg" alt="img"> </p>
-<p><img src="wps8981.tmp.jpg" alt="img"> </p>
-<p><img src="wps8982.tmp.jpg" alt="img"> </p>
-<h3 id="4-制作可视化数据；"><a href="#4-制作可视化数据；" class="headerlink" title="(4).制作可视化数据；"></a>(4).制作可视化数据；</h3><p><img src="wps8983.tmp.jpg" alt="img"> </p>
-<p><img src="wps8984.tmp.jpg" alt="img"> </p>
-<p><img src="wps8985.tmp.jpg" alt="img"> </p>
-<p><img src="wps8986.tmp.jpg" alt="img"> </p>
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8980.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8981.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8982.tmp.jpg" class="" title="img"> 
+<h3 id="4-制作可视化数据；"><a href="#4-制作可视化数据；" class="headerlink" title="(4).制作可视化数据；"></a>(4).制作可视化数据；</h3><img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8983.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8984.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8985.tmp.jpg" class="" title="img"> 
+<img src="/2022/06/18/%E6%95%B0%E4%BB%93/wps8986.tmp.jpg" class="" title="img"> 
 
                 
             </div>
@@ -3760,16 +3760,16 @@ superset.sh restart</code></pre>
                     
                         <div class="article-tag">
                             
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
                                 <a href="/tags/hadoop/">
                                     <span class="chip bg-color">hadoop</span>
                                 </a>
                             
                                 <a href="/tags/kafka/">
                                     <span class="chip bg-color">kafka</span>
-                                </a>
-                            
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
                                 </a>
                             
                                 <a href="/tags/hive/">

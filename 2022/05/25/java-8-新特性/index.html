@@ -929,7 +929,7 @@
     <span class="token class-name">Comparator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> com1 <span class="token operator">=</span> <span class="token class-name">Integer</span><span class="token operator">::</span><span class="token function">compare</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 </code></pre>
-<p><img src="image-20220505082305870.png" alt="image-20220505082305870"></p>
+<img src="/2022/05/25/java-8-%E6%96%B0%E7%89%B9%E6%80%A7/image-20220505082305870.png" class="" title="image-20220505082305870">
 <h3 id="类-实例方法名"><a href="#类-实例方法名" class="headerlink" title="类::实例方法名"></a>类::实例方法名</h3><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//类::实例方法名</span>
 <span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test04</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -937,7 +937,7 @@
 
     <span class="token class-name">BiPredicate</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> bp2 <span class="token operator">=</span> <span class="token class-name">String</span><span class="token operator">::</span><span class="token function">equals</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-<p><img src="image-20220505082346240.png" alt="image-20220505082346240"></p>
+<img src="/2022/05/25/java-8-%E6%96%B0%E7%89%B9%E6%80%A7/image-20220505082346240.png" class="" title="image-20220505082346240">
 <h3 id="构造器引用"><a href="#构造器引用" class="headerlink" title="构造器引用"></a>构造器引用</h3><p>注意：需要调用的构造器的参数列表要与函数式接口中抽象方法的参数列表保持一致！</p>
 <pre class="language-java" data-language="java"><code class="language-java">    <span class="token keyword">public</span> <span class="token class-name">Employee</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> integer<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> integer<span class="token punctuation">;</span>
@@ -984,7 +984,7 @@
 <h2 id="Steam"><a href="#Steam" class="headerlink" title="Steam"></a>Steam</h2><blockquote>
 <p>Stream是 Java8中处理集合的关键抽象概念，它可以指定你希望对集合进行的操作，可以执行非常复杂的查找、过滤和映射数据等操作。<br>使用Stream API对集合数据进行操作，就类似于使用SQL执行的数据库查询。也可以使用Stream API来并行执行操作。简而言之，Stream API提供了一种高效且易于使用的处理数据的方式。</p>
 </blockquote>
-<p><img src="image-20220505164354196.png" alt="image-20220505164354196"></p>
+<img src="/2022/05/25/java-8-%E6%96%B0%E7%89%B9%E6%80%A7/image-20220505164354196.png" class="" title="image-20220505164354196">
 <h3 id="流（Steam-到底是什么？"><a href="#流（Steam-到底是什么？" class="headerlink" title="流（Steam)到底是什么？"></a>流（Steam)到底是什么？</h3><p>是数据渠道，用于操作数据源（集合、数组等）所生成的元素序列。==“集合讲的是数据，流讲的是计算”。==</p>
 <p>注意：</p>
 <ul>
@@ -992,7 +992,7 @@
 <li>Stream 不会改变源对象。相反，他们会返回一个持有结果的新Steam</li>
 <li>Stream 操作是延迟执行的。这意味着他们会等到需要结果的时候才执行。</li>
 </ul>
-<h3 id="Stream-的操作三个步骤"><a href="#Stream-的操作三个步骤" class="headerlink" title="Stream 的操作三个步骤"></a>Stream 的操作三个步骤</h3><p><img src="image-20220505164909488.png" alt="image-20220505164909488"></p>
+<h3 id="Stream-的操作三个步骤"><a href="#Stream-的操作三个步骤" class="headerlink" title="Stream 的操作三个步骤"></a>Stream 的操作三个步骤</h3><img src="/2022/05/25/java-8-%E6%96%B0%E7%89%B9%E6%80%A7/image-20220505164909488.png" class="" title="image-20220505164909488">
 <h4 id="创建Stream"><a href="#创建Stream" class="headerlink" title="创建Stream"></a>创建Stream</h4><p>一个数据源（如：集合、数组），获取一个流</p>
 <pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//1，可以通过Collection 系列集合提供的stream()或parallelStream()</span>
 <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1050,7 +1050,7 @@ distinct-筛选，通过流所生成元素的hashCode()和equals()去除重复�
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span></code></pre>
 <p>满足条件就打印！</p>
-<p><img src="image-20220505171439132.png" alt="image-20220505171439132"></p>
+<img src="/2022/05/25/java-8-%E6%96%B0%E7%89%B9%E6%80%A7/image-20220505171439132.png" class="" title="image-20220505171439132">
 <h5 id="limit"><a href="#limit" class="headerlink" title="limit"></a>limit</h5><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//-截断流 ，使其元素不超过给定数量</span>
 <span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test03</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
@@ -1062,7 +1062,7 @@ distinct-筛选，通过流所生成元素的hashCode()和equals()去除重复�
             <span class="token punctuation">.</span><span class="token function">limit</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
             <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token operator">::</span><span class="token function">println</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-<p><img src="image-20220505172553136.png" alt="image-20220505172553136"></p>
+<img src="/2022/05/25/java-8-%E6%96%B0%E7%89%B9%E6%80%A7/image-20220505172553136.png" class="" title="image-20220505172553136">
 <h5 id="skip-n"><a href="#skip-n" class="headerlink" title="skip(n)"></a>skip(n)</h5><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//-跳过元素，返回一个扔掉前n个元素的流。若流中元素不足n个，则返回一个空流。与limit(n)互补</span>
 <span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test04</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
@@ -1098,7 +1098,7 @@ distinct-筛选，通过流所生成元素的hashCode()和equals()去除重复�
                <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>e <span class="token operator">-></span> e<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
                <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token operator">::</span><span class="token function">println</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
    <span class="token punctuation">&#125;</span></code></pre>
-<p><img src="image-20220505175227066.png" alt="image-20220505175227066"></p>
+<img src="/2022/05/25/java-8-%E6%96%B0%E7%89%B9%E6%80%A7/image-20220505175227066.png" class="" title="image-20220505175227066">
 <blockquote>
 <p>flatMap—接收一个函数作为参数，将流中的每个值都换成另一个流，然后把所有流连接成一个流</p>
 </blockquote>
@@ -1375,13 +1375,13 @@ min——返回流中最小值
 
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-<img src="/2022/05/25/java-8-%E6%96%B0%E7%89%B9%E6%80%A7/image-20220620081611386.png" class="" title="image-20220620081611386">
+
 </li>
 <li><p>接口冲突。如果一个父接口提供了一个默认方法，而另一个接口也提供了一个具有相同名称和参数列表的方法（不管方法是否是默认方法），那么必须覆盖该方法来解决冲突。</p>
 <pre class="language-JAVA" data-language="JAVA"><code class="language-JAVA">public interface MyFun2 &#123;
     String getName();
 &#125;</code></pre>
-<img src="/2022/05/25/java-8-%E6%96%B0%E7%89%B9%E6%80%A7/image-20220620081958139.png" class="" title="image-20220620081958139">
+
 </li>
 </ul>
 <h2 id="时间格式"><a href="#时间格式" class="headerlink" title="时间格式"></a>时间格式</h2>

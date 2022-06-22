@@ -605,7 +605,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="首先安装mysql"><a href="#首先安装mysql" class="headerlink" title="首先安装mysql"></a>首先安装mysql</h1><h2 id="用mysql-5-7举例"><a href="#用mysql-5-7举例" class="headerlink" title="用mysql:5.7举例"></a>用mysql:5.7举例</h2><h3 id="1可以先在docker-hub上查找mysql的镜像"><a href="#1可以先在docker-hub上查找mysql的镜像" class="headerlink" title="1可以先在docker hub上查找mysql的镜像"></a>1可以先在docker hub上查找mysql的镜像</h3><pre class="language-powershell" data-language="powershell"><code class="language-powershell">docker search mysql</code></pre>
-<p><img src="image-20220524190015919.png" alt="image-20220524190015919"></p>
+<img src="/2022/05/24/%E5%9F%BA%E4%BA%8EDocker%E5%AE%89%E8%A3%85%E7%9A%84mysql%E6%9D%A5%E5%AE%89%E8%A3%85hive/image-20220524190015919.png" class="" title="image-20220524190015919">
 <h3 id="2，我这次安装的mysql-5-7"><a href="#2，我这次安装的mysql-5-7" class="headerlink" title="2，我这次安装的mysql:5.7"></a>2，我这次安装的mysql:5.7</h3><p>所以直接从docker hub上拉取mysql:5.7<br><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> pull mysql:5.7</code></pre></p>
 <h3 id="3-运行mysql"><a href="#3-运行mysql" class="headerlink" title="3,运行mysql"></a>3,运行mysql</h3><blockquote>
 <h1 id="运行容器，需要做数据挂载！-安装启动MySQL，需要配置密码，这是要注意点！"><a href="#运行容器，需要做数据挂载！-安装启动MySQL，需要配置密码，这是要注意点！" class="headerlink" title="运行容器，需要做数据挂载！ #安装启动MySQL，需要配置密码，这是要注意点！"></a>运行容器，需要做数据挂载！ #安装启动MySQL，需要配置密码，这是要注意点！</h1><h1 id="官方测试：docker-run-—name-some-mysql-e-MYSQL-ROOT-PASSWORD-my-secret-pw-d-mysql-tag"><a href="#官方测试：docker-run-—name-some-mysql-e-MYSQL-ROOT-PASSWORD-my-secret-pw-d-mysql-tag" class="headerlink" title="官方测试：docker run —name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag"></a>官方测试：docker run —name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag</h1><h1 id="启动："><a href="#启动：" class="headerlink" title="启动："></a>启动：</h1><p>-d        后台运行<br>-p        端口映射<br>-v        卷挂载<br>-e        环境配置<br>—name    容器名字<br><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run -d -p <span class="token number">3306</span>:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v/home/mysql/data:/var/lib/mysql -e <span class="token assign-left variable">MYSQL_ROOT_PASSWORD</span><span class="token operator">=</span><span class="token number">123456</span> --name mysql0 mysql:5.7</code></pre></p>
@@ -616,15 +616,16 @@
 -q    <span class="token comment">#只显示容器的编号</span>
 
 <span class="token function">docker</span> <span class="token function">ps</span></code></pre>
-<p><img src="image-20220524190023030.png" alt="image-20220524190023030"><br>有个命令，可以进入容器内部,ctrl+p+q可以以后台运行的方式退出这个软件</p>
+<img src="/2022/05/24/%E5%9F%BA%E4%BA%8EDocker%E5%AE%89%E8%A3%85%E7%9A%84mysql%E6%9D%A5%E5%AE%89%E8%A3%85hive/image-20220524190023030.png" class="" title="image-20220524190023030">
+<p>有个命令，可以进入容器内部,ctrl+p+q可以以后台运行的方式退出这个软件</p>
 </blockquote>
 <pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> <span class="token builtin class-name">exec</span> -it 容器的id /bin/bash</code></pre>
-<h3 id="5，使用navicat连接服务器或虚拟机上的mysql"><a href="#5，使用navicat连接服务器或虚拟机上的mysql" class="headerlink" title="5，使用navicat连接服务器或虚拟机上的mysql"></a>5，使用navicat连接服务器或虚拟机上的mysql</h3><p><img src="image-20220524190032705.png" alt="image-20220524190032705"></p>
+<h3 id="5，使用navicat连接服务器或虚拟机上的mysql"><a href="#5，使用navicat连接服务器或虚拟机上的mysql" class="headerlink" title="5，使用navicat连接服务器或虚拟机上的mysql"></a>5，使用navicat连接服务器或虚拟机上的mysql</h3><img src="/2022/05/24/%E5%9F%BA%E4%BA%8EDocker%E5%AE%89%E8%A3%85%E7%9A%84mysql%E6%9D%A5%E5%AE%89%E8%A3%85hive/image-20220524190032705.png" class="" title="image-20220524190032705">
 <h2 id="开始安装hive"><a href="#开始安装hive" class="headerlink" title="开始安装hive"></a>开始安装hive</h2><p>前提条件：</p>
 <blockquote>
 <p>在虚拟机或是服务器上安装好hadoop 2.7.3的环境<br>安装好mysql5：7<br>在mysql中创建一个名为hive的数据库</p>
 </blockquote>
-<p><img src="image-20220524190037826.png" alt="image-20220524190037826"></p>
+<img src="/2022/05/24/%E5%9F%BA%E4%BA%8EDocker%E5%AE%89%E8%A3%85%E7%9A%84mysql%E6%9D%A5%E5%AE%89%E8%A3%85hive/image-20220524190037826.png" class="" title="image-20220524190037826">
 <h3 id="安装步骤："><a href="#安装步骤：" class="headerlink" title="安装步骤："></a>安装步骤：</h3><p>1，去官网下载hive安装文件，下载地址 ：<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/apache/hive/">hive 下载地址</a>apache-hive-2.3.9-bin.tar.gz<br>2，将hive安装文件上传到虚拟机或是服务器的~/soft目录下，解压：<br><pre class="language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">cd</span> ~/soft
 $ <span class="token function">tar</span> -zxvf apache-hive-2.3.9-bin.tar.gz</code></pre><br>3，创建软连接：<br><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">ln</span> -s apache-hive-2.3.9-bin hive</code></pre><br>4，配置环境变量<br><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> ~/.bashrc</code></pre><br>文件添加以下内容<br><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#注意：一定不要打错！ 可以在操作之前拍个快照。</span>
 <span class="token builtin class-name">export</span> <span class="token assign-left variable">HIVE_HOME</span><span class="token operator">=~</span>/soft/hive
@@ -657,7 +658,7 @@ $ <span class="token function">tar</span> -zxvf apache-hive-2.3.9-bin.tar.gz</co
  
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span></code></pre><br>6，将mysql的驱动文件拷贝到hive/lib目录下<br><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">cp</span> mysql-connection-java-5.1.46.jar ~/soft/hive/lib</code></pre><br>7，初始化Mysql<br><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">find</span> / -name schematool
 /root/soft/apache-hive-2.3.9-bin/bin/schematool -dbType mysql -initSchema</code></pre></p>
-<p>可以看到已经正确完成初始化了。<br><img src="image-20220524190045119.png" alt="image-20220524190045119"></p>
+<p>可以看到已经正确完成初始化了。<br><img src="/2022/05/24/%E5%9F%BA%E4%BA%8EDocker%E5%AE%89%E8%A3%85%E7%9A%84mysql%E6%9D%A5%E5%AE%89%E8%A3%85hive/image-20220524190045119.png" class="" title="image-20220524190045119"></p>
 <p>如果初始化不成功，可能是hadoop的版本问题。hadoop3.  <em> 和hive 3 .</em>会出现</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">Exception <span class="token keyword">in</span> thread <span class="token string">"main"</span> java.lang.NoSuchMethodError: com.google.common.base.Preconditions.checkArgument<span class="token punctuation">(</span>ZLjava/lang/String<span class="token punctuation">;</span>Ljava/lang/Object<span class="token punctuation">;</span><span class="token punctuation">)</span>V
     at org.apache.hadoop.conf.Configuration.set<span class="token punctuation">(</span>Configuration.java:1357<span class="token punctuation">)</span>
@@ -687,7 +688,7 @@ $ <span class="token function">tar</span> -zxvf apache-hive-2.3.9-bin.tar.gz</co
 <p>可以测试hive是否安装成功，开启hive之前要先开启hadoop</p>
 <pre class="language-bash" data-language="bash"><code class="language-bash">start-all.sh
 hive</code></pre>
-<p>可以看到安装成功了。<br><img src="image-20220524190049670.png" alt="image-20220524190049670"></p>
+<p>可以看到安装成功了。<br><img src="/2022/05/24/%E5%9F%BA%E4%BA%8EDocker%E5%AE%89%E8%A3%85%E7%9A%84mysql%E6%9D%A5%E5%AE%89%E8%A3%85hive/image-20220524190049670.png" class="" title="image-20220524190049670"></p>
 
                 
             </div>
