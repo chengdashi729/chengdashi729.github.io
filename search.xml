@@ -54,11 +54,11 @@
             
             <tag> java </tag>
             
+            <tag> hive </tag>
+            
             <tag> hadoop </tag>
             
             <tag> kafka </tag>
-            
-            <tag> hive </tag>
             
             <tag> sqoop </tag>
             
@@ -118,6 +118,8 @@
             
             <tag> minio </tag>
             
+            <tag> mysql </tag>
+            
             <tag> mybatis-plus </tag>
             
             <tag> sa-token </tag>
@@ -129,8 +131,6 @@
             <tag> druid </tag>
             
             <tag> tika </tag>
-            
-            <tag> mysql </tag>
             
             <tag> mybatis-plus-join </tag>
             
