@@ -2075,7 +2075,7 @@ min——返回流中最小值
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
             collapseDepth: Number('1'),
-            headingSelector: 'h1, h2, h3, h4, h5, h6, h7, h8'
+            headingSelector: 'h1, h2, h3, h4, h5, h6, h7'
         });
 
         // modify the toc link href to support Chinese.
@@ -2087,7 +2087,7 @@ min——返回流中最小值
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h1, h2, h3, h4, h5, h6, h7, h8').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6, h7').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 

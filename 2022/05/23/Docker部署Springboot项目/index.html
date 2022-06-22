@@ -1430,7 +1430,7 @@ Successfully tagged onlineexam:latest</code></pre><br><img src="/2022/05/23/Dock
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
             collapseDepth: Number('1'),
-            headingSelector: 'h1, h2, h3, h4, h5, h6, h7, h8'
+            headingSelector: 'h1, h2, h3, h4, h5, h6, h7'
         });
 
         // modify the toc link href to support Chinese.
@@ -1442,7 +1442,7 @@ Successfully tagged onlineexam:latest</code></pre><br><img src="/2022/05/23/Dock
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h1, h2, h3, h4, h5, h6, h7, h8').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6, h7').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
